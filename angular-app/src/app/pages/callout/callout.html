@@ -1,0 +1,58 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-callout</span>
+  <h1 class="pg-title">Callout</h1>
+  <p class="pg-desc">Bloco informativo contextual com variação semântica</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 700px">
+    <xds-callout>Certidões devem estar legíveis e sem rasuras.</xds-callout>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Variantes</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 700px">
+    <xds-callout kind="warning">Certidões devem estar legíveis e sem rasuras.</xds-callout>
+    <xds-callout kind="info">Preencha todos os campos antes de avançar.</xds-callout>
+    <xds-callout kind="success">Documento enviado com sucesso.</xds-callout>
+    <xds-callout kind="danger">Não foi possível processar o arquivo. Tente novamente.</xds-callout>
+    <xds-callout kind="neutral">Esta seção está em fase de revisão.</xds-callout>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com conteúdo rico</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 760px">
+    <xds-callout kind="info">
+      <strong>Atenção:</strong> O prazo para envio dos documentos é <strong>15 de abril</strong>.
+    </xds-callout>
+
+    <xds-callout kind="warning">
+      <p style="margin: 0 0 8px 0">Os seguintes itens precisam de atenção:</p>
+      <ul style="margin: 0; padding-inline-start: 1.25rem">
+        <li>RG ou CNH frente e verso</li>
+        <li>Comprovante de residência recente</li>
+        <li>Certidão de nascimento ou casamento</li>
+      </ul>
+    </xds-callout>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com ação</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 760px">
+    <xds-callout kind="info">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <xds-text variant="h3" as="strong" style="color: inherit">Consulta pública</xds-text>
+        <xds-text variant="body-sm" style="color: inherit">
+          O edital completo e os detalhes do projeto estão disponíveis até 30 de maio.
+        </xds-text>
+        <div style="margin-top: 4px">
+          <xds-button kind="primary" size="md">Acessar edital</xds-button>
+        </div>
+      </div>
+    </xds-callout>
+  </div>
+</div>

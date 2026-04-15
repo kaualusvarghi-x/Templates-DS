@@ -1,0 +1,172 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-modal</span>
+  <h1 class="pg-title">Modal</h1>
+  <p class="pg-desc">confirm · destrutivo · sucesso · tamanhos · label · scroll · sem footer</p>
+</div>
+
+<!-- ── Variantes ────────────────────────────────────────────────────────────── -->
+<div class="pg-group">
+  <div class="pg-group__label">Variantes principais</div>
+  <div class="pg-canvas">
+    <xds-button kind="tertiary" (click)="openConfirm()">Confirmação</xds-button>
+    <xds-button kind="danger"   (click)="openDanger()">Destrutivo</xds-button>
+    <xds-button kind="primary"  (click)="openSuccess()">Sucesso</xds-button>
+  </div>
+</div>
+
+<!-- ── Tamanhos ────────────────────────────────────────────────────────────── -->
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos</div>
+  <div class="pg-canvas">
+    <xds-button size="sm" kind="tertiary" (click)="openSizeXs()">xs</xds-button>
+    <xds-button size="sm" kind="tertiary" (click)="openSizeSm()">sm</xds-button>
+    <xds-button size="sm" kind="tertiary" (click)="openSizeMd()">md</xds-button>
+    <xds-button size="sm" kind="tertiary" (click)="openSizeLg()">lg</xds-button>
+  </div>
+</div>
+
+<!-- ── Extras ─────────────────────────────────────────────────────────────── -->
+<div class="pg-group">
+  <div class="pg-group__label">Com label · com scroll · sem footer</div>
+  <div class="pg-canvas">
+    <xds-button kind="secondary" (click)="openLabel()">Com label</xds-button>
+    <xds-button kind="secondary" (click)="openScroll()">Com scroll</xds-button>
+    <xds-button kind="secondary" (click)="openNoFooter()">Sem footer</xds-button>
+  </div>
+</div>
+
+<!-- ── Modais ─────────────────────────────────────────────────────────────── -->
+
+<xds-modal #confirmModal size="sm">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Confirmar ação</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body>
+    <p>Você tem certeza que deseja continuar? Esta ação pode afetar seus dados cadastrados.</p>
+  </xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Cancelar</xds-button>
+    <xds-button kind="primary">Confirmar</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #dangerModal size="sm" alert>
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Excluir documento</xds-modal-heading>
+    <xds-modal-label>Ação irreversível</xds-modal-label>
+  </xds-modal-header>
+  <xds-modal-body>
+    <p>Esta ação é irreversível. O documento será permanentemente excluído.</p>
+  </xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Cancelar</xds-button>
+    <xds-button kind="danger">Excluir</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #successModal size="sm">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Solicitação enviada</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body>
+    <p>Sua solicitação foi enviada com sucesso. Você receberá confirmação por e-mail.</p>
+  </xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="primary" data-modal-close>Entendido</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #sizeXsModal size="xs">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Modal xs</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body><p>Exemplo de tamanho xs.</p></xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Cancelar</xds-button>
+    <xds-button kind="primary">Confirmar</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #sizeSmModal size="sm">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Modal sm</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body><p>Exemplo de tamanho sm.</p></xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Cancelar</xds-button>
+    <xds-button kind="primary">Confirmar</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #sizeMdModal size="md">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Modal md</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body><p>Exemplo de tamanho md.</p></xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Cancelar</xds-button>
+    <xds-button kind="primary">Confirmar</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #sizeLgModal size="lg">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Modal lg</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body><p>Exemplo de tamanho lg com mais área útil.</p></xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Cancelar</xds-button>
+    <xds-button kind="primary">Confirmar</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #labelModal size="sm">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Termos de uso</xds-modal-heading>
+    <xds-modal-label>Leia com atenção</xds-modal-label>
+  </xds-modal-header>
+  <xds-modal-body>
+    <p>Ao continuar, você concorda com os termos de uso da plataforma.</p>
+  </xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Recusar</xds-button>
+    <xds-button kind="primary">Aceitar</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #scrollModal size="sm">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Com scroll</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body has-scrolling-content>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
+  </xds-modal-body>
+  <xds-modal-footer>
+    <xds-button kind="secondary" data-modal-close>Recusar</xds-button>
+    <xds-button kind="primary">Aceitar</xds-button>
+  </xds-modal-footer>
+</xds-modal>
+
+<xds-modal #noFooterModal size="xs">
+  <xds-modal-header>
+    <xds-modal-close-button></xds-modal-close-button>
+    <xds-modal-heading>Informação</xds-modal-heading>
+  </xds-modal-header>
+  <xds-modal-body>
+    <p>Seu cadastro foi realizado com sucesso. Você receberá confirmação por e-mail.</p>
+  </xds-modal-body>
+</xds-modal>

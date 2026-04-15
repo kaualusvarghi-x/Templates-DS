@@ -1,0 +1,36 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-tag</span>
+  <h1 class="pg-title">Tag</h1>
+  <p class="pg-desc">Rótulo de status e categorização inline</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão — kind neutral</div>
+  <div class="pg-canvas" style="align-items: center">
+    <xds-tag>Presencial e Digital</xds-tag>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Variantes — neutral · info · success · warning · danger</div>
+  <div class="pg-canvas" style="align-items: center; flex-wrap: wrap">
+    <xds-tag kind="neutral">Presencial e Digital</xds-tag>
+    <xds-tag kind="info">Em análise</xds-tag>
+    <xds-tag kind="success">Conforme lei 13.460/2017</xds-tag>
+    <xds-tag kind="warning">Pendente</xds-tag>
+    <xds-tag kind="danger">Vencido</xds-tag>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Composição — metadados de serviço</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 620px; gap: 10px">
+    <xds-text variant="h3">Certidão de Nascimento</xds-text>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <xds-tag kind="info">Digital</xds-tag>
+      <xds-tag kind="success">Sem custo</xds-tag>
+      <xds-tag kind="warning">Prazo 5 dias úteis</xds-tag>
+    </div>
+    <xds-text variant="body-sm">Use tags para indicar atributos e status de conteúdo sem poluir o layout.</xds-text>
+  </div>
+</div>

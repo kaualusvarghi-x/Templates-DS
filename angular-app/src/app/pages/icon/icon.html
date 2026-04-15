@@ -1,0 +1,128 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-icon</span>
+  <h1 class="pg-title">Icon</h1>
+  <p class="pg-desc">Catálogo de ícones, tamanhos, variantes, cores e animações</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Catálogo — todos os ícones (md)</div>
+  <div class="pg-canvas" style="flex-wrap: wrap; gap: 24px">
+    @for (name of allIcons; track name) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+        <xds-icon [attr.name]="name"></xds-icon>
+        <span style="font-size: 11px; opacity: 0.6">{{ name }}</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos — sm / md / lg</div>
+  <div class="pg-canvas" style="gap: 32px; align-items: center">
+    @for (size of sizes; track size) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+        <xds-icon name="search" [attr.size]="size"></xds-icon>
+        <span style="font-size: 11px; opacity: 0.6">{{ size }} — {{ sizeLabel(size) }}px</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Variantes — circle / square</div>
+  <div class="pg-canvas" style="flex-direction: column; align-items: flex-start; gap: 20px">
+    @for (variant of variantKinds; track variant) {
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <span style="font-size: 11px; opacity: 0.65; text-transform: uppercase; letter-spacing: 0.05em">{{ variant }}</span>
+        <div style="display: flex; gap: 12px; align-items: center">
+          @for (size of sizes; track size) {
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+              <xds-icon name="store" [attr.variant]="variant" [attr.size]="size"></xds-icon>
+              <span style="font-size: 11px; opacity: 0.6">{{ size }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Cores — square e circle</div>
+  <div class="pg-canvas" style="flex-direction: column; align-items: flex-start; gap: 20px">
+    @for (variant of ['square', 'circle']; track variant) {
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <span style="font-size: 11px; opacity: 0.65; text-transform: uppercase; letter-spacing: 0.05em">{{ variant }}</span>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+          @for (item of variantColors; track item.color) {
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+              <xds-icon [attr.name]="item.icon" [attr.variant]="variant" [attr.color]="item.color" size="md"></xds-icon>
+              <span style="font-size: 10px; opacity: 0.6">{{ item.color }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Herança de cor — color: inherit</div>
+  <div class="pg-canvas" style="gap: 24px; align-items: center">
+    @for (item of colorIcons; track item.name) {
+      <span [style.color]="item.color" style="display: inline-flex; align-items: center; gap: 6px">
+        <xds-icon [attr.name]="item.name"></xds-icon> {{ item.label }}
+      </span>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">animation — contínuas (spin / pulse)</div>
+  <div class="pg-canvas" style="gap: 40px; align-items: center">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-icon name="refresh-cw" size="lg" animation="spin"></xds-icon>
+      <span style="font-size: 11px; opacity: 0.6">spin</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-icon name="sparkles" size="lg" animation="pulse"></xds-icon>
+      <span style="font-size: 11px; opacity: 0.6">pulse</span>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">animation — hover (passe o mouse sobre o ícone)</div>
+  <div class="pg-canvas" style="gap: 40px; align-items: center">
+    @for (item of hoverAnims; track item.anim) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <xds-icon [attr.name]="item.name" size="lg" [attr.animation]="item.anim"></xds-icon>
+        <span style="font-size: 11px; opacity: 0.6">{{ item.label }}</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Slot customizado — SVG externo via slot</div>
+  <div class="pg-canvas" style="gap: 32px; align-items: center">
+    @for (size of sizes; track size) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+        <xds-icon [attr.size]="size">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </xds-icon>
+        <span style="font-size: 11px; opacity: 0.6">slot {{ size }}</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Sem name e sem slot — renderiza vazio</div>
+  <div class="pg-canvas">
+    <xds-icon style="border: 1px dashed var(--color-border, #e2e8f0); border-radius: 4px; width: 24px; height: 24px"></xds-icon>
+    <span style="font-size: 12px; opacity: 0.6">placeholder visual apenas para demonstração</span>
+  </div>
+</div>

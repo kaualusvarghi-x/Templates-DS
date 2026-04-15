@@ -1,0 +1,47 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-progress-bar</span>
+  <h1 class="pg-title">Progress Bar</h1>
+  <p class="pg-desc">Indicador de progresso com variantes steps e percentage</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 420px">
+    <xds-progress-bar value="60" max="100"></xds-progress-bar>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Variantes — default · steps · percentage</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 420px; gap: 18px">
+    <xds-progress-bar value="60" max="100" variant="default"></xds-progress-bar>
+    <xds-progress-bar value="2" max="4" variant="steps"></xds-progress-bar>
+    <xds-progress-bar value="75" max="100" variant="percentage"></xds-progress-bar>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Status — active · finished · error</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 420px; gap: 18px">
+    <xds-progress-bar value="2" max="4" variant="steps" status="active"></xds-progress-bar>
+    <xds-progress-bar value="4" max="4" variant="steps" status="finished"></xds-progress-bar>
+    <xds-progress-bar value="2" max="4" variant="steps" status="error"></xds-progress-bar>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos — sm · lg</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 420px; gap: 18px">
+    <xds-progress-bar value="60" max="100" variant="percentage" size="sm"></xds-progress-bar>
+    <xds-progress-bar value="60" max="100" variant="percentage" size="lg"></xds-progress-bar>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com label e step-label custom</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 500px; gap: 18px">
+    <xds-progress-bar value="2" max="4" variant="steps" label="Progresso da solicitação"></xds-progress-bar>
+    <xds-progress-bar value="3" max="5" step-label="Fase 3 de 5"></xds-progress-bar>
+    <xds-progress-bar value="1" max="3" step-label="Documento 1 de 3 enviado"></xds-progress-bar>
+  </div>
+</div>

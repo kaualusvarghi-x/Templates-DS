@@ -1,0 +1,125 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-select</span>
+  <h1 class="pg-title">Select</h1>
+  <p class="pg-desc">Dropdown de seleção · grupos · estados · ghost · skeleton</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Default</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select label="Estado" placeholder="Selecione um estado">
+      <xds-select-item value="sp">São Paulo</xds-select-item>
+      <xds-select-item value="rj">Rio de Janeiro</xds-select-item>
+      <xds-select-item value="mg">Minas Gerais</xds-select-item>
+      <xds-select-item value="rs">Rio Grande do Sul</xds-select-item>
+      <xds-select-item value="ba">Bahia</xds-select-item>
+    </xds-select>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Grupos — xds-select-item-group</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select label="Tipo de documento" placeholder="Selecione">
+      <xds-select-item-group label="Pessoa Física">
+        <xds-select-item value="cpf">CPF</xds-select-item>
+        <xds-select-item value="rg">RG</xds-select-item>
+        <xds-select-item value="cnh">CNH</xds-select-item>
+      </xds-select-item-group>
+      <xds-select-item-group label="Pessoa Jurídica">
+        <xds-select-item value="cnpj">CNPJ</xds-select-item>
+        <xds-select-item value="ie">Inscrição Estadual</xds-select-item>
+      </xds-select-item-group>
+    </xds-select>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos — sm / md / lg</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    @for (size of ['sm', 'md', 'lg']; track size) {
+      <xds-select [attr.label]="'Tamanho ' + size" placeholder="Selecione" [attr.size]="size">
+        <xds-select-item value="a">Opção A</xds-select-item>
+        <xds-select-item value="b">Opção B</xds-select-item>
+        <xds-select-item value="c">Opção C</xds-select-item>
+      </xds-select>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Helper text</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select label="Categoria" placeholder="Selecione uma categoria" helper-text="Isso define as opções disponíveis na próxima etapa">
+      <xds-select-item value="saude">Saúde</xds-select-item>
+      <xds-select-item value="educacao">Educação</xds-select-item>
+      <xds-select-item value="assistencia">Assistência Social</xds-select-item>
+    </xds-select>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Controlado — valor via signal</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select label="Prioridade" [attr.value]="value()" (change)="onChange($event)">
+      <xds-select-item value="alta">Alta</xds-select-item>
+      <xds-select-item value="media">Média</xds-select-item>
+      <xds-select-item value="baixa">Baixa</xds-select-item>
+    </xds-select>
+    <span style="font-size: 13px; opacity: 0.6">Valor selecionado: <strong>{{ value() || '—' }}</strong></span>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Disabled</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select label="Campo desabilitado" value="sp" disabled>
+      <xds-select-item value="sp">São Paulo</xds-select-item>
+    </xds-select>
+    <xds-select label="Item desabilitado" placeholder="Selecione">
+      <xds-select-item value="a">Opção A</xds-select-item>
+      <xds-select-item value="b" disabled>Opção B desabilitada</xds-select-item>
+      <xds-select-item value="c">Opção C</xds-select-item>
+    </xds-select>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Error state — invalid + invalid-text</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select label="Tipo de serviço" placeholder="Selecione" invalid invalid-text="Campo obrigatório. Selecione um tipo de serviço.">
+      <xds-select-item value="a">Serviço A</xds-select-item>
+      <xds-select-item value="b">Serviço B</xds-select-item>
+    </xds-select>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Warn state — warn + warn-text</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select label="Região" value="norte" warn warn-text="Esta região tem disponibilidade limitada de serviços.">
+      <xds-select-item value="norte">Norte</xds-select-item>
+      <xds-select-item value="sul">Sul</xds-select-item>
+      <xds-select-item value="centro">Centro-Oeste</xds-select-item>
+    </xds-select>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Variante ghost</div>
+  <div class="pg-canvas" style="align-items: center">
+    <span style="font-size: 14px; color: var(--color-text-muted)">Ordenar por:</span>
+    <xds-select variant="ghost" value="relevantes">
+      <xds-select-item value="relevantes">Mais relevantes</xds-select-item>
+      <xds-select-item value="az">A-Z</xds-select-item>
+      <xds-select-item value="recentes">Recentes</xds-select-item>
+    </xds-select>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Skeleton</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 360px">
+    <xds-select-skeleton></xds-select-skeleton>
+  </div>
+</div>

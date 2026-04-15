@@ -1,0 +1,100 @@
+import { useState } from 'react';
+
+const COMPONENTS = [
+  { id: 'button', name: 'Button', tag: 'xds-button', count: 'kinds · sizes · icon · loading · skeleton', done: true },
+  { id: 'icon', name: 'Icon', tag: 'xds-icon', count: 'catálogo · animações · slot', done: true },
+  { id: 'icon-button', name: 'Icon Button', tag: 'xds-icon-button', count: 'kinds · sizes · tooltip · disabled', done: true },
+  { id: 'text', name: 'Text', tag: 'xds-text', count: 'variantes · as · weight · truncate', done: true },
+  { id: 'divider', name: 'Divider', tag: 'xds-divider', count: 'horizontal · vertical · label', done: true },
+  { id: 'tag', name: 'Tag', tag: 'xds-tag', count: '5 variantes de status', done: true },
+  { id: 'callout', name: 'Callout', tag: 'xds-callout', count: 'variantes · conteúdo rico · ação', done: true },
+  { id: 'avatar', name: 'Avatar', tag: 'xds-avatar', count: 'imagem · iniciais · badge · action', done: true },
+  { id: 'tooltip', name: 'Tooltip', tag: 'xds-tooltip', count: 'posições · auto-align · delays', done: true },
+
+  { id: 'input', name: 'Input', tag: 'xds-input', count: 'tamanhos · states · helper · skeleton', done: true },
+  { id: 'password-input', name: 'Password Input', tag: 'xds-password-input', count: 'toggle · states · helper · skeleton', done: true },
+  { id: 'select', name: 'Select', tag: 'xds-select', count: 'grupos · ghost · skeleton', done: true },
+  { id: 'checkbox', name: 'Checkbox', tag: 'xds-checkbox', count: 'estados · validação · group', done: true },
+  { id: 'accordion', name: 'Accordion', tag: 'xds-accordion', count: 'flush · exclusive · skeleton', done: true },
+  { id: 'progress-bar', name: 'Progress Bar', tag: 'xds-progress-bar', count: 'variant · status · size · label', done: true },
+  { id: 'pagination', name: 'Pagination', tag: 'xds-pagination', count: 'navegação · total-items · disabled', done: true },
+
+  { id: 'toast', name: 'Toast + Toaster', tag: 'xds-toast / xds-toaster', count: 'types · stack · descrição · duração', done: true },
+  { id: 'modal', name: 'Modal', tag: 'xds-modal', count: 'sizes · label · scroll · sem footer', done: true },
+  { id: 'external-link-guard', name: 'External Link Guard', tag: 'xds-external-link-guard', count: 'target · slots · multi-botões', done: true },
+] as const;
+
+type FilterDone = 'all' | 'done' | 'wip';
+
+interface HomePageProps {
+  onNavigate?: (page: string) => void;
+}
+
+export default function HomePage({ onNavigate }: HomePageProps) {
+  const [done, setDone] = useState<FilterDone>('all');
+
+  const visible = COMPONENTS
+    .filter((c) => done === 'all' || (done === 'done' ? c.done : !c.done))
+    .sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+
+  const total = COMPONENTS.length;
+  const doneCount = COMPONENTS.filter((c) => c.done).length;
+
+  return (
+    <div className="ds-home">
+      <h1 className="ds-home__title">Xvia Design System</h1>
+      <p className="ds-home__sub">Web Components · host React · cobertura de componentes e variações</p>
+
+      <div className="ds-home__progress">
+        <div className="ds-home__progress-bar">
+          <div
+            className="ds-home__progress-fill"
+            style={{ width: `${(doneCount / total) * 100}%` }}
+          />
+        </div>
+        <span className="ds-home__progress-label">
+          {doneCount} de {total} componentes implementados
+        </span>
+      </div>
+
+      <div className="ds-home__filters">
+        <div className="ds-home__filter-row">
+          <span className="ds-home__filter-label">Status</span>
+          {(['all', 'done', 'wip'] as FilterDone[]).map((d) => (
+            <button
+              key={d}
+              className={`ds-chip${done === d ? ' ds-chip--active' : ''}`}
+              onClick={() => setDone(d)}
+            >
+              {d === 'all' ? 'Todos' : d === 'done' ? 'Implementados' : 'Em desenvolvimento'}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {visible.length === 0 ? (
+        <p className="ds-home__empty">Nenhum componente com essa combinação de filtros.</p>
+      ) : (
+        <div className="ds-home__grid">
+          {visible.map((c) => (
+            <div
+              key={c.id}
+              className={`ds-home__card${c.done ? '' : ' ds-home__card--wip'}`}
+              onClick={() => c.done && onNavigate?.(c.id)}
+              style={{ cursor: c.done ? 'pointer' : 'default' }}
+            >
+              <div className="ds-home__card-top">
+                <span className="ds-home__card-tag">{c.tag}</span>
+                <span className={`ds-home__card-status ${c.done ? 'status-done' : 'status-wip'}`}>
+                  {c.done ? 'Implementado' : 'Em dev'}
+                </span>
+              </div>
+              <span className="ds-home__card-name">{c.name}</span>
+              <span className="ds-home__card-count">{c.count}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

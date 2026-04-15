@@ -1,0 +1,76 @@
+<nav class="ds-nav" [class.ds-nav--collapsed]="sidebarCollapsed()">
+  <div class="ds-nav__header">
+    <div class="ds-nav__logo-row">
+      <button
+        class="ds-nav__toggle"
+        (click)="toggleSidebar()"
+        [title]="sidebarCollapsed() ? 'Abrir sidebar' : 'Fechar sidebar'"
+        [attr.aria-label]="sidebarCollapsed() ? 'Abrir sidebar' : 'Fechar sidebar'"
+        [attr.aria-pressed]="sidebarCollapsed()"
+      >
+        <span class="material-icons-round">
+          {{ sidebarCollapsed() ? 'menu' : 'menu_open' }}
+        </span>
+      </button>
+      <a class="ds-nav__logo" routerLink="/">
+        Xvia<span>DS</span>
+        <div class="ds-nav__logo-sub">Design System</div>
+      </a>
+    </div>
+
+    <div class="ds-nav__theme-row">
+      <div class="ds-nav__theme" #themeMenuRef>
+        <button
+          class="ds-nav__theme-toggle"
+          (click)="toggleThemeMenu($event)"
+          title="Selecionar surface do tema"
+          aria-haspopup="menu"
+          [attr.aria-expanded]="themeMenuOpen()"
+        >
+          <span class="ds-nav__theme-dot" [style.background-color]="selectedThemeOption().hex"></span>
+          <span class="ds-nav__theme-label">{{ selectedThemeOption().title }}</span>
+          <span class="material-icons-round">{{ themeMenuOpen() ? 'expand_less' : 'expand_more' }}</span>
+        </button>
+
+        @if (themeMenuOpen()) {
+          <div class="ds-nav__theme-menu" role="menu" aria-label="Theme surfaces">
+            @for (option of themeOptions; track option.value) {
+              <button
+                class="ds-nav__theme-option"
+                [ngClass]="{ 'ds-nav__theme-option--active': selectedTheme() === option.value }"
+                (click)="selectTheme(option.value)"
+                role="menuitemradio"
+                [attr.aria-checked]="selectedTheme() === option.value"
+              >
+                <span class="ds-nav__theme-dot" [style.background-color]="option.hex"></span>
+                <span>{{ option.title }}</span>
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-nav__body">
+    <div class="ds-nav__group">Componentes</div>
+    @for (item of nav; track item.path) {
+      <a
+        [ngClass]="itemClass(item)"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+      >
+        <span class="material-icons-round" style="font-size: 14px">{{ item.icon }}</span>
+        {{ item.name }}
+        <span [class]="'ds-nav__item-dot ' + (item.done ? 'ds-nav__item-dot--done' : 'ds-nav__item-dot--wip')"
+              [title]="item.done ? 'Implementado' : 'Em desenvolvimento'"></span>
+      </a>
+    }
+  </div>
+</nav>
+
+<main class="ds-main" [class.ds-main--expanded]="sidebarCollapsed()">
+  <div class="ds-content">
+    <router-outlet />
+  </div>
+</main>

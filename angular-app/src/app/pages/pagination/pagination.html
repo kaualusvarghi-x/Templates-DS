@@ -1,0 +1,51 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-pagination</span>
+  <h1 class="pg-title">Pagination</h1>
+  <p class="pg-desc">Navegação de páginas · total-pages ou total-items · disabled</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão</div>
+  <div class="pg-canvas">
+    <xds-pagination page="2" total-pages="3"></xds-pagination>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Navegação — primeira, intermediária e última página</div>
+  <div class="pg-canvas pg-canvas--column" style="gap: 14px">
+    <xds-pagination page="1" total-pages="3"></xds-pagination>
+    <xds-pagination page="2" total-pages="3"></xds-pagination>
+    <xds-pagination page="3" total-pages="3"></xds-pagination>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Muitas páginas (com reticências)</div>
+  <div class="pg-canvas">
+    <xds-pagination page="5" total-pages="20" max-visible-pages="5"></xds-pagination>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Calculado via total-items + page-size</div>
+  <div class="pg-canvas pg-canvas--column" style="gap: 10px">
+    <xds-pagination page="1" total-items="103" page-size="10"></xds-pagination>
+    <xds-text variant="caption">103 itens / 10 por página = 11 páginas</xds-text>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Desabilitado</div>
+  <div class="pg-canvas">
+    <xds-pagination page="2" total-pages="5" disabled></xds-pagination>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Controlado com evento xds-pagination-changed</div>
+  <div class="pg-canvas pg-canvas--column" style="gap: 10px">
+    <xds-pagination #controlledPagination [attr.page]="page()" total-pages="7"></xds-pagination>
+    <xds-text variant="caption">Página selecionada: {{ page() }}</xds-text>
+  </div>
+</div>

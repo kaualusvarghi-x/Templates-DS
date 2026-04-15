@@ -1,0 +1,48 @@
+import { Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home';
+import { ButtonComponent } from './pages/button/button';
+import { IconComponent } from './pages/icon/icon';
+import { IconButtonComponent } from './pages/icon-button/icon-button';
+import { TextComponent } from './pages/text/text';
+import { DividerComponent } from './pages/divider/divider';
+import { TagComponent } from './pages/tag/tag';
+import { CalloutComponent } from './pages/callout/callout';
+import { AvatarComponent } from './pages/avatar/avatar';
+import { TooltipComponent } from './pages/tooltip/tooltip';
+import { InputPageComponent } from './pages/input/input';
+import { PasswordInputComponent } from './pages/password-input/password-input';
+import { SelectComponent } from './pages/select/select';
+import { AccordionComponent } from './pages/accordion/accordion';
+import { CheckboxComponent } from './pages/checkbox/checkbox';
+import { ProgressBarComponent } from './pages/progress-bar/progress-bar';
+import { PaginationComponent } from './pages/pagination/pagination';
+import { ToastComponent } from './pages/toast/toast';
+import { ModalComponent } from './pages/modal/modal';
+import { ExternalLinkGuardComponent } from './pages/external-link-guard/external-link-guard';
+import { CardComponent } from './pages/card/card';
+import { LoadingPageComponent } from './pages/loading/loading';
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'button', component: ButtonComponent },
+  { path: 'icon', component: IconComponent },
+  { path: 'icon-button', component: IconButtonComponent },
+  { path: 'text', component: TextComponent },
+  { path: 'divider', component: DividerComponent },
+  { path: 'tag', component: TagComponent },
+  { path: 'callout', component: CalloutComponent },
+  { path: 'avatar', component: AvatarComponent },
+  { path: 'tooltip', component: TooltipComponent },
+  { path: 'input', component: InputPageComponent },
+  { path: 'password-input', component: PasswordInputComponent },
+  { path: 'select', component: SelectComponent },
+  { path: 'accordion', component: AccordionComponent },
+  { path: 'checkbox', component: CheckboxComponent },
+  { path: 'progress-bar', component: ProgressBarComponent },
+  { path: 'pagination', component: PaginationComponent },
+  { path: 'toast', component: ToastComponent },
+  { path: 'modal', component: ModalComponent },
+  { path: 'external-link-guard', component: ExternalLinkGuardComponent },
+  { path: 'card', component: CardComponent },
+  { path: 'loading', component: LoadingPageComponent },
+];

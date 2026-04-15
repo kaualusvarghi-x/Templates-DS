@@ -1,0 +1,98 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-avatar</span>
+  <h1 class="pg-title">Avatar</h1>
+  <p class="pg-desc">Imagem de perfil · fallback para ícone padrão · tamanhos · cores</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos — sm / md / lg / xl</div>
+  <div class="pg-canvas" style="align-items: center; gap: 24px">
+    @for (size of ['sm', 'md', 'lg', 'xl']; track size) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <xds-avatar [attr.size]="size"></xds-avatar>
+        <span style="font-size: 11px; opacity: 0.6">{{ size }}</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Cores — primary / secondary / neutral</div>
+  <div class="pg-canvas" style="align-items: center; gap: 24px">
+    @for (color of ['primary', 'secondary', 'neutral']; track color) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <xds-avatar [attr.color]="color"></xds-avatar>
+        <span style="font-size: 11px; opacity: 0.6">{{ color }}</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com imagem — src válido</div>
+  <div class="pg-canvas" style="align-items: center; gap: 24px">
+    @for (size of ['sm', 'md', 'lg', 'xl']; track size) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <xds-avatar [attr.size]="size" src="https://i.pravatar.cc/150?img=3" alt="Foto de perfil"></xds-avatar>
+        <span style="font-size: 11px; opacity: 0.6">{{ size }}</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Fallback — src inválido (erro de carregamento)</div>
+  <div class="pg-canvas" style="align-items: center; gap: 24px">
+    @for (color of ['primary', 'secondary', 'neutral']; track color) {
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <xds-avatar src="https://url-invalida.exemplo/imagem.jpg" alt="Imagem quebrada" [attr.color]="color"></xds-avatar>
+        <span style="font-size: 11px; opacity: 0.6">{{ color }} (fallback)</span>
+      </div>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Slot customizado — iniciais no lugar do ícone padrão</div>
+  <div class="pg-canvas" style="align-items: center; gap: 24px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-avatar size="lg" color="primary">
+        <span style="font-size: 18px; font-weight: 700; color: currentColor">JS</span>
+      </xds-avatar>
+      <span style="font-size: 11px; opacity: 0.6">iniciais via slot</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-avatar size="lg" color="secondary">
+        <span style="font-size: 18px; font-weight: 700; color: currentColor">MR</span>
+      </xds-avatar>
+      <span style="font-size: 11px; opacity: 0.6">iniciais via slot</span>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Composição — avatar + badge</div>
+  <div class="pg-canvas" style="align-items: center; gap: 32px">
+    <div style="position: relative; display: inline-flex">
+      <xds-avatar size="lg" src="https://i.pravatar.cc/150?img=5" alt="Usuário"></xds-avatar>
+      <xds-badge-indicator count="3" color="error" style="position: absolute; top: -4px; right: -4px"></xds-badge-indicator>
+    </div>
+    <div style="position: relative; display: inline-flex">
+      <xds-avatar size="xl" color="primary"></xds-avatar>
+      <xds-badge-indicator dot color="success" style="position: absolute; bottom: 0; right: 0"></xds-badge-indicator>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com ação — slot action</div>
+  <div class="pg-canvas" style="align-items: center; gap: 32px">
+    <xds-avatar size="xl" color="primary">
+      <xds-icon-button slot="action" kind="secondary" size="sm" icon="plus" tooltip-text="editar foto"></xds-icon-button>
+    </xds-avatar>
+
+    <xds-avatar size="xl" src="https://i.pravatar.cc/150?img=8" alt="Usuário">
+      <xds-icon-button slot="action" kind="danger" size="sm" icon="trash-2" tooltip-text="editar foto"></xds-icon-button>
+    </xds-avatar>
+  </div>
+</div>

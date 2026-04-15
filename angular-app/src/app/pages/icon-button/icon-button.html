@@ -1,0 +1,50 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-icon-button</span>
+  <h1 class="pg-title">Icon Button</h1>
+  <p class="pg-desc">Botão circular com ícone, tooltip e variações visuais</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão</div>
+  <div class="pg-canvas" style="align-items: center">
+    <xds-icon-button kind="primary" size="md" icon="search"></xds-icon-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Variantes</div>
+  <div class="pg-canvas" style="align-items: center; flex-wrap: wrap">
+    <xds-icon-button kind="primary" icon="search"></xds-icon-button>
+    <xds-icon-button kind="secondary" icon="settings"></xds-icon-button>
+    <xds-icon-button kind="tertiary" icon="pencil"></xds-icon-button>
+    <xds-icon-button kind="ghost" icon="share-2"></xds-icon-button>
+    <xds-icon-button kind="danger" icon="trash-2"></xds-icon-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos</div>
+  <div class="pg-canvas" style="align-items: center; gap: 24px">
+    <xds-icon-button size="sm" icon="search"></xds-icon-button>
+    <xds-icon-button size="md" icon="search"></xds-icon-button>
+    <xds-icon-button size="lg" icon="search"></xds-icon-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com tooltip</div>
+  <div class="pg-canvas" style="align-items: center; flex-wrap: wrap">
+    <xds-icon-button kind="primary" icon="search" tooltip-text="Buscar" tooltip-align="bottom"></xds-icon-button>
+    <xds-icon-button kind="ghost" icon="settings" tooltip-text="Configurações" tooltip-align="top"></xds-icon-button>
+    <xds-icon-button kind="danger" icon="trash-2" tooltip-text="Excluir" tooltip-align="right"></xds-icon-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Desabilitado</div>
+  <div class="pg-canvas" style="align-items: center; flex-wrap: wrap">
+    <xds-icon-button disabled kind="primary" icon="search"></xds-icon-button>
+    <xds-icon-button disabled kind="secondary" icon="settings"></xds-icon-button>
+    <xds-icon-button disabled kind="danger" icon="trash-2"></xds-icon-button>
+  </div>
+</div>

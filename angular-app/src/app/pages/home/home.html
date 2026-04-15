@@ -1,0 +1,46 @@
+<div class="ds-home">
+  <h1 class="ds-home__title">Xvia Design System</h1>
+  <p class="ds-home__sub">Web Components · sobre Carbon Design System · xds-*</p>
+
+  <div class="ds-home__progress">
+    <div class="ds-home__progress-bar">
+      <div class="ds-home__progress-fill" [style.width]="progressWidth()"></div>
+    </div>
+    <span class="ds-home__progress-label">{{ doneCount }} de {{ total }} componentes implementados</span>
+  </div>
+
+  <div class="ds-home__filters">
+    <div class="ds-home__filter-row">
+      <span class="ds-home__filter-label">Status</span>
+      @for (d of doneOptions; track d) {
+        <button
+          [ngClass]="{ 'ds-chip': true, 'ds-chip--active': done() === d }"
+          (click)="done.set(d)"
+        >{{ doneLabel(d) }}</button>
+      }
+    </div>
+  </div>
+
+  @if (visible().length === 0) {
+    <p class="ds-home__empty">Nenhum componente com essa combinação de filtros.</p>
+  } @else {
+    <div class="ds-home__grid">
+      @for (c of visible(); track c.id) {
+        <div
+          [ngClass]="{ 'ds-home__card': true, 'ds-home__card--wip': !c.done }"
+          [style.cursor]="c.done ? 'pointer' : 'default'"
+          (click)="c.done && navigate(c.id)"
+        >
+          <div class="ds-home__card-top">
+            <span class="ds-home__card-tag">{{ c.tag }}</span>
+            <span [ngClass]="{ 'ds-home__card-status': true, 'status-done': c.done, 'status-wip': !c.done }">
+              {{ c.done ? 'Implementado' : 'Em dev' }}
+            </span>
+          </div>
+          <span class="ds-home__card-name">{{ c.name }}</span>
+          <span class="ds-home__card-count">{{ c.count }}</span>
+        </div>
+      }
+    </div>
+  }
+</div>

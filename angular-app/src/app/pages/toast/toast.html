@@ -1,0 +1,60 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-toast · xds-toaster</span>
+  <h1 class="pg-title">Toast</h1>
+  <p class="pg-desc">Tipos · stack · descrição · duração longa</p>
+</div>
+
+<xds-toaster max-visible="3"></xds-toaster>
+
+<div class="pg-group">
+  <div class="pg-group__label">Disparar toast (xds-toast)</div>
+  <div class="pg-canvas">
+    <xds-button kind="primary" (click)="showSuccess()">Success</xds-button>
+    <xds-button kind="danger" (click)="showError()">Error</xds-button>
+    <xds-button kind="secondary" (click)="showWarning()">Warning</xds-button>
+    <xds-button kind="tertiary" (click)="showInfo()">Info</xds-button>
+  </div>
+</div>
+
+<xds-toast #successToast kind="success" title="Dados salvos com sucesso!" duration="4000"></xds-toast>
+<xds-toast #errorToast kind="error" title="Erro ao processar a solicitação. Tente novamente." duration="4000"></xds-toast>
+<xds-toast #warningToast kind="warning" title="Sessão expirando em 2 minutos." duration="4000"></xds-toast>
+<xds-toast #infoToast kind="info" title="Nova versão do portal disponível para atualização." duration="4000"></xds-toast>
+
+<div class="pg-group">
+  <div class="pg-group__label">Variantes via xds-toaster (XviaDS.toast)</div>
+  <div class="pg-canvas">
+    <xds-button kind="primary" (click)="pushToToaster('success', 'Dados salvos com sucesso')">success</xds-button>
+    <xds-button kind="danger" (click)="pushToToaster('error', 'Erro ao processar a solicitação.')">error</xds-button>
+    <xds-button kind="secondary" (click)="pushToToaster('warning', 'Sessão expirando em 2 minutos.')">warning</xds-button>
+    <xds-button kind="ghost" (click)="pushToToaster('info', 'Nova versão disponível para atualização.')">info</xds-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Stack — clique várias vezes</div>
+  <div class="pg-canvas">
+    <xds-button kind="primary" (click)="pushToToaster('success', 'Arquivo enviado com sucesso')">Adicionar success</xds-button>
+    <xds-button kind="danger" (click)="pushToToaster('error', 'Falha de comunicação com o serviço.')">Adicionar error</xds-button>
+    <xds-button kind="secondary" (click)="pushToToaster('warning', 'Sessão expira em 1 minuto.')">Adicionar warning</xds-button>
+    <xds-button kind="ghost" (click)="pushToToaster('info', 'Nova mensagem recebida.')">Adicionar info</xds-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com descrição</div>
+  <div class="pg-canvas">
+    <xds-button kind="primary" (click)="pushToToaster('success', 'Evento criado com sucesso.', 'Domingo, 03 de dezembro de 2023 às 09:00.', 4000)">
+      Disparar com descrição
+    </xds-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Duração longa (10s)</div>
+  <div class="pg-canvas">
+    <xds-button kind="ghost" (click)="pushToToaster('info', 'Esta mensagem fica visível por 10 segundos.', undefined, 10000)">
+      Disparar toast 10s
+    </xds-button>
+  </div>
+</div>

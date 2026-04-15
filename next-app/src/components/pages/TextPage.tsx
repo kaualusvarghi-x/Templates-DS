@@ -1,0 +1,220 @@
+
+export default function TextPage() {
+  return (
+    <>
+      <div className="pg-header">
+        <span className="pg-tag">xds-text</span>
+        <h1 className="pg-title">Text</h1>
+        <p className="pg-desc">Tipografia semântica · variant · as · weight · italic · transform · align · spacing · truncate</p>
+      </div>
+
+      {/* ── Escala de tamanho — visão geral ─────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Escala de tamanho — do maior para o menor</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="h1">h1 · 30px · bold</xds-text>
+          <xds-text variant="h1-hero">h1-hero · clamp(2rem–3rem) · bold</xds-text>
+          <xds-text variant="h2">h2 · 24px · bold</xds-text>
+          <xds-text variant="h3">h3 · 20px · bold</xds-text>
+          <xds-text variant="body">body · 16px · regular</xds-text>
+          <xds-text variant="body-sm">body-sm · 14px · regular</xds-text>
+          <xds-text variant="caption">caption · 14px · regular · muted</xds-text>
+          <xds-text variant="label">label · 12px · bold · uppercase</xds-text>
+          <xds-text variant="overline">overline · 12px · bold · uppercase · spacing+</xds-text>
+          <xds-text variant="meta">meta · 10px · bold · uppercase</xds-text>
+        </div>
+      </div>
+
+      {/* ── Headings com conteúdo real ───────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Headings — conteúdo real</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="h1">Portal de Serviços Governamentais</xds-text>
+          <xds-text variant="h1-hero">Bem-vindo ao Gov Digital</xds-text>
+          <xds-text variant="h2">Serviços disponíveis para você</xds-text>
+          <xds-text variant="h3">Documentos necessários</xds-text>
+        </div>
+      </div>
+
+      {/* ── Body — parágrafos longos ─────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Body — parágrafos</div>
+        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 640 }}>
+          <xds-text variant="body">
+            O Portal de Serviços do Governo permite que cidadãos solicitem documentos, acompanhem processos
+            e acessem benefícios de forma digital, sem necessidade de deslocamento presencial.
+          </xds-text>
+          <xds-text variant="body-sm">
+            Informações adicionais: o prazo de análise pode variar de 3 a 10 dias úteis dependendo
+            da complexidade da solicitação e da documentação enviada.
+          </xds-text>
+        </div>
+      </div>
+
+      {/* ── Utilitários ──────────────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Utilitários — caption, label, overline, meta</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="caption">Atualizado em 15/03/2025 às 14h32</xds-text>
+          <xds-text variant="caption">Protocolo nº 2025-004512 · Em análise</xds-text>
+          <xds-text variant="label">Número do CPF</xds-text>
+          <xds-text variant="label">Data de nascimento</xds-text>
+          <xds-text variant="overline">Documentos pessoais</xds-text>
+          <xds-text variant="overline">Serviços em destaque</xds-text>
+          <xds-text variant="meta">v2.4.1 · build 20250315</xds-text>
+          <xds-text variant="meta">ID: usr_9f2a3b · sessão ativa</xds-text>
+        </div>
+      </div>
+
+      {/* ── Especiais ────────────────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Especiais</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="logo">Xvia</xds-text>
+          <xds-text variant="logo">GovBR</xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop as — sobrescrita de tag ─────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop as — mesmo estilo, tag diferente</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="h2" as="p">variant="h2" as="p" → &lt;p&gt; com estilo de h2</xds-text>
+          <xds-text variant="h3" as="span">variant="h3" as="span" → &lt;span&gt; inline com estilo de h3</xds-text>
+          <xds-text variant="body" as="span">variant="body" as="span" → &lt;span&gt; inline com estilo body</xds-text>
+          <xds-text variant="label" as="label">variant="label" as="label" → &lt;label&gt; semântico para formulário</xds-text>
+          <xds-text variant="caption" as="span">variant="caption" as="span" → &lt;span&gt; de legenda inline</xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop weight — sobrescrita de peso ───────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop weight — sobrescrita de font-weight</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="body" weight="regular">body + weight="regular" — 400</xds-text>
+          <xds-text variant="body" weight="medium">body + weight="medium" — 500</xds-text>
+          <xds-text variant="body" weight="semibold">body + weight="semibold" — 600</xds-text>
+          <xds-text variant="body" weight="bold">body + weight="bold" — 700</xds-text>
+          <xds-text variant="body" weight="black">body + weight="black" — 900</xds-text>
+          <xds-text variant="caption" weight="bold">caption + weight="bold" — destaque em texto auxiliar</xds-text>
+          <xds-text variant="h2" weight="regular">h2 + weight="regular" — heading sem destaque</xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop italic ──────────────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop italic</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="body" italic>body + italic — texto em itálico para ênfase</xds-text>
+          <xds-text variant="body-sm" italic>body-sm + italic — nota ou citação</xds-text>
+          <xds-text variant="caption" italic>caption + italic — legenda em itálico</xds-text>
+          <xds-text variant="h3" italic>h3 + italic — subtítulo editorial</xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop transform ───────────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop transform</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="body" transform="uppercase">body + transform="uppercase" — TEXTO EM CAIXA ALTA</xds-text>
+          <xds-text variant="body" transform="lowercase">body + transform="lowercase" — texto em caixa baixa</xds-text>
+          <xds-text variant="body" transform="capitalize">body + transform="capitalize" — Texto Com Iniciais Maiúsculas</xds-text>
+          <xds-text variant="label" transform="none">label + transform="none" — remove uppercase do variant</xds-text>
+          <xds-text variant="overline" transform="none">overline + transform="none" — remove uppercase do variant</xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop align ───────────────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop align</div>
+        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 500 }}>
+          <xds-text variant="body" align="left">align="left" — alinhamento padrão à esquerda</xds-text>
+          <xds-text variant="body" align="center">align="center" — texto centralizado</xds-text>
+          <xds-text variant="body" align="right">align="right" — texto alinhado à direita</xds-text>
+          <xds-text variant="h2" align="center">h2 + align="center" — título centralizado</xds-text>
+          <xds-text variant="caption" align="right">caption + align="right" — rodapé de card</xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop spacing ─────────────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop spacing — letter-spacing presets e valor livre</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="body" spacing="tight">spacing="tight" — espaçamento apertado (-0.02em)</xds-text>
+          <xds-text variant="body" spacing="normal">spacing="normal" — espaçamento neutro (0)</xds-text>
+          <xds-text variant="body" spacing="wide">spacing="wide" — espaçamento aberto (0.05em)</xds-text>
+          <xds-text variant="body" spacing="wider">spacing="wider" — espaçamento muito aberto (0.1em)</xds-text>
+          <xds-text variant="caption" spacing="0.15em">spacing="0.15em" — valor CSS livre</xds-text>
+          <xds-text variant="label" transform="none" spacing="0.2em">label sem uppercase + spacing="0.2em"</xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop truncate ────────────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop truncate — ellipsis em containers com largura fixa</div>
+        <div className="pg-canvas pg-canvas--column">
+          <div style={{ width: 300 }}>
+            <xds-text variant="body" truncate>
+              Texto longo que ultrapassa o container e deve ser truncado com ellipsis automaticamente
+            </xds-text>
+          </div>
+          <div style={{ width: 300 }}>
+            <xds-text variant="h3" truncate>
+              Título de card muito longo que não cabe na largura disponível
+            </xds-text>
+          </div>
+          <div style={{ width: 300 }}>
+            <xds-text variant="caption" truncate>
+              Protocolo: #20240502-8812 · Em análise pela secretaria · Prazo: 10 dias úteis
+            </xds-text>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Combinações de props ──────────────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Combinações — múltiplas props juntas</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="body" weight="bold" transform="uppercase" spacing="wide">
+            body + bold + uppercase + spacing wide
+          </xds-text>
+          <xds-text variant="caption" weight="semibold" align="center">
+            caption + semibold + center — ideal para rodapé de card
+          </xds-text>
+          <xds-text variant="h2" weight="regular" align="center" italic>
+            h2 + regular + center + italic — heading editorial
+          </xds-text>
+          <xds-text variant="body-sm" italic weight="medium">
+            body-sm + italic + medium — citação ou nota de destaque
+          </xds-text>
+        </div>
+      </div>
+
+      {/* ── Prop as — sobrescrita de tag ─────────────────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Prop as — mesmo estilo, tag diferente</div>
+        <div className="pg-canvas pg-canvas--column">
+          <xds-text variant="h2" as="p">variant="h2" as="p" → &lt;p&gt; com estilo de h2</xds-text>
+          <xds-text variant="h3" as="span">variant="h3" as="span" → &lt;span&gt; inline com estilo de h3</xds-text>
+          <xds-text variant="body" as="span">variant="body" as="span" → &lt;span&gt; inline com estilo body</xds-text>
+          <xds-text variant="label" as="label">variant="label" as="label" → &lt;label&gt; semântico para formulário</xds-text>
+          <xds-text variant="caption" as="span">variant="caption" as="span" → &lt;span&gt; de legenda inline</xds-text>
+        </div>
+      </div>
+
+      {/* ── Composição — hierarquia de conteúdo real ─────────────────────── */}
+      <div className="pg-group">
+        <div className="pg-group__label">Composição — hierarquia real</div>
+        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 600, gap: '0.5rem' }}>
+          <xds-text variant="overline">Serviços digitais</xds-text>
+          <xds-text variant="h2">Certidão de Nascimento</xds-text>
+          <xds-text variant="body">
+            Solicite a segunda via de certidão de nascimento de forma online. O documento
+            será enviado para o endereço cadastrado no prazo de 5 dias úteis.
+          </xds-text>
+          <xds-text variant="caption">Última atualização: 10/03/2025</xds-text>
+        </div>
+      </div>
+    </>
+  );
+}

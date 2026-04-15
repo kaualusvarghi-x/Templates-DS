@@ -1,0 +1,108 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-input</span>
+  <h1 class="pg-title">Input</h1>
+  <p class="pg-desc">Testes, acessibilidade e simulação de fluxo real</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Formulário Completo — com validação</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    @if (formSuccess()) {
+      <div style="padding: 12px 16px; background: #d1fae5; border-radius: 8px; color: #065f46; font-size: 14px; font-weight: 600">
+        ✓ Dados enviados com sucesso!
+      </div>
+    }
+    <xds-input
+      label="Nome completo"
+      placeholder="Digite seu nome"
+      [attr.value]="name()"
+      [attr.invalid]="nameError() ? '' : null"
+      [attr.invalid-text]="nameError() || null"
+      (change)="onNameChange($event)"
+    ></xds-input>
+    <xds-input
+      label="E-mail"
+      type="email"
+      placeholder="nome@exemplo.com.br"
+      [attr.value]="email()"
+      [attr.invalid]="emailError() ? '' : null"
+      [attr.invalid-text]="emailError() || null"
+      (change)="onEmailChange($event)"
+    ></xds-input>
+    <xds-input
+      label="Telefone"
+      placeholder="(00) 00000-0000"
+      [attr.value]="password()"
+      [attr.invalid]="passwordError() ? '' : null"
+      [attr.invalid-text]="passwordError() || null"
+      (change)="onPasswordChange($event)"
+    ></xds-input>
+    <xds-button kind="primary" (click)="validateAndSubmit()">Enviar</xds-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Default — editável</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    <xds-input label="Nome completo" placeholder="Digite seu nome"></xds-input>
+    <xds-input label="E-mail" type="email" placeholder="nome@exemplo.com.br"></xds-input>
+    <xds-input label="Telefone" placeholder="(00) 00000-0000"></xds-input>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos — sm / md / lg</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    @for (size of sizes; track size) {
+      <xds-input [attr.label]="size" placeholder="Exemplo de campo" [attr.size]="size"></xds-input>
+    }
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Skeleton — placeholder de carregamento</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    <xds-input-skeleton></xds-input-skeleton>
+    <xds-input-skeleton></xds-input-skeleton>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Readonly</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    <xds-input label="CPF (não editável)" value="123.456.789-00" readonly></xds-input>
+    <xds-input label="Número de protocolo" value="2025-004512-SP" readonly></xds-input>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Disabled</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    <xds-input label="Data de nascimento" value="01/01/1990" disabled></xds-input>
+    <xds-input label="Número de CPF" value="***.***.***-**" disabled></xds-input>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Error state</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    <xds-input label="Nome completo" placeholder="Digite seu nome" invalid invalid-text="Nome é obrigatório"></xds-input>
+    <xds-input label="E-mail" value="email-invalido" invalid invalid-text="Formato de e-mail inválido"></xds-input>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Warn state — warn + warn-text</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    <xds-input label="Data de vencimento" value="01/2025" warn warn-text="Este documento vence em menos de 30 dias."></xds-input>
+    <xds-input label="Telefone" value="(11) 9999-9999" warn warn-text="Verifique se o DDD está correto para sua região."></xds-input>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Helper text — instrução abaixo do campo</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 400px">
+    <xds-input label="CPF" placeholder="000.000.000-00" helper-text="Digite apenas números — a formatação é automática."></xds-input>
+    <xds-input label="Telefone" placeholder="(00) 00000-0000" helper-text="Informe o DDD seguido do número."></xds-input>
+  </div>
+</div>

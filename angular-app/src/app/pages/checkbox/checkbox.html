@@ -1,0 +1,71 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-checkbox</span>
+  <h1 class="pg-title">Checkbox</h1>
+  <p class="pg-desc">Seleção única e em grupo · estados · validação · readonly</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão</div>
+  <div class="pg-canvas" style="align-items: center">
+    <xds-checkbox label-text="Aceito os termos"></xds-checkbox>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Estados — desmarcado · selecionado · indeterminado</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 420px">
+    <xds-checkbox label-text="Desmarcado"></xds-checkbox>
+    <xds-checkbox label-text="Selecionado" checked></xds-checkbox>
+    <xds-checkbox label-text="Indeterminado" indeterminate></xds-checkbox>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Validação — invalid e warn</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 420px">
+    <xds-checkbox label-text="Inválido" invalid invalid-text="Este campo é obrigatório."></xds-checkbox>
+    <xds-checkbox label-text="Aviso" warn warn-text="Este campo precisa de atenção."></xds-checkbox>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Desabilitado e somente leitura</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 420px">
+    <xds-checkbox label-text="Desabilitado" disabled></xds-checkbox>
+    <xds-checkbox label-text="Desabilitado selecionado" disabled checked></xds-checkbox>
+    <xds-checkbox label-text="Somente leitura" readonly checked></xds-checkbox>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Grupo vertical</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 500px">
+    <xds-checkbox-group legend-text="Grupo de checkboxes">
+      <xds-checkbox label-text="Opção 1" checked></xds-checkbox>
+      <xds-checkbox label-text="Opção 2"></xds-checkbox>
+      <xds-checkbox label-text="Opção 3"></xds-checkbox>
+    </xds-checkbox-group>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Grupo horizontal</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 700px">
+    <xds-checkbox-group legend-text="Grupo horizontal" orientation="horizontal">
+      <xds-checkbox label-text="Opção 1" checked></xds-checkbox>
+      <xds-checkbox label-text="Opção 2"></xds-checkbox>
+      <xds-checkbox label-text="Opção 3"></xds-checkbox>
+    </xds-checkbox-group>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Grupo inválido</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 500px">
+    <xds-checkbox-group legend-text="Grupo inválido" invalid invalid-text="Pelo menos uma opção deve ser selecionada.">
+      <xds-checkbox label-text="Opção 1"></xds-checkbox>
+      <xds-checkbox label-text="Opção 2"></xds-checkbox>
+      <xds-checkbox label-text="Opção 3"></xds-checkbox>
+    </xds-checkbox-group>
+  </div>
+</div>
