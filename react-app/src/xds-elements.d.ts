@@ -94,7 +94,8 @@ type TextAs =
   | 'h5'
   | 'h6'
   | 'span'
-  | 'label';
+  | 'label'
+  | 'strong';
 type TextWeight = 'regular' | 'medium' | 'semibold' | 'bold' | 'black';
 type TextTransform = 'uppercase' | 'lowercase' | 'capitalize' | 'none';
 type TextAlign = 'left' | 'center' | 'right';
@@ -131,10 +132,47 @@ type ToastKind = 'success' | 'error' | 'warning' | 'info';
 type SearchSize = 'sm' | 'md' | 'lg';
 type SearchRadius = 'pill' | 'rounded' | 'square';
 
-// Nomes de ícones disponíveis (fonte: src/icons/index.ts)
-type IconName = 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'shopping-cart' | 'badge-alert' | 'x' | 'sparkles' | 'pencil' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'user' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2';
+type CardPadding = 'none' | 'sm' | 'md' | 'lg';
 
-interface HTMLElementTagNameMap {
+type ServiceType = 'digital' | 'presencial' | 'hibrido';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'xds-breadcrumb-item': HTMLElement & {
+      'href'?: string | undefined;
+      'target'?: string | undefined;
+      'rel'?: string | undefined;
+      'is-current-page'?: boolean;
+      'disabled'?: boolean;
+    };
+
+    'xds-breadcrumb': HTMLElement & {
+      'no-trailing-slash'?: boolean;
+      'aria-label-text'?: string;
+    };
+
+    'xds-button-skeleton': HTMLElement & {
+      'size'?: ButtonSize;
+      'full-width'?: boolean;
+    };
+
+    'xds-button': HTMLElement & {
+      'kind'?: ButtonKind;
+      'size'?: ButtonSize;
+      'radius'?: ButtonRadius;
+      'disabled'?: boolean;
+      'loading'?: boolean;
+      'full-width'?: boolean;
+      'href'?: string | undefined;
+      'target'?: string | undefined;
+      'type'?: ButtonType | undefined;
+      'icon-position'?: 'left' | 'right';
+      'tooltip-text'?: string | undefined;
+      'tooltip-position'?: ButtonTooltipPosition | undefined;
+      'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
+      'animation'?: ButtonAnimation | undefined;
+    };
+
     'xds-accordion-item-skeleton': HTMLElement & {
       
     };
@@ -143,6 +181,7 @@ interface HTMLElementTagNameMap {
       'title'?: string;
       'open'?: boolean;
       'disabled'?: boolean;
+      close(): void;
     };
 
     'xds-accordion-skeleton': HTMLElement & {
@@ -168,43 +207,8 @@ interface HTMLElementTagNameMap {
       'color'?: AvatarColor;
     };
 
-    'xds-breadcrumb-item': HTMLElement & {
-      'href'?: string | undefined;
-      'target'?: string | undefined;
-      'rel'?: string | undefined;
-      'is-current-page'?: boolean;
-      'disabled'?: boolean;
-    };
-
-    'xds-breadcrumb': HTMLElement & {
-      'no-trailing-slash'?: boolean;
-      'aria-label-text'?: string;
-    };
-
     'xds-callout': HTMLElement & {
       'kind'?: CalloutKind;
-    };
-
-    'xds-button-skeleton': HTMLElement & {
-      'size'?: ButtonSize;
-      'full-width'?: boolean;
-    };
-
-    'xds-button': HTMLElement & {
-      'kind'?: ButtonKind;
-      'size'?: ButtonSize;
-      'radius'?: ButtonRadius;
-      'disabled'?: boolean;
-      'loading'?: boolean;
-      'full-width'?: boolean;
-      'href'?: string | undefined;
-      'target'?: string | undefined;
-      'type'?: ButtonType | undefined;
-      'icon-position'?: 'left' | 'right';
-      'tooltip-text'?: string | undefined;
-      'tooltip-position'?: ButtonTooltipPosition | undefined;
-      'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
-      'animation'?: ButtonAnimation | undefined;
     };
 
     'xds-badge-indicator': HTMLElement & {
@@ -288,7 +292,7 @@ interface HTMLElementTagNameMap {
     };
 
     'xds-icon': HTMLElement & {
-      'name'?: 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'shopping-cart' | 'badge-alert' | 'x' | 'sparkles' | 'pencil' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'user' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
+      'name'?: 'x' | 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'sparkles' | 'pencil' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'shopping-cart' | 'user' | 'badge-alert' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
       'size'?: IconSize;
       'animation'?: IconAnimation | undefined;
       'variant'?: IconVariant | undefined;
@@ -303,7 +307,7 @@ interface HTMLElementTagNameMap {
       'disabled'?: boolean;
       'href'?: string | undefined;
       'target'?: string | undefined;
-      'icon'?: 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'shopping-cart' | 'badge-alert' | 'x' | 'sparkles' | 'pencil' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'user' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
+      'icon'?: 'x' | 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'sparkles' | 'pencil' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'shopping-cart' | 'user' | 'badge-alert' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
       'tooltip-text'?: string | undefined;
       'tooltip-align'?: IconButtonTooltipAlign | undefined;
     };
@@ -455,10 +459,15 @@ interface HTMLElementTagNameMap {
       'description'?: string;
       'open'?: boolean;
       'duration'?: number;
+      show(): void;
+      hide(): void;
+      pauseTimer(): void;
+      resumeTimer(): void;
     };
 
     'xds-toaster': HTMLElement & {
       'max-visible'?: number;
+      push(): void;
     };
 
     'xds-tooltip-content': HTMLElement & {
@@ -499,12 +508,55 @@ interface HTMLElementTagNameMap {
       'category'?: string;
       'free'?: boolean;
     };
+  }
+
+  // Expõe IconName no escopo global para uso fora do JSX
+  type IconName = 'x' | 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'sparkles' | 'pencil' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'shopping-cart' | 'user' | 'badge-alert' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2';
+
+  // Global exposto pelo bundle UMD (window.XviaDS)
+  const XviaDS: {
+    ICON_NAMES: IconName[];
+  };
 }
 
-// declare namespace React {
 declare module "react/jsx-runtime" {
   namespace JSX {
     interface IntrinsicElements {
+      'xds-breadcrumb-item': XdsBaseAttrs & {
+        'href'?: string | undefined;
+        'target'?: string | undefined;
+        'rel'?: string | undefined;
+        'is-current-page'?: boolean;
+        'disabled'?: boolean;
+      };
+
+      'xds-breadcrumb': XdsBaseAttrs & {
+        'no-trailing-slash'?: boolean;
+        'aria-label-text'?: string;
+      };
+
+      'xds-button-skeleton': XdsBaseAttrs & {
+        'size'?: ButtonSize;
+        'full-width'?: boolean;
+      };
+
+      'xds-button': XdsBaseAttrs & {
+        'kind'?: ButtonKind;
+        'size'?: ButtonSize;
+        'radius'?: ButtonRadius;
+        'disabled'?: boolean;
+        'loading'?: boolean;
+        'full-width'?: boolean;
+        'href'?: string | undefined;
+        'target'?: string | undefined;
+        'type'?: ButtonType | undefined;
+        'icon-position'?: 'left' | 'right';
+        'tooltip-text'?: string | undefined;
+        'tooltip-position'?: ButtonTooltipPosition | undefined;
+        'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
+        'animation'?: ButtonAnimation | undefined;
+      };
+
       'xds-accordion-item-skeleton': XdsBaseAttrs & {
 
       };
@@ -538,43 +590,8 @@ declare module "react/jsx-runtime" {
         'color'?: AvatarColor;
       };
 
-      'xds-breadcrumb-item': XdsBaseAttrs & {
-        'href'?: string | undefined;
-        'target'?: string | undefined;
-        'rel'?: string | undefined;
-        'is-current-page'?: boolean;
-        'disabled'?: boolean;
-      };
-
-      'xds-breadcrumb': XdsBaseAttrs & {
-        'no-trailing-slash'?: boolean;
-        'aria-label-text'?: string;
-      };
-
       'xds-callout': XdsBaseAttrs & {
         'kind'?: CalloutKind;
-      };
-
-      'xds-button-skeleton': XdsBaseAttrs & {
-        'size'?: ButtonSize;
-        'full-width'?: boolean;
-      };
-
-      'xds-button': XdsBaseAttrs & {
-        'kind'?: ButtonKind;
-        'size'?: ButtonSize;
-        'radius'?: ButtonRadius;
-        'disabled'?: boolean;
-        'loading'?: boolean;
-        'full-width'?: boolean;
-        'href'?: string | undefined;
-        'target'?: string | undefined;
-        'type'?: ButtonType | undefined;
-        'icon-position'?: 'left' | 'right';
-        'tooltip-text'?: string | undefined;
-        'tooltip-position'?: ButtonTooltipPosition | undefined;
-        'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
-        'animation'?: ButtonAnimation | undefined;
       };
 
       'xds-badge-indicator': XdsBaseAttrs & {
@@ -658,7 +675,7 @@ declare module "react/jsx-runtime" {
       };
 
       'xds-icon': XdsBaseAttrs & {
-        'name'?: 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'shopping-cart' | 'badge-alert' | 'x' | 'sparkles' | 'pencil' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'user' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
+        'name'?: 'x' | 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'sparkles' | 'pencil' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'shopping-cart' | 'user' | 'badge-alert' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
         'size'?: IconSize;
         'animation'?: IconAnimation | undefined;
         'variant'?: IconVariant | undefined;
@@ -673,7 +690,7 @@ declare module "react/jsx-runtime" {
         'disabled'?: boolean;
         'href'?: string | undefined;
         'target'?: string | undefined;
-        'icon'?: 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'shopping-cart' | 'badge-alert' | 'x' | 'sparkles' | 'pencil' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'user' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
+        'icon'?: 'x' | 'circle-check' | 'circle-x' | 'triangle-alert' | 'circle-help' | 'trash-2' | 'sparkles' | 'pencil' | 'share-2' | 'refresh-cw' | 'arrow-right' | 'arrow-left' | 'download' | 'upload' | 'settings' | 'plus' | 'bell' | 'mail' | 'shopping-cart' | 'user' | 'badge-alert' | 'instagram' | 'twitter' | 'menu' | 'close' | 'chevron_right' | 'chevron_left' | 'arrow_forward' | 'home' | 'search' | 'search_off' | 'filter_list' | 'sort_by_alpha' | 'notifications' | 'notifications_active' | 'notifications_off' | 'contrast' | 'text_increase' | 'text_decrease' | 'check_circle' | 'warning' | 'error' | 'info' | 'help' | 'help_outline' | 'star' | 'star_outline' | 'edit' | 'save' | 'delete_outline' | 'add' | 'share' | 'print' | 'visibility' | 'visibility_off' | 'lock' | 'security' | 'verified' | 'login' | 'logout' | 'sync' | 'directions_car' | 'badge' | 'smartphone' | 'school' | 'medical_services' | 'policy' | 'work' | 'store' | 'forest' | 'account_balance' | 'account_circle' | 'person' | 'camera_alt' | 'add_a_photo' | 'newspaper' | 'calendar_today' | 'schedule' | 'history' | 'payments' | 'qr_code_2' | 'document_scanner' | 'folder_open' | 'smart_toy' | 'auto_awesome' | 'send' | 'email' | 'support_agent' | 'photo_camera' | 'play_arrow' | 'link_off' | 'check' | 'minus' | 'android' | 'apple' | 'facebook' | 'youtube' | 'user2' | undefined;
         'tooltip-text'?: string | undefined;
         'tooltip-align'?: IconButtonTooltipAlign | undefined;
       };
@@ -873,7 +890,13 @@ declare module "react/jsx-runtime" {
   }
 }
 
-// Global exposto pelo bundle UMD (window.XviaDS)
-declare const XviaDS: {
-  ICON_NAMES: IconName[];
-};
+// Reexporta para compatibilidade com React.JSX.IntrinsicElements
+declare namespace React {
+  namespace JSX {
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+    interface IntrinsicElements extends import("react/jsx-runtime").JSX.IntrinsicElements {}
+  }
+}
+
+// Tipos de conveniência para derivar props dos elementos XDS sem referenciar JSX diretamente
+export type XdsIntrinsicElements = import("react/jsx-runtime").JSX.IntrinsicElements;

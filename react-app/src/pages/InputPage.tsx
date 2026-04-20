@@ -63,8 +63,8 @@ export default function InputPage() {
             label="Nome completo"
             placeholder="Digite seu nome"
             value={name}
-            onChange={(v) => {
-              setName(v);
+            onChange={(e: Event) => {
+              setName((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, name: undefined }));
               setFormSuccess(false);
             }}
@@ -75,8 +75,8 @@ export default function InputPage() {
             type="email"
             placeholder="nome@exemplo.com.br"
             value={email}
-            onChange={(v) => {
-              setEmail(v);
+            onChange={(e: Event) => {
+              setEmail((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, email: undefined }));
               setFormSuccess(false);
             }}
@@ -86,8 +86,8 @@ export default function InputPage() {
             label="Telefone"
             placeholder="(00) 00000-0000"
             value={password}
-            onChange={(v) => {
-              setPassword(v);
+            onChange={(e: Event) => {
+              setPassword((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, password: undefined }));
               setFormSuccess(false);
             }}

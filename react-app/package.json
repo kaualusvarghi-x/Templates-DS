@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
     "sync-types": "node scripts/sync-types.js",
     "postinstall": "npm run sync-types"
   },

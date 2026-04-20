@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
+import type { XdsIntrinsicElements } from '../xds-elements';
 
-type IconAnimation = NonNullable<React.JSX.IntrinsicElements['xds-icon']['animation']>;
-type IconVariant = NonNullable<React.JSX.IntrinsicElements['xds-icon']['variant']>;
-type IconColor = NonNullable<React.JSX.IntrinsicElements['xds-icon']['color']>;
+type IconAnimation = NonNullable<XdsIntrinsicElements['xds-icon']['animation']>;
+type IconVariant = NonNullable<XdsIntrinsicElements['xds-icon']['variant']>;
+type IconColor = NonNullable<XdsIntrinsicElements['xds-icon']['color']>;
 
 const ICON_NAMES_FALLBACK: readonly IconName[] = [
   'x',
@@ -119,7 +120,7 @@ function AnimatedIconButton({ label, iconName, animation, kind = 'primary' }: {
   label: string;
   iconName: IconName;
   animation: IconAnimation;
-  kind?: NonNullable<React.JSX.IntrinsicElements['xds-button']['kind']>;
+  kind?: NonNullable<XdsIntrinsicElements['xds-button']['kind']>;
 }) {
   const [active, setActive] = useState(false);
   return (

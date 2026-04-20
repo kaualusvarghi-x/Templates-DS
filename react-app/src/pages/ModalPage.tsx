@@ -6,7 +6,7 @@ function useModalRef() {
   return useRef<XdsModalEl>(null);
 }
 
-function open(ref: React.RefObject<XdsModalEl>) {
+function open(ref: React.RefObject<XdsModalEl | null>) {
   if (ref.current) ref.current.open = true;
 }
 

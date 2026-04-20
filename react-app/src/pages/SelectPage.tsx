@@ -14,7 +14,7 @@ export default function SelectPage() {
       <div className="pg-group">
         <div className="pg-group__label">Default</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
-          <xds-select label="Estado" placeholder="Selecione um estado">
+          <xds-select label-text="Estado" placeholder="Selecione um estado">
             <xds-select-item value="sp">São Paulo</xds-select-item>
             <xds-select-item value="rj">Rio de Janeiro</xds-select-item>
             <xds-select-item value="mg">Minas Gerais</xds-select-item>
@@ -27,7 +27,7 @@ export default function SelectPage() {
       <div className="pg-group">
         <div className="pg-group__label">Grupos — xds-select-item-group</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
-          <xds-select label="Tipo de documento" placeholder="Selecione">
+          <xds-select label-text="Tipo de documento" placeholder="Selecione">
             <xds-select-item-group label="Pessoa Física">
               <xds-select-item value="cpf">CPF</xds-select-item>
               <xds-select-item value="rg">RG</xds-select-item>
@@ -45,7 +45,7 @@ export default function SelectPage() {
         <div className="pg-group__label">Tamanhos — sm / md / lg</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
           {(['sm', 'md', 'lg'] as const).map((size) => (
-            <xds-select key={size} label={`Tamanho ${size}`} placeholder="Selecione" size={size}>
+            <xds-select key={size} label-text={`Tamanho ${size}`} placeholder="Selecione" size={size}>
               <xds-select-item value="a">Opção A</xds-select-item>
               <xds-select-item value="b">Opção B</xds-select-item>
               <xds-select-item value="c">Opção C</xds-select-item>
@@ -58,7 +58,7 @@ export default function SelectPage() {
         <div className="pg-group__label">Helper text</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
           <xds-select
-            label="Categoria"
+            label-text="Categoria"
             placeholder="Selecione uma categoria"
             helper-text="Isso define as opções disponíveis na próxima etapa"
           >
@@ -72,7 +72,7 @@ export default function SelectPage() {
       <div className="pg-group">
         <div className="pg-group__label">Controlado — value via useState</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
-          <xds-select label="Prioridade" value={value} onChange={(v: string) => setValue(v)}>
+          <xds-select label-text="Prioridade" value={value} onChange={(e: Event) => setValue((e.target as HTMLInputElement).value)}>
             <xds-select-item value="alta">Alta</xds-select-item>
             <xds-select-item value="media">Média</xds-select-item>
             <xds-select-item value="baixa">Baixa</xds-select-item>
@@ -86,10 +86,10 @@ export default function SelectPage() {
       <div className="pg-group">
         <div className="pg-group__label">Disabled</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
-          <xds-select label="Campo desabilitado" value="sp" disabled>
+          <xds-select label-text="Campo desabilitado" value="sp" disabled>
             <xds-select-item value="sp">São Paulo</xds-select-item>
           </xds-select>
-          <xds-select label="Item desabilitado" placeholder="Selecione">
+          <xds-select label-text="Item desabilitado" placeholder="Selecione">
             <xds-select-item value="a">Opção A</xds-select-item>
             <xds-select-item value="b" disabled>
               Opção B desabilitada
@@ -103,7 +103,7 @@ export default function SelectPage() {
         <div className="pg-group__label">Error state — invalid + invalid-text</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
           <xds-select
-            label="Tipo de serviço"
+            label-text="Tipo de serviço"
             placeholder="Selecione"
             invalid
             invalid-text="Campo obrigatório. Selecione um tipo de serviço."
@@ -118,7 +118,7 @@ export default function SelectPage() {
         <div className="pg-group__label">Warn state — warn + warn-text</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
           <xds-select
-            label="Região"
+            label-text="Região"
             value="norte"
             warn
             warn-text="Esta região tem disponibilidade limitada de serviços."

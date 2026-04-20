@@ -2,7 +2,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 
 const BASE_URL = (process.env.XDS_CDN_URL ?? 'http://localhost:4173').replace(/\/$/, '');
-const TYPES_URL = `${BASE_URL}/xds-elements.d.ts`;
+const TYPES_URL = `${BASE_URL}/xds-elements.angular.d.ts`;
 const OUTPUT_PATH = resolve(process.cwd(), 'src/xds-elements.d.ts');
 
 console.log(`\n[sync-types] Baixando tipos do Design System...`);
