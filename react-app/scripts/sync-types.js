@@ -34,4 +34,9 @@ await fetchAndWrite(
   resolve(process.cwd(), 'src/xds-elements.d.ts'),
 );
 
+await fetchAndWrite(
+  `${BASE_URL}/react/index.tsx`,
+  resolve(process.cwd(), 'src/xds-components.tsx'),
+);
+
 console.log();
