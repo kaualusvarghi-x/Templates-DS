@@ -1,4 +1,3 @@
-
 export default function ProgressBarPage() {
   return (
     <>
@@ -47,6 +46,13 @@ export default function ProgressBarPage() {
           <xds-progress-bar value={2} max={4} variant="steps" label="Progresso da solicitação" />
           <xds-progress-bar value={3} max={5} step-label="Fase 3 de 5" />
           <xds-progress-bar value={1} max={3} step-label="Documento 1 de 3 enviado" />
+        </div>
+      </div>
+
+      <div className="pg-group">
+        <div className="pg-group__label">Caso portal</div>
+        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 500, gap: 18 }}>
+          <xds-progress-bar value={2} max={4} variant="steps" size="lg" />
         </div>
       </div>
     </>

@@ -1,10 +1,68 @@
 <div class="pg-header">
   <span class="pg-tag">xds-loading</span>
   <h1 class="pg-title">Loading</h1>
-  <p class="pg-desc">spinner · progress bar · skeleton · fullscreen com mensagens rotativas</p>
+  <p class="pg-desc">Spinner ativo/inativo · tamanhos · descrição · ícone · overlay</p>
 </div>
-<div class="pg-wip">
-  <span class="material-icons-round">construction</span>
-  <p>Em desenvolvimento — Onda 4</p>
-  <p class="pg-wip__detail">Variantes: <code>spinner</code> · <code>progress</code> · <code>skeleton</code> · <code>fullscreen</code></p>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão</div>
+  <div class="pg-canvas" style="justify-content: center">
+    <xds-loading active description="Carregando..." assistive-text="Carregando"></xds-loading>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Estados — active e inactive</div>
+  <div class="pg-canvas" style="align-items: flex-start">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-text variant="caption">active</xds-text>
+      <xds-loading active description="Ativo"></xds-loading>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-text variant="caption">inactive</xds-text>
+      <xds-loading inactive description="Inativo"></xds-loading>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Tamanhos — padrão e small</div>
+  <div class="pg-canvas" style="align-items: flex-start">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-text variant="caption">padrão (88px)</xds-text>
+      <xds-loading description="Processando..."></xds-loading>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <xds-text variant="caption">small (32px)</xds-text>
+      <xds-loading small description="Processando..."></xds-loading>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com descrição</div>
+  <div class="pg-canvas">
+    <xds-loading description="Enviando documentos..."></xds-loading>
+    <xds-loading description="Processando sua solicitação"></xds-loading>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Com ícone</div>
+  <div class="pg-canvas">
+    <xds-loading description="Sincronizando"><xds-icon slot="icon" name="sync" size="lg"></xds-icon></xds-loading>
+    <xds-loading description="Salvando"><xds-icon slot="icon" name="save" size="lg"></xds-icon></xds-loading>
+    <xds-loading description="Buscando"><xds-icon slot="icon" name="search" size="lg"></xds-icon></xds-loading>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Overlay</div>
+  <div class="pg-canvas pg-canvas--column" style="width: 100%; border: 1px dashed var(--color-border); border-radius: 8px; min-height: 240px; position: relative; overflow: hidden">
+    <div style="padding: 16px">
+      <xds-text variant="label">Conteúdo da página</xds-text>
+      <xds-text variant="body-sm">O overlay cobre toda a área deste contêiner, simulando o bloqueio da viewport.</xds-text>
+    </div>
+    <xds-loading active description="Carregando conteúdo..." style="position: absolute; inset: 0; width: 100%; height: 100%; background-color: color-mix(in srgb, var(--color-surface) 85%, transparent); z-index: 1"></xds-loading>
+  </div>
 </div>

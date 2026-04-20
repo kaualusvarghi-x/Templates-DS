@@ -196,5 +196,49 @@
     <xds-button-skeleton size="sm"></xds-button-skeleton>
     <xds-button-skeleton size="md"></xds-button-skeleton>
     <xds-button-skeleton size="lg"></xds-button-skeleton>
+    <xds-button-skeleton size="xl"></xds-button-skeleton>
+    <xds-button-skeleton size="2xl"></xds-button-skeleton>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Link externo — fluxo com xds-external-link-guard</div>
+  <div class="pg-canvas pg-canvas--column" style="align-items: flex-start">
+    <xds-external-link-guard></xds-external-link-guard>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap">
+      <xds-button href="https://portal.demo-aws.xvia.com.br/">Acessar portal externo</xds-button>
+      <xds-button kind="ghost" href="https://portal.demo-aws.xvia.com.br/app/catalog">Ver catálogo de serviços</xds-button>
+      <xds-button kind="secondary" href="/button">Link interno (não intercepta)</xds-button>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Radius — default · pill · rounded · square</div>
+  <div class="pg-canvas">
+    <xds-button radius="default">default</xds-button>
+    <xds-button radius="pill">pill</xds-button>
+    <xds-button radius="rounded">rounded</xds-button>
+    <xds-button radius="square">square</xds-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Loja de aplicativos (composição)</div>
+  <div class="pg-canvas">
+    <a href="#" style="display: inline-flex; align-items: center; gap: var(--spacing-md, 16px); padding: var(--spacing-sm, 8px) var(--spacing-lg, 24px); background: var(--color-surface-inverse, #0f172a); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-md, 8px); text-decoration: none; cursor: pointer; min-width: 180px">
+      <xds-icon name="apple" size="lg" style="color: #ffffff; flex-shrink: 0"></xds-icon>
+      <span style="display: flex; flex-direction: column; gap: 1px">
+        <xds-text variant="caption" style="color: rgba(255,255,255,0.7); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em">Disponível na</xds-text>
+        <xds-text variant="body" weight="bold" style="color: #ffffff; font-size: 18px; line-height: 1.2">App Store</xds-text>
+      </span>
+    </a>
+    <a href="#" style="display: inline-flex; align-items: center; gap: var(--spacing-md, 16px); padding: var(--spacing-sm, 8px) var(--spacing-lg, 24px); background: var(--color-surface-inverse, #0f172a); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-md, 8px); text-decoration: none; cursor: pointer; min-width: 180px">
+      <xds-icon name="android" size="lg" style="color: #ffffff; flex-shrink: 0"></xds-icon>
+      <span style="display: flex; flex-direction: column; gap: 1px">
+        <xds-text variant="caption" style="color: rgba(255,255,255,0.7); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em">Disponível no</xds-text>
+        <xds-text variant="body" weight="bold" style="color: #ffffff; font-size: 18px; line-height: 1.2">Google Play</xds-text>
+      </span>
+    </a>
   </div>
 </div>

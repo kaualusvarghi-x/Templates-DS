@@ -4,7 +4,7 @@ import '@/app/globals.css';
 import '@/app/app-shell.css';
 
 export const metadata: Metadata = {
-  title: 'Xvia Design System — Next SSR',
+  title: 'Next SSR',
   description: 'Host Next.js para validar Web Components com SSR',
 };
 

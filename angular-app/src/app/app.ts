@@ -19,6 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { path: 'tag', name: 'Tag', tag: 'xds-tag', icon: 'sell', done: true },
   { path: 'callout', name: 'Callout', tag: 'xds-callout', icon: 'subject', done: true },
   { path: 'avatar', name: 'Avatar', tag: 'xds-avatar', icon: 'account_circle', done: true },
+  { path: 'breadcrumb', name: 'Breadcrumb', tag: 'xds-breadcrumb', icon: 'chevron_right', done: true },
   { path: 'tooltip', name: 'Tooltip', tag: 'xds-tooltip', icon: 'help_outline', done: true },
   { path: 'input', name: 'Input', tag: 'xds-input', icon: 'text_fields', done: true },
   { path: 'password-input', name: 'Password Input', tag: 'xds-password-input', icon: 'password', done: true },
@@ -30,8 +31,9 @@ const NAV_ITEMS: NavItem[] = [
   { path: 'toast', name: 'Toast + Toaster', tag: 'xds-toast / xds-toaster', icon: 'notifications', done: true },
   { path: 'modal', name: 'Modal', tag: 'xds-modal', icon: 'open_in_new', done: true },
   { path: 'external-link-guard', name: 'External Link Guard', tag: 'xds-external-link-guard', icon: 'open_in_browser', done: true },
-  { path: 'card', name: 'Card', tag: 'xds-card', icon: 'dashboard', done: false },
-  { path: 'loading', name: 'Loading', tag: 'xds-loading', icon: 'hourglass_empty', done: false },
+  { path: 'search', name: 'Search', tag: 'xds-search', icon: 'manage_search', done: true },
+  { path: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', icon: 'dashboard', done: true },
+  { path: 'loading', name: 'Loading', tag: 'xds-loading', icon: 'autorenew', done: true },
 ];
 
 const THEME_OPTIONS = [

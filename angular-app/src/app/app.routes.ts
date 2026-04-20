@@ -19,6 +19,8 @@ import { PaginationComponent } from './pages/pagination/pagination';
 import { ToastComponent } from './pages/toast/toast';
 import { ModalComponent } from './pages/modal/modal';
 import { ExternalLinkGuardComponent } from './pages/external-link-guard/external-link-guard';
+import { SearchComponent } from './pages/search/search';
+import { BreadcrumbComponent } from './pages/breadcrumb/breadcrumb';
 import { CardComponent } from './pages/card/card';
 import { LoadingPageComponent } from './pages/loading/loading';
 
@@ -43,6 +45,8 @@ export const routes: Routes = [
   { path: 'toast', component: ToastComponent },
   { path: 'modal', component: ModalComponent },
   { path: 'external-link-guard', component: ExternalLinkGuardComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'breadcrumb', component: BreadcrumbComponent },
   { path: 'card', component: CardComponent },
   { path: 'loading', component: LoadingPageComponent },
 ];

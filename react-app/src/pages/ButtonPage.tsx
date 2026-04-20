@@ -8,7 +8,7 @@ export default function ButtonPage() {
       <div className="pg-header">
         <span className="pg-tag">xds-button</span>
         <h1 className="pg-title">Button</h1>
-        <p className="pg-desc">7 kinds · sizes (sm → 2xl) · ícone · badge · tooltip · disabled · loading · fullwidth · link · type</p>
+        <p className="pg-desc">7 kinds · sizes (sm → 2xl) · radius · ícone · badge · tooltip · disabled · loading · fullwidth · link · type</p>
       </div>
 
       {/* ── Variantes ── */}
@@ -190,6 +190,20 @@ export default function ButtonPage() {
         </div>
       </div>
 
+      <div className="pg-group">
+        <div className="pg-group__label">Link externo — fluxo com xds-external-link-guard</div>
+        <div className="pg-canvas pg-canvas--column" style={{ alignItems: 'flex-start' }}>
+          <xds-external-link-guard />
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <xds-button href="https://portal.demo-aws.xvia.com.br/">Acessar portal externo</xds-button>
+            <xds-button kind="ghost" href="https://portal.demo-aws.xvia.com.br/app/catalog">Ver catálogo de serviços</xds-button>
+            <xds-button kind="secondary" href="/?path=/docs/components-button--vis%C3%A3o-geral&globals=surface:surface-70">
+              Link interno (não intercepta)
+            </xds-button>
+          </div>
+        </div>
+      </div>
+
       {/* ── Type ── */}
       <div className="pg-group">
         <div className="pg-group__label">Type — button / submit / reset</div>
@@ -214,6 +228,73 @@ export default function ButtonPage() {
           <xds-button kind="secondary" animation="scale-up">Cancelar</xds-button>
           <xds-button kind="ghost" animation="underline">Ver mais</xds-button>
           <xds-button kind="ghost" animation="underline">Ver menos</xds-button>
+        </div>
+      </div>
+
+      <div className="pg-group">
+        <div className="pg-group__label">Radius — default · pill · rounded · square</div>
+        <div className="pg-canvas">
+          <xds-button radius="default">default</xds-button>
+          <xds-button radius="pill">pill</xds-button>
+          <xds-button radius="rounded">rounded</xds-button>
+          <xds-button radius="square">square</xds-button>
+        </div>
+      </div>
+
+      <div className="pg-group">
+        <div className="pg-group__label">Loja de aplicativos (composição)</div>
+        <div className="pg-canvas">
+          <a
+            href="#"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 'var(--spacing-md, 16px)',
+              padding: 'var(--spacing-sm, 8px) var(--spacing-lg, 24px)',
+              background: 'var(--color-surface-inverse, #0f172a)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: 'var(--radius-md, 8px)',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              minWidth: 180
+            }}
+          >
+            <xds-icon name="apple" size="lg" style={{ color: '#ffffff', flexShrink: 0 }} />
+            <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <xds-text variant="caption" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                Disponível na
+              </xds-text>
+              <xds-text variant="body" weight="bold" style={{ color: '#ffffff', fontSize: 18, lineHeight: 1.2 }}>
+                App Store
+              </xds-text>
+            </span>
+          </a>
+
+          <a
+            href="#"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 'var(--spacing-md, 16px)',
+              padding: 'var(--spacing-sm, 8px) var(--spacing-lg, 24px)',
+              background: 'var(--color-surface-inverse, #0f172a)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: 'var(--radius-md, 8px)',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              minWidth: 180
+            }}
+          >
+            <xds-icon name="android" size="lg" style={{ color: '#ffffff', flexShrink: 0 }} />
+            <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <xds-text variant="caption" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                Disponível no
+              </xds-text>
+              <xds-text variant="body" weight="bold" style={{ color: '#ffffff', fontSize: 18, lineHeight: 1.2 }}>
+                Google Play
+              </xds-text>
+            </span>
+          </a>
         </div>
       </div>
 

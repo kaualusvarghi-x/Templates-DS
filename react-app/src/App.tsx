@@ -20,6 +20,10 @@ import CalloutPage from './pages/CalloutPage';
 import IconButtonPage from './pages/IconButtonPage';
 import ProgressBarPage from './pages/ProgressBarPage';
 import ExternalLinkGuardPage from './pages/ExternalLinkGuardPage';
+import SearchPage from './pages/SearchPage';
+import LoadingPage from './pages/LoadingPage';
+import CardPage from './pages/CardPage';
+import BreadcrumbPage from './pages/BreadcrumbPage';
 
 type PageId =
   | 'home'
@@ -41,7 +45,11 @@ type PageId =
   | 'toast'
   | 'modal'
   | 'external-link-guard'
-  | 'pagination';
+  | 'search'
+  | 'pagination'
+  | 'loading'
+  | 'card'
+  | 'breadcrumb';
 
 type PageProps = { onNavigate?: (page: string) => void };
 
@@ -65,7 +73,11 @@ const PAGES: Record<PageId, ComponentType<PageProps>> = {
   toast: ToastPage,
   modal: ModalPage,
   'external-link-guard': ExternalLinkGuardPage,
+  search: SearchPage,
   pagination: PaginationPage,
+  loading: LoadingPage,
+  card: CardPage,
+  breadcrumb: BreadcrumbPage,
 };
 
 type NavItem = {
@@ -96,6 +108,10 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'toast', name: 'Toast + Toaster', tag: 'xds-toast / xds-toaster', icon: 'notifications', done: true },
   { id: 'modal', name: 'Modal', tag: 'xds-modal', icon: 'open_in_new', done: true },
   { id: 'external-link-guard', name: 'External Link Guard', tag: 'xds-external-link-guard', icon: 'open_in_browser', done: true },
+  { id: 'search', name: 'Search', tag: 'xds-search', icon: 'manage_search', done: true },
+  { id: 'loading', name: 'Loading', tag: 'xds-loading', icon: 'autorenew', done: true },
+  { id: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', icon: 'dashboard', done: true },
+  { id: 'breadcrumb', name: 'Breadcrumb', tag: 'xds-breadcrumb', icon: 'chevron_right', done: true },
 ]
 
 const THEME_OPTIONS = [
@@ -254,7 +270,7 @@ export default function App() {
               onClick={() => setPage(item.id)}
             >
               <span className="material-icons-round" style={{ fontSize: 14 }}>{item.icon}</span>
-              {item.name}
+              {item.name.trim() || item.id}
               <span className={`ds-nav__item-dot ${item.done ? 'ds-nav__item-dot--done' : 'ds-nav__item-dot--wip'}`} title={item.done ? 'Implementado' : 'Em desenvolvimento'} />
             </div>
           ))}

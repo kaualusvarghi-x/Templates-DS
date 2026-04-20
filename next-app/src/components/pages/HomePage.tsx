@@ -9,6 +9,7 @@ const COMPONENTS = [
   { id: 'tag', name: 'Tag', tag: 'xds-tag', count: '5 variantes de status', done: true },
   { id: 'callout', name: 'Callout', tag: 'xds-callout', count: 'variantes · conteúdo rico · ação', done: true },
   { id: 'avatar', name: 'Avatar', tag: 'xds-avatar', count: 'imagem · iniciais · badge · action', done: true },
+  { id: 'breadcrumb', name: 'Breadcrumb', tag: 'xds-breadcrumb', count: 'níveis · current page · disabled · links', done: true },
   { id: 'tooltip', name: 'Tooltip', tag: 'xds-tooltip', count: 'posições · auto-align · delays', done: true },
   { id: 'input', name: 'Input', tag: 'xds-input', count: 'tamanhos · states · helper · skeleton', done: true },
   { id: 'password-input', name: 'Password Input', tag: 'xds-password-input', count: 'toggle · states · helper · skeleton', done: true },
@@ -17,9 +18,12 @@ const COMPONENTS = [
   { id: 'accordion', name: 'Accordion', tag: 'xds-accordion', count: 'flush · exclusive · skeleton', done: true },
   { id: 'progress-bar', name: 'Progress Bar', tag: 'xds-progress-bar', count: 'variant · status · size · label', done: true },
   { id: 'pagination', name: 'Pagination', tag: 'xds-pagination', count: 'navegação · total-items · disabled', done: true },
+  { id: 'loading', name: 'Loading', tag: 'xds-loading', count: 'active · size · descrição · ícone · overlay', done: true },
   { id: 'toast', name: 'Toast + Toaster', tag: 'xds-toast / xds-toaster', count: 'types · stack · descrição · duração', done: true },
   { id: 'modal', name: 'Modal', tag: 'xds-modal', count: 'sizes · label · scroll · sem footer', done: true },
   { id: 'external-link-guard', name: 'External Link Guard', tag: 'xds-external-link-guard', count: 'target · slots · multi-botões', done: true },
+  { id: 'search', name: 'Search', tag: 'xds-search', count: '5 variações · expandable · disabled · skeleton', done: true },
+  { id: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', count: 'base · news · quick service · service', done: true },
 ] as const;
 
 export default function HomePage() {

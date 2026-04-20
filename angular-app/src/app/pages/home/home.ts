@@ -11,6 +11,7 @@ const COMPONENTS = [
   { id: 'tag', name: 'Tag', tag: 'xds-tag', count: '5 kinds · composição', done: true },
   { id: 'callout', name: 'Callout', tag: 'xds-callout', count: '5 kinds · conteúdo rico', done: true },
   { id: 'avatar', name: 'Avatar', tag: 'xds-avatar', count: '4 tamanhos · 3 cores · fallback', done: true },
+  { id: 'breadcrumb', name: 'Breadcrumb', tag: 'xds-breadcrumb', count: 'níveis · current page · disabled · links', done: true },
   { id: 'tooltip', name: 'Tooltip', tag: 'xds-tooltip', count: 'posições · auto-align · delays', done: true },
   { id: 'input', name: 'Input', tag: 'xds-input', count: 'text · email · tamanhos · estados', done: true },
   { id: 'password-input', name: 'Password Input', tag: 'xds-password-input', count: 'toggle show/hide · tamanhos · estados', done: true },
@@ -22,8 +23,9 @@ const COMPONENTS = [
   { id: 'toast', name: 'Toast + Toaster', tag: 'xds-toast / xds-toaster', count: 'stack · descrição · duração', done: true },
   { id: 'modal', name: 'Modal', tag: 'xds-modal', count: 'confirm/chat/tutorial · sizes', done: true },
   { id: 'external-link-guard', name: 'External Link Guard', tag: 'xds-external-link-guard', count: 'confirm modal para links externos', done: true },
-  { id: 'card', name: 'Card', tag: 'xds-card', count: '5 sub-elementos', done: false },
-  { id: 'loading', name: 'Loading', tag: 'xds-loading', count: '4 variantes', done: false },
+  { id: 'search', name: 'Search', tag: 'xds-search', count: '5 variações · expandable · disabled · skeleton', done: true },
+  { id: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', count: 'base · news · quick service · service', done: true },
+  { id: 'loading', name: 'Loading', tag: 'xds-loading', count: 'active · size · descrição · ícone · overlay', done: true },
 ];
 
 type FilterDone = 'all' | 'done' | 'wip';

@@ -126,3 +126,32 @@
     <span style="font-size: 12px; opacity: 0.6">placeholder visual apenas para demonstração</span>
   </div>
 </div>
+
+<div class="pg-group">
+  <div class="pg-group__label">hover no botão → ícone anima</div>
+  <div class="pg-canvas" style="gap: 16px; flex-wrap: wrap">
+    <xds-button kind="primary">Próximo<xds-icon slot="icon" name="arrow-right" animation="bounce-right"></xds-icon></xds-button>
+    <xds-button kind="secondary">Voltar<xds-icon slot="icon" name="arrow-left" animation="bounce-left"></xds-icon></xds-button>
+    <xds-button kind="ghost">Enviar<xds-icon slot="icon" name="send" animation="slide-right"></xds-icon></xds-button>
+    <xds-button kind="tertiary">Download<xds-icon slot="icon" name="download" animation="slide-down"></xds-icon></xds-button>
+    <xds-button kind="primary">Adicionar<xds-icon slot="icon" name="plus" animation="scale"></xds-icon></xds-button>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Slot tem prioridade sobre name</div>
+  <div class="pg-canvas" style="gap: 40px; align-items: flex-start">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span style="font-size: 12px; opacity: 0.6">name="search" (sem slot)</span>
+      <xds-icon name="search"></xds-icon>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span style="font-size: 12px; opacity: 0.6">name="search" + slot estrela (slot vence)</span>
+      <xds-icon name="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+      </xds-icon>
+    </div>
+  </div>
+</div>

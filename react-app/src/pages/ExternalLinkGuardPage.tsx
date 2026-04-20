@@ -64,6 +64,21 @@ export default function ExternalLinkGuardPage() {
           </div>
         </div>
       </div>
+
+      <div className="pg-group">
+        <div className="pg-group__label">Exibir domínio</div>
+        <div className="pg-canvas pg-canvas--column" style={{ alignItems: 'flex-start', gap: 12 }}>
+          <xds-external-link-guard show-hostname>
+            <span slot="title">Você está saindo do portal</span>
+            <span slot="description">Você será redirecionado para um site externo. Deseja continuar?</span>
+          </xds-external-link-guard>
+
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <xds-button href="https://google.com">Google</xds-button>
+            <xds-button href="https://portal.demo-aws.xvia.com.br/app/catalog">Catálogo externo</xds-button>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

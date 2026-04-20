@@ -1,0 +1,106 @@
+<div class="pg-header">
+  <span class="pg-tag">xds-breadcrumb · xds-breadcrumb-item</span>
+  <h1 class="pg-title">Breadcrumb</h1>
+  <p class="pg-desc">Navegação hierárquica · página atual · item desabilitado · link externo</p>
+</div>
+
+<div #rootRef>
+  <div class="pg-group">
+    <div class="pg-group__label">Padrão</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb>
+        <xds-breadcrumb-item href="/">Início</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/servicos">Serviços</xds-breadcrumb-item>
+        <xds-breadcrumb-item is-current-page>Detalhes do serviço</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Dois níveis</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb>
+        <xds-breadcrumb-item href="/">Início</xds-breadcrumb-item>
+        <xds-breadcrumb-item is-current-page>Categorias</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Vários níveis</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb>
+        <xds-breadcrumb-item href="/">Portal</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/cidadao">Cidadão</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/cidadao/servicos">Serviços</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/cidadao/servicos/saude">Saúde</xds-breadcrumb-item>
+        <xds-breadcrumb-item is-current-page>Agendamento de consultas</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Página atual + no-trailing-slash</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb no-trailing-slash>
+        <xds-breadcrumb-item href="/">Início</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/servicos">Serviços</xds-breadcrumb-item>
+        <xds-breadcrumb-item is-current-page>Educação</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Item desabilitado</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb no-trailing-slash>
+        <xds-breadcrumb-item href="/">Início</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/servicos" disabled>Serviços</xds-breadcrumb-item>
+        <xds-breadcrumb-item is-current-page>Detalhes</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Link externo (target _blank)</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb no-trailing-slash>
+        <xds-breadcrumb-item href="/">Início</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="https://gov.br" target="_blank" rel="noopener noreferrer">Portal Gov.br</xds-breadcrumb-item>
+        <xds-breadcrumb-item is-current-page>Serviço externo</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Todos como links</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb>
+        <xds-breadcrumb-item href="/">Início</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/servicos">Serviços</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/servicos/educacao">Educação</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Item único</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb>
+        <xds-breadcrumb-item is-current-page>Página atual</xds-breadcrumb-item>
+      </xds-breadcrumb>
+    </div>
+  </div>
+
+  <div class="pg-group">
+    <div class="pg-group__label">Evento xds-breadcrumb-item-click</div>
+    <div class="pg-canvas pg-canvas--column">
+      <xds-breadcrumb>
+        <xds-breadcrumb-item href="/">Início</xds-breadcrumb-item>
+        <xds-breadcrumb-item href="/catalogo">Catálogo</xds-breadcrumb-item>
+        <xds-breadcrumb-item is-current-page>Atual</xds-breadcrumb-item>
+      </xds-breadcrumb>
+      <xds-text variant="caption">Último clique: {{ lastClick() }}</xds-text>
+    </div>
+  </div>
+</div>

@@ -152,3 +152,40 @@
     <xds-input placeholder="000.000.000-00"></xds-input>
   </div>
 </div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Posição — top (padrão)</div>
+  <div class="pg-canvas"><xds-tooltip position="top"><xds-button kind="">Hover aqui</xds-button><xds-tooltip-content>Tooltip no topo</xds-tooltip-content></xds-tooltip></div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Posição — bottom</div>
+  <div class="pg-canvas"><xds-tooltip position="bottom"><xds-button kind="secondary">Hover aqui</xds-button><xds-tooltip-content>Tooltip abaixo</xds-tooltip-content></xds-tooltip></div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Posição — left</div>
+  <div class="pg-canvas"><xds-tooltip position="left"><xds-button kind="secondary">Hover aqui</xds-button><xds-tooltip-content>Tooltip à esquerda</xds-tooltip-content></xds-tooltip></div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Posição — right</div>
+  <div class="pg-canvas"><xds-tooltip position="right"><xds-button kind="secondary">Hover aqui</xds-button><xds-tooltip-content>Tooltip à direita</xds-tooltip-content></xds-tooltip></div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">drop-shadow — com e sem sombra</div>
+  <div class="pg-canvas" style="gap: 2rem">
+    <xds-tooltip position="bottom" default-open close-on-activation><xds-button kind="secondary">Com sombra (padrão)</xds-button><xds-tooltip-content>drop-shadow=true</xds-tooltip-content></xds-tooltip>
+    <xds-tooltip position="bottom" drop-shadow="false" default-open close-on-activation><xds-button kind="secondary">Sem sombra</xds-button><xds-tooltip-content>drop-shadow=false</xds-tooltip-content></xds-tooltip>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Composição — barra de ações com tooltips</div>
+  <div class="pg-canvas" style="gap: 12px; flex-wrap: wrap">
+    <xds-tooltip position="top"><xds-button kind="ghost" icon="edit"></xds-button><xds-tooltip-content>Editar</xds-tooltip-content></xds-tooltip>
+    <xds-tooltip position="top"><xds-button kind="ghost" icon="content_copy"></xds-button><xds-tooltip-content>Duplicar</xds-tooltip-content></xds-tooltip>
+    <xds-tooltip position="top"><xds-button kind="danger-ghost" icon="delete"></xds-button><xds-tooltip-content>Excluir permanentemente</xds-tooltip-content></xds-tooltip>
+  </div>
+</div>
