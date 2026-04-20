@@ -4,17 +4,9 @@
 // Para regenerar: npm run generate-types
 // ============================================================
 
-type XdsBaseAttrs = React.ClassAttributes<HTMLElement>
-  & React.AriaAttributes
-  & React.DOMAttributes<HTMLElement>
-  & {
-    className?: string;
-    style?: React.CSSProperties;
-    id?: string;
-    slot?: string;
-    tabIndex?: number;
-    children?: React.ReactNode;
-  };
+type XdsBaseAttrs = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+  slot?: string;
+};
 
 // Tipos dos componentes (fonte: src/types/components.ts)
 type Size = 'sm' | 'md' | 'lg';
@@ -138,41 +130,6 @@ type ServiceType = 'digital' | 'presencial' | 'hibrido';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'xds-breadcrumb-item': HTMLElement & {
-      'href'?: string | undefined;
-      'target'?: string | undefined;
-      'rel'?: string | undefined;
-      'is-current-page'?: boolean;
-      'disabled'?: boolean;
-    };
-
-    'xds-breadcrumb': HTMLElement & {
-      'no-trailing-slash'?: boolean;
-      'aria-label-text'?: string;
-    };
-
-    'xds-button-skeleton': HTMLElement & {
-      'size'?: ButtonSize;
-      'full-width'?: boolean;
-    };
-
-    'xds-button': HTMLElement & {
-      'kind'?: ButtonKind;
-      'size'?: ButtonSize;
-      'radius'?: ButtonRadius;
-      'disabled'?: boolean;
-      'loading'?: boolean;
-      'full-width'?: boolean;
-      'href'?: string | undefined;
-      'target'?: string | undefined;
-      'type'?: ButtonType | undefined;
-      'icon-position'?: 'left' | 'right';
-      'tooltip-text'?: string | undefined;
-      'tooltip-position'?: ButtonTooltipPosition | undefined;
-      'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
-      'animation'?: ButtonAnimation | undefined;
-    };
-
     'xds-accordion-item-skeleton': HTMLElement & {
       
     };
@@ -199,12 +156,47 @@ declare global {
       'exclusive'?: boolean;
     };
 
+    'xds-breadcrumb-item': HTMLElement & {
+      'href'?: string | undefined;
+      'target'?: string | undefined;
+      'rel'?: string | undefined;
+      'is-current-page'?: boolean;
+      'disabled'?: boolean;
+    };
+
+    'xds-breadcrumb': HTMLElement & {
+      'no-trailing-slash'?: boolean;
+      'aria-label-text'?: string;
+    };
+
     'xds-avatar': HTMLElement & {
       'src'?: string | undefined;
       'alt'?: string;
       'initials'?: string | undefined;
       'size'?: AvatarSize;
       'color'?: AvatarColor;
+    };
+
+    'xds-button-skeleton': HTMLElement & {
+      'size'?: ButtonSize;
+      'full-width'?: boolean;
+    };
+
+    'xds-button': HTMLElement & {
+      'kind'?: ButtonKind;
+      'size'?: ButtonSize;
+      'radius'?: ButtonRadius;
+      'disabled'?: boolean;
+      'loading'?: boolean;
+      'full-width'?: boolean;
+      'href'?: string | undefined;
+      'target'?: string | undefined;
+      'type'?: ButtonType | undefined;
+      'icon-position'?: 'left' | 'right';
+      'tooltip-text'?: string | undefined;
+      'tooltip-position'?: ButtonTooltipPosition | undefined;
+      'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
+      'animation'?: ButtonAnimation | undefined;
     };
 
     'xds-callout': HTMLElement & {
@@ -522,41 +514,6 @@ declare global {
 declare module "react/jsx-runtime" {
   namespace JSX {
     interface IntrinsicElements {
-      'xds-breadcrumb-item': XdsBaseAttrs & {
-        'href'?: string | undefined;
-        'target'?: string | undefined;
-        'rel'?: string | undefined;
-        'is-current-page'?: boolean;
-        'disabled'?: boolean;
-      };
-
-      'xds-breadcrumb': XdsBaseAttrs & {
-        'no-trailing-slash'?: boolean;
-        'aria-label-text'?: string;
-      };
-
-      'xds-button-skeleton': XdsBaseAttrs & {
-        'size'?: ButtonSize;
-        'full-width'?: boolean;
-      };
-
-      'xds-button': XdsBaseAttrs & {
-        'kind'?: ButtonKind;
-        'size'?: ButtonSize;
-        'radius'?: ButtonRadius;
-        'disabled'?: boolean;
-        'loading'?: boolean;
-        'full-width'?: boolean;
-        'href'?: string | undefined;
-        'target'?: string | undefined;
-        'type'?: ButtonType | undefined;
-        'icon-position'?: 'left' | 'right';
-        'tooltip-text'?: string | undefined;
-        'tooltip-position'?: ButtonTooltipPosition | undefined;
-        'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
-        'animation'?: ButtonAnimation | undefined;
-      };
-
       'xds-accordion-item-skeleton': XdsBaseAttrs & {
 
       };
@@ -582,12 +539,47 @@ declare module "react/jsx-runtime" {
         'exclusive'?: boolean;
       };
 
+      'xds-breadcrumb-item': XdsBaseAttrs & {
+        'href'?: string | undefined;
+        'target'?: string | undefined;
+        'rel'?: string | undefined;
+        'is-current-page'?: boolean;
+        'disabled'?: boolean;
+      };
+
+      'xds-breadcrumb': XdsBaseAttrs & {
+        'no-trailing-slash'?: boolean;
+        'aria-label-text'?: string;
+      };
+
       'xds-avatar': XdsBaseAttrs & {
         'src'?: string | undefined;
         'alt'?: string;
         'initials'?: string | undefined;
         'size'?: AvatarSize;
         'color'?: AvatarColor;
+      };
+
+      'xds-button-skeleton': XdsBaseAttrs & {
+        'size'?: ButtonSize;
+        'full-width'?: boolean;
+      };
+
+      'xds-button': XdsBaseAttrs & {
+        'kind'?: ButtonKind;
+        'size'?: ButtonSize;
+        'radius'?: ButtonRadius;
+        'disabled'?: boolean;
+        'loading'?: boolean;
+        'full-width'?: boolean;
+        'href'?: string | undefined;
+        'target'?: string | undefined;
+        'type'?: ButtonType | undefined;
+        'icon-position'?: 'left' | 'right';
+        'tooltip-text'?: string | undefined;
+        'tooltip-position'?: ButtonTooltipPosition | undefined;
+        'tooltip-alignment'?: ButtonTooltipAlignment | undefined;
+        'animation'?: ButtonAnimation | undefined;
       };
 
       'xds-callout': XdsBaseAttrs & {

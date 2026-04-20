@@ -9,8 +9,7 @@
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
-    "skipLibCheck": true,
-    "types": ["react", "react-dom"]
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }
