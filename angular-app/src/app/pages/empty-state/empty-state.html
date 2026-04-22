@@ -1,0 +1,53 @@
+<div class="pg-header">
+  <span class="pg-tag">recipe · xds-icon · xds-text · xds-button</span>
+  <h1 class="pg-title">Empty State</h1>
+  <p class="pg-desc">Composição de peças XDS — não é um componente próprio</p>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Padrão — busca sem resultado</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 600px">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; border: 2px dashed var(--color-border, #e2e8f0); border-radius: var(--radius-lg, 12px); padding: 48px 32px;">
+      <xds-icon name="search_off" size="xl" style="color: var(--color-text-muted)"></xds-icon>
+      <xds-text variant="body" as="strong">Nenhum serviço encontrado</xds-text>
+      <xds-text variant="body-sm" style="color: var(--color-text-secondary)">Tente buscar com outros termos ou limpe os filtros.</xds-text>
+      <xds-button kind="tertiary" size="sm" style="margin-top: 8px">Limpar Filtros</xds-button>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Sem ação</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 600px">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; border: 2px dashed var(--color-border, #e2e8f0); border-radius: var(--radius-lg, 12px); padding: 48px 32px;">
+      <xds-icon name="inbox" size="xl" style="color: var(--color-text-muted)"></xds-icon>
+      <xds-text variant="body" as="strong">Nenhum resultado encontrado</xds-text>
+      <xds-text variant="body-sm" style="color: var(--color-text-secondary)">Não há itens para exibir no momento.</xds-text>
+    </div>
+  </div>
+</div>
+
+<div class="pg-group">
+  <div class="pg-group__label">Contextos de uso</div>
+  <div class="pg-canvas pg-canvas--column" style="max-width: 600px">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; border: 2px dashed var(--color-border, #e2e8f0); border-radius: var(--radius-lg, 12px); padding: 48px 32px;">
+      <xds-icon name="notifications_none" size="xl" style="color: var(--color-text-muted)"></xds-icon>
+      <xds-text variant="body" as="strong">Nenhuma notificação</xds-text>
+      <xds-text variant="body-sm" style="color: var(--color-text-secondary)">Você está em dia. Novas notificações aparecerão aqui.</xds-text>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; border: 2px dashed var(--color-border, #e2e8f0); border-radius: var(--radius-lg, 12px); padding: 48px 32px;">
+      <xds-icon name="upload_file" size="xl" style="color: var(--color-text-muted)"></xds-icon>
+      <xds-text variant="body" as="strong">Nenhum documento enviado</xds-text>
+      <xds-text variant="body-sm" style="color: var(--color-text-secondary)">Adicione documentos para iniciar sua solicitação.</xds-text>
+      <xds-button kind="primary" size="sm" style="margin-top: 8px">Enviar Documento</xds-button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; border: 2px dashed var(--color-border, #e2e8f0); border-radius: var(--radius-lg, 12px); padding: 48px 32px;">
+      <xds-icon name="shopping_cart" size="xl" style="color: var(--color-text-muted)"></xds-icon>
+      <xds-text variant="body" as="strong">Carrinho vazio</xds-text>
+      <xds-text variant="body-sm" style="color: var(--color-text-secondary)">Adicione serviços ao carrinho para continuar.</xds-text>
+      <xds-button kind="primary" size="sm" style="margin-top: 8px">Explorar Serviços</xds-button>
+    </div>
+  </div>
+</div>

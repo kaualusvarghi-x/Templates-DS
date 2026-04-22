@@ -23,6 +23,8 @@ import { SearchComponent } from './pages/search/search';
 import { BreadcrumbComponent } from './pages/breadcrumb/breadcrumb';
 import { CardComponent } from './pages/card/card';
 import { LoadingPageComponent } from './pages/loading/loading';
+import { TimelineComponent } from './pages/timeline/timeline';
+import { EmptyStateComponent } from './pages/empty-state/empty-state';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,4 +51,6 @@ export const routes: Routes = [
   { path: 'breadcrumb', component: BreadcrumbComponent },
   { path: 'card', component: CardComponent },
   { path: 'loading', component: LoadingPageComponent },
+  { path: 'timeline', component: TimelineComponent },
+  { path: 'empty-state', component: EmptyStateComponent },
 ];

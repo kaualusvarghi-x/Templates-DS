@@ -20,7 +20,9 @@ import SearchPage from '@/components/pages/SearchPage';
 import SelectPage from '@/components/pages/SelectPage';
 import TagPage from '@/components/pages/TagPage';
 import TextPage from '@/components/pages/TextPage';
+import TimelinePage from '@/components/pages/TimelinePage';
 import ToastPage from '@/components/pages/ToastPage';
+import EmptyStatePage from '@/components/pages/EmptyStatePage';
 import TooltipPage from '@/components/pages/TooltipPage';
 import type { PageId } from '@/lib/navigation';
 
@@ -48,4 +50,6 @@ export const PAGE_COMPONENTS: Record<PageId, ComponentType> = {
   'external-link-guard': ExternalLinkGuardPage,
   search: SearchPage,
   card: CardPage,
+  timeline: TimelinePage,
+  'empty-state': EmptyStatePage,
 };

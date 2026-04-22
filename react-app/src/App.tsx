@@ -24,6 +24,8 @@ import SearchPage from './pages/SearchPage';
 import LoadingPage from './pages/LoadingPage';
 import CardPage from './pages/CardPage';
 import BreadcrumbPage from './pages/BreadcrumbPage';
+import TimelinePage from './pages/TimelinePage';
+import EmptyStatePage from './pages/EmptyStatePage';
 
 type PageId =
   | 'home'
@@ -49,7 +51,9 @@ type PageId =
   | 'pagination'
   | 'loading'
   | 'card'
-  | 'breadcrumb';
+  | 'breadcrumb'
+  | 'timeline'
+  | 'empty-state';
 
 type PageProps = { onNavigate?: (page: string) => void };
 
@@ -78,6 +82,8 @@ const PAGES: Record<PageId, ComponentType<PageProps>> = {
   loading: LoadingPage,
   card: CardPage,
   breadcrumb: BreadcrumbPage,
+  timeline: TimelinePage,
+  'empty-state': EmptyStatePage,
 };
 
 type NavItem = {
@@ -112,6 +118,8 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'loading', name: 'Loading', tag: 'xds-loading', icon: 'autorenew', done: true },
   { id: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', icon: 'dashboard', done: true },
   { id: 'breadcrumb', name: 'Breadcrumb', tag: 'xds-breadcrumb', icon: 'chevron_right', done: true },
+  { id: 'timeline', name: 'Timeline', tag: 'xds-timeline / xds-timeline-item', icon: 'timeline', done: true },
+  { id: 'empty-state', name: 'Empty State', tag: 'xds-empty-state', icon: 'inbox', done: true },
 ]
 
 const THEME_OPTIONS = [

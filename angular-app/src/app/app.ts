@@ -34,6 +34,8 @@ const NAV_ITEMS: NavItem[] = [
   { path: 'search', name: 'Search', tag: 'xds-search', icon: 'manage_search', done: true },
   { path: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', icon: 'dashboard', done: true },
   { path: 'loading', name: 'Loading', tag: 'xds-loading', icon: 'autorenew', done: true },
+  { path: 'timeline', name: 'Timeline', tag: 'xds-timeline / xds-timeline-item', icon: 'timeline', done: true },
+  { path: 'empty-state', name: 'Empty State', tag: 'xds-empty-state', icon: 'inbox', done: true },
 ];
 
 const THEME_OPTIONS = [

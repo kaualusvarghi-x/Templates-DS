@@ -26,6 +26,7 @@ const COMPONENTS = [
   { id: 'search', name: 'Search', tag: 'xds-search', count: '5 variações · expandable · disabled · skeleton', done: true },
   { id: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', count: 'base · news · quick service · service', done: true },
   { id: 'loading', name: 'Loading', tag: 'xds-loading', count: 'active · size · descrição · ícone · overlay', done: true },
+  { id: 'timeline', name: 'Timeline', tag: 'xds-timeline / xds-timeline-item', count: 'steps · history · estados · item único', done: true },
 ];
 
 type FilterDone = 'all' | 'done' | 'wip';

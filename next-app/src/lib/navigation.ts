@@ -22,6 +22,8 @@ export const NAV_ITEMS = [
   { id: 'external-link-guard', name: 'External Link Guard', tag: 'xds-external-link-guard', icon: 'open_in_browser', done: true },
   { id: 'search', name: 'Search', tag: 'xds-search', icon: 'manage_search', done: true },
   { id: 'card', name: 'Card', tag: 'xds-card / xds-news-card / xds-quick-service-card / xds-service-card', icon: 'dashboard', done: true },
+  { id: 'timeline', name: 'Timeline', tag: 'xds-timeline / xds-timeline-item', icon: 'timeline', done: true },
+  { id: 'empty-state', name: 'Empty State', tag: 'xds-empty-state', icon: 'inbox', done: true },
 ] as const;
 
 export type PageId = typeof NAV_ITEMS[number]['id'];
