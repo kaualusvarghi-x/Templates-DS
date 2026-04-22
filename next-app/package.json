@@ -7,11 +7,10 @@
     "build": "next build",
     "start": "next start -p 3006",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit",
-    "sync-types": "node scripts/sync-types.js",
-    "postinstall": "npm run sync-types"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@xvia/design-system": "file:../../web-components",
     "next": "^15.2.4",
     "react": "19.2.0",
     "react-dom": "19.2.0"

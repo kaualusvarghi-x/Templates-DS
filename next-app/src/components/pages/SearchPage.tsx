@@ -51,7 +51,7 @@ export default function SearchPage() {
             radius="pill"
             shadow
           >
-            <xds-icon-button slot="action" kind="ghost" label="Ação assistiva">
+            <xds-icon-button slot="action" kind="ghost" label-text="Ação assistiva">
               <xds-icon slot="icon" name="sparkles" size="sm"></xds-icon>
             </xds-icon-button>
           </xds-search>
@@ -66,7 +66,7 @@ export default function SearchPage() {
           </xds-search>
 
           <xds-search placeholder="Buscar serviços..." radius="pill" shadow>
-            <xds-icon-button slot="action" kind="ghost" label="IA">
+            <xds-icon-button slot="action" kind="ghost" label-text="IA">
               <xds-icon slot="icon" name="sparkles" size="sm"></xds-icon>
             </xds-icon-button>
           </xds-search>

@@ -1,9 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
 
 @Component({
   selector: 'app-accordion',
   templateUrl: './accordion.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [XDS_DIRECTIVES],
 })
 export class AccordionComponent {
   openIndex = signal<number | null>(0);

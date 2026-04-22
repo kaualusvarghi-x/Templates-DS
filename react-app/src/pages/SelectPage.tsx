@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function SelectPage() {
   const [value, setValue] = useState('');
@@ -72,7 +72,7 @@ export default function SelectPage() {
       <div className="pg-group">
         <div className="pg-group__label">Controlado — value via useState</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
-          <xds-select label-text="Prioridade" value={value} onChange={(e: Event) => setValue((e.target as HTMLInputElement).value)}>
+          <xds-select label-text="Prioridade" value={value} onChange={(e: React.ChangeEvent<HTMLElement>) => setValue((e.target as HTMLInputElement).value)}>
             <xds-select-item value="alta">Alta</xds-select-item>
             <xds-select-item value="media">Média</xds-select-item>
             <xds-select-item value="baixa">Baixa</xds-select-item>

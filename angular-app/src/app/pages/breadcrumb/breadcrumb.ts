@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnDestroy, PLATFORM_ID, ViewChild, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, PLATFORM_ID, ViewChild, inject, signal } from '@angular/core';
+import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
 import { isPlatformBrowser } from '@angular/common';
 
 type BreadcrumbClickDetail = {
@@ -9,7 +10,7 @@ type BreadcrumbClickDetail = {
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [XDS_DIRECTIVES],
 })
 export class BreadcrumbComponent implements AfterViewInit, OnDestroy {
   @ViewChild('rootRef') rootRef?: ElementRef<HTMLElement>;

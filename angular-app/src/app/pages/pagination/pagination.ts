@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnDestroy, ViewChild, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, signal } from '@angular/core';
+import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [XDS_DIRECTIVES],
 })
 export class PaginationComponent implements AfterViewInit, OnDestroy {
   @ViewChild('controlledPagination') controlledPagination?: ElementRef;

@@ -8,13 +8,13 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular-app": "node dist/angular-app/server/server.mjs",
-    "typecheck": "tsc -p tsconfig.app.json --noEmit",
-    "sync-types": "node scripts/sync-types.js",
-    "postinstall": "npm run sync-types"
+    "typecheck": "tsc -p tsconfig.app.json --noEmit"
   },
   "private": true,
+  "type": "module",
   "packageManager": "npm@11.6.2",
   "dependencies": {
+    "@xvia/design-system": "file:../../web-components",
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",

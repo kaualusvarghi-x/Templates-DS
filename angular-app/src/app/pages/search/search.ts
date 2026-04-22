@@ -1,8 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component } from '@angular/core';
+import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [XDS_DIRECTIVES],
 })
 export class SearchComponent {}

@@ -196,7 +196,7 @@ export default function AccordionPage() {
                   <li><xds-text variant="body-sm">Acesse "Meus Serviços" no menu principal.</xds-text></li>
                   <li><xds-text variant="body-sm">Clique em "Nova Solicitação" e preencha o formulário.</xds-text></li>
                 </ol>
-                <xds-button kind="primary" size="sm" icon="arrow-right">Iniciar solicitação</xds-button>
+                <xds-button kind="primary" size="sm">Iniciar solicitação<xds-icon slot="icon" name="arrow-right" size="sm" /></xds-button>
               </div>
             </xds-accordion-item>
             <xds-accordion-item title="Prazo de atendimento">

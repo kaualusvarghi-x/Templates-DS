@@ -16,7 +16,7 @@ export default function ButtonPage() {
         <div className="pg-group__label">Variantes — kind</div>
         <div className="pg-canvas" style={{ alignItems: 'center' }}>
           <xds-button>Primary (padrão)</xds-button>
-          <xds-button kind="secondary">Secondary</xds-button>
+          <xds-button kind="danger">Secondary</xds-button>
           <xds-button kind="tertiary">Tertiary</xds-button>
           <xds-button kind="ghost">Ghost</xds-button>
           <xds-button kind="danger">Danger</xds-button>
@@ -220,7 +220,7 @@ export default function ButtonPage() {
         </div>
       </div>
 
-      {/* ── Animações ─────────────────────────────────────────────────────── */}
+      {/* ── Animações ── */}
       <div className="pg-group">
         <div className="pg-group__label">Animações — scale-up / underline</div>
         <div className="pg-canvas">
@@ -298,15 +298,15 @@ export default function ButtonPage() {
         </div>
       </div>
 
-      {/* ── Skeleton ──────────────────────────────────────────────────────── */}
+      {/* ── Skeleton ── */}
       <div className="pg-group">
         <div className="pg-group__label">Skeleton</div>
-        <div className="pg-canvas " >
-            <xds-button-skeleton size="sm" ></xds-button-skeleton>
-            <xds-button-skeleton size="md"></xds-button-skeleton>
-            <xds-button-skeleton size="lg"></xds-button-skeleton>
-            <xds-button-skeleton size="xl"></xds-button-skeleton>
-            <xds-button-skeleton size="2xl"></xds-button-skeleton>
+        <div className="pg-canvas">
+          <xds-button-skeleton size="sm" />
+          <xds-button-skeleton size="md" />
+          <xds-button-skeleton size="lg" />
+          <xds-button-skeleton size="xl" />
+          <xds-button-skeleton size="2xl" />
         </div>
       </div>
     </>

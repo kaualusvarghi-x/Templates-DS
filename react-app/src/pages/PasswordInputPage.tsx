@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 type FormErrs = { password?: string; confirm?: string };
 
@@ -140,8 +140,8 @@ export default function PasswordInputPage() {
             placeholder="Mínimo 8 caracteres"
             helper-text="Use letras maiúsculas, minúsculas, números e símbolos."
             value={password}
-            onChange={(v: string) => {
-              setPassword(v);
+            onChange={(e: React.ChangeEvent<HTMLElement>) => {
+              setPassword((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, password: undefined }));
               setFormSuccess(false);
             }}
@@ -152,8 +152,8 @@ export default function PasswordInputPage() {
             label="Confirmar senha"
             placeholder="Repita a senha"
             value={confirm}
-            onChange={(v: string) => {
-              setConfirm(v);
+            onChange={(e: React.ChangeEvent<HTMLElement>) => {
+              setConfirm((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, confirm: undefined }));
               setFormSuccess(false);
             }}

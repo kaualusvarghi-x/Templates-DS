@@ -13,7 +13,7 @@ export default function TooltipPage() {
         <div className="pg-group__label">Posição — top (padrão)</div>
         <div className="pg-canvas">
           <xds-tooltip position="top">
-            <xds-button kind="" >Hover aqui</xds-button>
+            <xds-button kind="tertiary">Hover aqui</xds-button>
             <xds-tooltip-content id="content">Tooltip no topo</xds-tooltip-content>
           </xds-tooltip>
         </div>
@@ -118,7 +118,7 @@ export default function TooltipPage() {
           </xds-tooltip>
 
           <xds-tooltip position="top">
-            <xds-button kind="primary" icon="settings" />
+            <xds-button kind="primary"><xds-icon slot="icon" name="settings" size="sm" /></xds-button>
             <xds-tooltip-content>Configurações</xds-tooltip-content>
           </xds-tooltip>
         </div>
@@ -263,17 +263,17 @@ export default function TooltipPage() {
             background: 'var(--color-surface)',
           }}>
             <xds-tooltip position="top">
-              <xds-button kind="ghost" icon="edit" />
+              <xds-button kind="ghost"><xds-icon slot="icon" name="pencil" size="sm" /></xds-button>
               <xds-tooltip-content>Editar</xds-tooltip-content>
             </xds-tooltip>
 
             <xds-tooltip position="top">
-              <xds-button kind="ghost" icon="content_copy" />
+              <xds-button kind="ghost"><xds-icon slot="icon" name="plus" size="sm" /></xds-button>
               <xds-tooltip-content>Duplicar</xds-tooltip-content>
             </xds-tooltip>
 
             <xds-tooltip position="top">
-              <xds-button kind="danger-ghost" icon="delete" />
+              <xds-button kind="danger-ghost"><xds-icon slot="icon" name="trash-2" size="sm" /></xds-button>
               <xds-tooltip-content>Excluir permanentemente</xds-tooltip-content>
             </xds-tooltip>
           </div>

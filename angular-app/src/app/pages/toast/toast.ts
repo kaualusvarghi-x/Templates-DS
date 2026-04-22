@@ -1,11 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
 
 type ToastKind = 'success' | 'error' | 'warning' | 'info';
 
 @Component({
   selector: 'app-toast',
   templateUrl: './toast.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [XDS_DIRECTIVES],
 })
 export class ToastComponent {
   @ViewChild('successToast') successToast?: ElementRef;

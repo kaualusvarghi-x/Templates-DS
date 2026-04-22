@@ -262,17 +262,17 @@ export default function TooltipPage() {
             background: 'var(--color-surface)',
           }}>
             <xds-tooltip position="top">
-              <xds-button kind="ghost"><xds-icon slot="icon" name="edit" /></xds-button>
+              <xds-button kind="ghost"><xds-icon slot="icon" name="pencil" size="sm" /></xds-button>
               <xds-tooltip-content>Editar</xds-tooltip-content>
             </xds-tooltip>
 
             <xds-tooltip position="top">
-              <xds-button kind="ghost"><xds-icon slot="icon" name="content_copy" /></xds-button>
+              <xds-button kind="ghost"><xds-icon slot="icon" name="plus" size="sm" /></xds-button>
               <xds-tooltip-content>Duplicar</xds-tooltip-content>
             </xds-tooltip>
 
             <xds-tooltip position="top">
-              <xds-button kind="danger-ghost"><xds-icon slot="icon" name="delete" /></xds-button>
+              <xds-button kind="danger-ghost"><xds-icon slot="icon" name="trash-2" size="sm" /></xds-button>
               <xds-tooltip-content>Excluir permanentemente</xds-tooltip-content>
             </xds-tooltip>
           </div>

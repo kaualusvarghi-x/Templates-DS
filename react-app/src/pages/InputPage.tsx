@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 type FormErrs = { name?: string; email?: string; password?: string };
@@ -63,7 +63,7 @@ export default function InputPage() {
             label="Nome completo"
             placeholder="Digite seu nome"
             value={name}
-            onChange={(e: Event) => {
+            onChange={(e: React.ChangeEvent<HTMLElement>) => {
               setName((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, name: undefined }));
               setFormSuccess(false);
@@ -75,7 +75,7 @@ export default function InputPage() {
             type="email"
             placeholder="nome@exemplo.com.br"
             value={email}
-            onChange={(e: Event) => {
+            onChange={(e: React.ChangeEvent<HTMLElement>) => {
               setEmail((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, email: undefined }));
               setFormSuccess(false);
@@ -86,7 +86,7 @@ export default function InputPage() {
             label="Telefone"
             placeholder="(00) 00000-0000"
             value={password}
-            onChange={(e: Event) => {
+            onChange={(e: React.ChangeEvent<HTMLElement>) => {
               setPassword((e.target as HTMLInputElement).value);
               setErrors(p => ({ ...p, password: undefined }));
               setFormSuccess(false);

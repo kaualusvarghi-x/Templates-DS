@@ -1,11 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
 
 type XdsModalEl = HTMLElement & { open: boolean };
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [XDS_DIRECTIVES],
 })
 export class ModalComponent {
   @ViewChild('confirmModal') confirmModal?: ElementRef<XdsModalEl>;

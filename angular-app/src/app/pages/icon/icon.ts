@@ -1,4 +1,5 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, inject, PLATFORM_ID } from '@angular/core';
+import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
 import { isPlatformBrowser } from '@angular/common';
 
 const ICON_NAMES_FALLBACK = [
@@ -17,8 +18,7 @@ const ICON_NAMES_FALLBACK = [
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.html',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [],
+  imports: [XDS_DIRECTIVES],
 })
 export class IconComponent implements OnInit {
   allIcons: string[] = [];
