@@ -1,5 +1,5 @@
 import { Component, OnInit, inject, PLATFORM_ID } from '@angular/core';
-import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
+import { XDS_DIRECTIVES } from '@xvia/ds-types/angular';
 import { isPlatformBrowser } from '@angular/common';
 
 const ICON_NAMES_FALLBACK = [

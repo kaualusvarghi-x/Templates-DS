@@ -23,7 +23,7 @@ export default function EmptyStatePage() {
         <div className="pg-group__label">Padrão — busca sem resultado</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 600 }}>
           <div style={emptyStateStyle}>
-            <xds-icon name="search_off" size="xl" style={{ color: 'var(--color-text-muted)' }} />
+            <xds-icon name="search_off" size="lg" style={{ color: 'var(--color-text-muted)' }} />
             <xds-text variant="body" as="strong">Nenhum serviço encontrado</xds-text>
             <xds-text variant="body-sm" style={{ color: 'var(--color-text-secondary)' }}>
               Tente buscar com outros termos ou limpe os filtros.
@@ -37,7 +37,7 @@ export default function EmptyStatePage() {
         <div className="pg-group__label">Sem ação</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 600 }}>
           <div style={emptyStateStyle}>
-            <xds-icon name="inbox" size="xl" style={{ color: 'var(--color-text-muted)' }} />
+            <xds-icon name="folder_open" size="lg" style={{ color: 'var(--color-text-muted)' }} />
             <xds-text variant="body" as="strong">Nenhum resultado encontrado</xds-text>
             <xds-text variant="body-sm" style={{ color: 'var(--color-text-secondary)' }}>
               Não há itens para exibir no momento.
@@ -50,7 +50,7 @@ export default function EmptyStatePage() {
         <div className="pg-group__label">Contextos de uso</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 600 }}>
           <div style={emptyStateStyle}>
-            <xds-icon name="notifications_none" size="xl" style={{ color: 'var(--color-text-muted)' }} />
+            <xds-icon name="notifications" size="lg" style={{ color: 'var(--color-text-muted)' }} />
             <xds-text variant="body" as="strong">Nenhuma notificação</xds-text>
             <xds-text variant="body-sm" style={{ color: 'var(--color-text-secondary)' }}>
               Você está em dia. Novas notificações aparecerão aqui.
@@ -58,7 +58,7 @@ export default function EmptyStatePage() {
           </div>
 
           <div style={emptyStateStyle}>
-            <xds-icon name="upload_file" size="xl" style={{ color: 'var(--color-text-muted)' }} />
+            <xds-icon name="upload" size="lg" style={{ color: 'var(--color-text-muted)' }} />
             <xds-text variant="body" as="strong">Nenhum documento enviado</xds-text>
             <xds-text variant="body-sm" style={{ color: 'var(--color-text-secondary)' }}>
               Adicione documentos para iniciar sua solicitação.
@@ -67,7 +67,7 @@ export default function EmptyStatePage() {
           </div>
 
           <div style={emptyStateStyle}>
-            <xds-icon name="shopping_cart" size="xl" style={{ color: 'var(--color-text-muted)' }} />
+            <xds-icon name="shopping-cart" size="lg" style={{ color: 'var(--color-text-muted)' }} />
             <xds-text variant="body" as="strong">Carrinho vazio</xds-text>
             <xds-text variant="body-sm" style={{ color: 'var(--color-text-secondary)' }}>
               Adicione serviços ao carrinho para continuar.

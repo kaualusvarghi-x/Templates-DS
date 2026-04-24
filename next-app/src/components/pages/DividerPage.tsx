@@ -8,7 +8,6 @@ export default function DividerPage() {
         <p className="pg-desc">Separador visual · orientation · spacing · label</p>
       </div>
 
-      {/* ── Orientação horizontal ──────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Orientação — horizontal (padrão)</div>
         <div className="pg-canvas pg-canvas--column">
@@ -18,7 +17,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Orientação vertical ───────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Orientação — vertical</div>
         <div className="pg-canvas">
@@ -32,7 +30,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Spacing — sm ─────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Spacing — sm</div>
         <div className="pg-canvas pg-canvas--column">
@@ -42,7 +39,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Spacing — md ─────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Spacing — md (padrão)</div>
         <div className="pg-canvas pg-canvas--column">
@@ -52,7 +48,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Spacing — lg ─────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Spacing — lg</div>
         <div className="pg-canvas pg-canvas--column">
@@ -62,7 +57,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Comparação de spacing ─────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Comparação — sm · md · lg</div>
         <div className="pg-canvas pg-canvas--column">
@@ -76,7 +70,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Composição — formulário com seções ───────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — formulário com seções</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 560 }}>
@@ -91,7 +84,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Label ────────────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Label — texto no centro do divisor</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 480 }}>
@@ -102,7 +94,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Label — composição real (login) ──────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — fluxo de login com label</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 360 }}>
@@ -112,7 +103,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Composição — fluxo de login com divisor vertical ────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — fluxo de login com divisor vertical</div>
         <div className="pg-canvas">
@@ -124,7 +114,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Composição — fluxo de login com divisor vertical e label ────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — fluxo de login com divisor vertical e label</div>
         <div className="pg-canvas">
@@ -136,7 +125,6 @@ export default function DividerPage() {
         </div>
       </div>
 
-      {/* ── Composição — barra de ações com divisores verticais ──────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — barra de ações com divisores verticais</div>
         <div className="pg-canvas">

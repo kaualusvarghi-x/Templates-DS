@@ -14,7 +14,7 @@
   "type": "module",
   "packageManager": "npm@11.6.2",
   "dependencies": {
-    "@xvia/design-system": "file:../../web-components",
+    "@xvia/ds-types": "file:../../web-components/xvia-ds-types-0.0.1.tgz",
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",

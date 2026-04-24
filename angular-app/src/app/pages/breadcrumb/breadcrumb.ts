@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, PLATFORM_ID, ViewChild, inject, signal } from '@angular/core';
-import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
+import { XDS_DIRECTIVES } from '@xvia/ds-types/angular';
 import { isPlatformBrowser } from '@angular/common';
 
 type BreadcrumbClickDetail = {

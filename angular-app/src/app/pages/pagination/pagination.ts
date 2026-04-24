@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, signal } from '@angular/core';
-import { XDS_DIRECTIVES } from '@xvia/design-system/angular';
+import { XDS_DIRECTIVES } from '@xvia/ds-types/angular';
 
 @Component({
   selector: 'app-pagination',

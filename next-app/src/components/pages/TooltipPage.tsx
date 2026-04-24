@@ -8,7 +8,6 @@ export default function TooltipPage() {
         <p className="pg-desc">Texto auxiliar em hover/focus · 4 posições · HTML rico · delays configuráveis</p>
       </div>
 
-      {/* ── Posições ─────────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Posição — top (padrão)</div>
         <div className="pg-canvas">
@@ -49,7 +48,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── Comparação — todas as posições ───────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Comparação — todas as posições</div>
         <div className="pg-canvas" style={{ gap: '2rem', flexWrap: 'wrap' }}>
@@ -62,7 +60,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── Conteúdo rico (HTML) ──────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Conteúdo rico — HTML dentro do tooltip</div>
         <div className="pg-canvas" style={{ gap: '2rem' }}>
@@ -97,7 +94,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── Triggers — sobre qualquer elemento ───────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Trigger — sobre diferentes elementos</div>
         <div className="pg-canvas" style={{ gap: '2rem', flexWrap: 'wrap' }}>
@@ -124,7 +120,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── auto-align ───────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">auto-align — reposicionamento automático por colisão com viewport</div>
         <p className="pg-desc" style={{ marginBottom: '1rem', fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>
@@ -132,7 +127,6 @@ export default function TooltipPage() {
           Use <code>boundary="#id"</code> para restringir o cálculo a um container específico (ex: excluir a navbar do espaço disponível).
         </p>
 
-        {/* Comparação sem vs com auto-align */}
         <div className="pg-canvas" style={{ gap: '2rem', marginBottom: '1rem' }}>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>Sem:</span>
@@ -150,7 +144,6 @@ export default function TooltipPage() {
           </div>
         </div>
 
-        {/* Com boundary explícito — respeita o container #root */}
         <div className="pg-canvas" style={{ gap: '2rem', flexWrap: 'wrap' }}>
           <xds-tooltip position="left" auto-align boundary="#root">
             <xds-button kind="secondary" size="sm">left + boundary="#root"</xds-button>
@@ -169,7 +162,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── closeOnActivation ────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">close-on-activation — fecha ao clicar / Enter / Space</div>
         <div className="pg-canvas" style={{ gap: '2rem' }}>
@@ -185,7 +177,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── defaultOpen ──────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">default-open — abre na primeira renderização</div>
         <div className="pg-canvas">
@@ -196,7 +187,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── Delays ───────────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Delays — enter-delay-ms · leave-delay-ms</div>
         <div className="pg-canvas" style={{ gap: '2rem', flexWrap: 'wrap' }}>
@@ -217,7 +207,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── drop-shadow ──────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">drop-shadow — com e sem sombra</div>
         <div className="pg-canvas" style={{ gap: '2rem' }}>
@@ -233,7 +222,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── disabled ─────────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">disabled — tooltip suprimido sem remover do DOM</div>
         <div className="pg-canvas" style={{ gap: '2rem' }}>
@@ -249,7 +237,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── Composição — contexto real ────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — barra de ações com tooltips</div>
         <div className="pg-canvas">
@@ -280,7 +267,6 @@ export default function TooltipPage() {
         </div>
       </div>
 
-      {/* ── Composição — campo de formulário com ajuda ────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — label de campo com ícone de ajuda</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 400 }}>

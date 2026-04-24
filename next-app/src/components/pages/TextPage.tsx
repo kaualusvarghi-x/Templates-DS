@@ -8,7 +8,6 @@ export default function TextPage() {
         <p className="pg-desc">Tipografia semântica · variant · as · weight · italic · transform · align · spacing · truncate</p>
       </div>
 
-      {/* ── Escala de tamanho — visão geral ─────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Escala de tamanho — do maior para o menor</div>
         <div className="pg-canvas pg-canvas--column">
@@ -25,7 +24,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Headings com conteúdo real ───────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Headings — conteúdo real</div>
         <div className="pg-canvas pg-canvas--column">
@@ -36,7 +34,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Body — parágrafos longos ─────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Body — parágrafos</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 640 }}>
@@ -51,7 +48,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Utilitários ──────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Utilitários — caption, label, overline, meta</div>
         <div className="pg-canvas pg-canvas--column">
@@ -66,7 +62,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Especiais ────────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Especiais</div>
         <div className="pg-canvas pg-canvas--column">
@@ -75,7 +70,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop as — sobrescrita de tag ─────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop as — mesmo estilo, tag diferente</div>
         <div className="pg-canvas pg-canvas--column">
@@ -87,7 +81,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop weight — sobrescrita de peso ───────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop weight — sobrescrita de font-weight</div>
         <div className="pg-canvas pg-canvas--column">
@@ -101,7 +94,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop italic ──────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop italic</div>
         <div className="pg-canvas pg-canvas--column">
@@ -112,7 +104,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop transform ───────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop transform</div>
         <div className="pg-canvas pg-canvas--column">
@@ -124,7 +115,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop align ───────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop align</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 500 }}>
@@ -136,7 +126,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop spacing ─────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop spacing — letter-spacing presets e valor livre</div>
         <div className="pg-canvas pg-canvas--column">
@@ -149,7 +138,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop truncate ────────────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop truncate — ellipsis em containers com largura fixa</div>
         <div className="pg-canvas pg-canvas--column">
@@ -171,7 +159,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Combinações de props ──────────────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Combinações — múltiplas props juntas</div>
         <div className="pg-canvas pg-canvas--column">
@@ -190,7 +177,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Prop as — sobrescrita de tag ─────────────────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Prop as — mesmo estilo, tag diferente</div>
         <div className="pg-canvas pg-canvas--column">
@@ -202,7 +188,6 @@ export default function TextPage() {
         </div>
       </div>
 
-      {/* ── Composição — hierarquia de conteúdo real ─────────────────────── */}
       <div className="pg-group">
         <div className="pg-group__label">Composição — hierarquia real</div>
         <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 600, gap: '0.5rem' }}>

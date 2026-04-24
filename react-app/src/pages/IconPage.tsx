@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import type { XdsIntrinsicElements } from '@xvia/design-system';
+import type { XdsIntrinsicElements } from '@xvia/ds-types';
 
 type IconAnimation = NonNullable<XdsIntrinsicElements['xds-icon']['animation']>;
 type IconVariant = NonNullable<XdsIntrinsicElements['xds-icon']['variant']>;

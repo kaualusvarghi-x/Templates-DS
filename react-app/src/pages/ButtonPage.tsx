@@ -16,7 +16,7 @@ export default function ButtonPage() {
         <div className="pg-group__label">Variantes — kind</div>
         <div className="pg-canvas" style={{ alignItems: 'center' }}>
           <xds-button>Primary (padrão)</xds-button>
-          <xds-button kind="danger">Secondary</xds-button>
+          <xds-button kind="secondary">Secondary</xds-button>
           <xds-button kind="tertiary">Tertiary</xds-button>
           <xds-button kind="ghost">Ghost</xds-button>
           <xds-button kind="danger">Danger</xds-button>

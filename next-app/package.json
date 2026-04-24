@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@xvia/design-system": "file:../../web-components",
+    "@xvia/ds-types": "file:../../web-components/xvia-ds-types-0.0.1.tgz",
     "next": "^15.2.4",
     "react": "19.2.0",
     "react-dom": "19.2.0"

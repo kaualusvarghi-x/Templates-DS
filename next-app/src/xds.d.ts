@@ -1,1 +1,1 @@
-/// <reference types="@xvia/design-system" />
+/// <reference types="@xvia/ds-types" />

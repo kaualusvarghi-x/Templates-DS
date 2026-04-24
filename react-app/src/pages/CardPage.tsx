@@ -2,9 +2,9 @@ export default function CardPage() {
   return (
     <>
       <div className="pg-header">
-        <span className="pg-tag">xds-card · xds-news-card · xds-quick-service-card · xds-service-card · xds-icon-card · xds-action-card</span>
+        <span className="pg-tag">xds-card · xds-news-card · xds-quick-service-card · xds-service-card</span>
         <h1 className="pg-title">Card</h1>
-        <p className="pg-desc">Base card · cards de notícia · atalho de serviço · card de serviço detalhado · card com ícone em destaque · botão-card de ação</p>
+        <p className="pg-desc">Base card · cards de notícia · atalho de serviço · card de serviço detalhado</p>
       </div>
 
       <div className="pg-group">
@@ -240,144 +240,6 @@ export default function CardPage() {
         </div>
       </div>
 
-      {/* ── xds-icon-card ─────────────────────────────────────────────────────── */}
-      <div className="pg-group">
-        <div className="pg-group__label">xds-icon-card — padrão</div>
-        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 560 }}>
-          <xds-icon-card
-            title="Alterar Senha"
-            description="Para garantir sua segurança, a alteração de senha é realizada através de um link seguro enviado ao seu e-mail cadastrado."
-            icon-color="primary"
-          >
-            <xds-icon slot="icon" name="lock" size="md" />
-            <xds-button kind="primary" size="sm">
-              <xds-icon slot="icon" name="mail" size="sm" />
-              Enviar Link de Redefinição
-            </xds-button>
-          </xds-icon-card>
-        </div>
-      </div>
-
-      <div className="pg-group">
-        <div className="pg-group__label">xds-icon-card — cores do ícone</div>
-        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 560 }}>
-          <xds-icon-card title="Primary" description="Ações gerais, padrão." icon-color="primary">
-            <xds-icon slot="icon" name="star" size="md" />
-          </xds-icon-card>
-          <xds-icon-card title="Info" description="Informações, notificações." icon-color="info">
-            <xds-icon slot="icon" name="info" size="md" />
-          </xds-icon-card>
-          <xds-icon-card title="Success" description="Confirmações, segurança ativa." icon-color="success">
-            <xds-icon slot="icon" name="check_circle" size="md" />
-          </xds-icon-card>
-          <xds-icon-card title="Warning" description="Alertas, atenção." icon-color="warning">
-            <xds-icon slot="icon" name="warning" size="md" />
-          </xds-icon-card>
-          <xds-icon-card title="Danger" description="Erros, ações destrutivas." icon-color="danger">
-            <xds-icon slot="icon" name="error" size="md" />
-          </xds-icon-card>
-          <xds-icon-card title="Neutral" description="Ações secundárias." icon-color="neutral">
-            <xds-icon slot="icon" name="settings" size="md" />
-          </xds-icon-card>
-        </div>
-      </div>
-
-      <div className="pg-group">
-        <div className="pg-group__label">xds-icon-card — conteúdo rico no slot</div>
-        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 560 }}>
-          <xds-icon-card
-            title="Verificação em Duas Etapas"
-            description="Adicione uma camada extra de segurança à sua conta."
-            icon-color="success"
-          >
-            <xds-icon slot="icon" name="shield" size="md" />
-            <div style={{
-              padding: 'var(--spacing-md, 16px)',
-              background: 'color-mix(in srgb, var(--color-success, #4caf50) 8%, var(--color-surface, #fff))',
-              borderRadius: 'var(--radius-md, 8px)',
-              fontSize: 'var(--font-size-sm, 14px)',
-              color: 'var(--color-text-secondary, #475569)',
-            }}>
-              Ative agora e receba um código via SMS ou e-mail a cada acesso.
-            </div>
-            <div style={{ display: 'flex', gap: 'var(--spacing-sm, 8px)' }}>
-              <xds-button kind="primary" size="sm">Ativar agora</xds-button>
-              <xds-button kind="ghost" size="sm">Saiba mais</xds-button>
-            </div>
-          </xds-icon-card>
-        </div>
-      </div>
-
-      <div className="pg-group">
-        <div className="pg-group__label">xds-icon-card — callout informativo</div>
-        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 560 }}>
-          <xds-icon-card title="Última Atualização:" icon-color="info">
-            <xds-icon slot="icon" name="info" size="md" />
-            <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 'var(--font-size-sm, 14px)' }}>Solicitação cancelada por falta de requisitos.</p>
-          </xds-icon-card>
-          <xds-icon-card title="Concluído:" icon-color="success">
-            <xds-icon slot="icon" name="check_circle" size="md" />
-            <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 'var(--font-size-sm, 14px)' }}>Sua solicitação foi processada com sucesso.</p>
-          </xds-icon-card>
-          <xds-icon-card title="Atenção:" icon-color="warning">
-            <xds-icon slot="icon" name="warning" size="md" />
-            <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 'var(--font-size-sm, 14px)' }}>O prazo para envio de documentos se encerra em 3 dias.</p>
-          </xds-icon-card>
-          <xds-icon-card title="Erro:" icon-color="danger">
-            <xds-icon slot="icon" name="error" size="md" />
-            <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 'var(--font-size-sm, 14px)' }}>Não foi possível concluir a operação. Tente novamente.</p>
-          </xds-icon-card>
-        </div>
-      </div>
-
-      <div className="pg-group">
-        <div className="pg-group__label">xds-icon-card — sem descrição</div>
-        <div className="pg-canvas pg-canvas--column" style={{ maxWidth: 560 }}>
-          <xds-icon-card title="Notificações" icon-color="info">
-            <xds-icon slot="icon" name="bell" size="md" />
-            <xds-button kind="secondary" size="sm">Gerenciar preferências</xds-button>
-          </xds-icon-card>
-        </div>
-      </div>
-
-      {/* ── xds-action-card ───────────────────────────────────────────────────── */}
-      <div className="pg-group">
-        <div className="pg-group__label">xds-action-card — padrão</div>
-        <div className="pg-canvas pg-canvas--column">
-          <xds-action-card label="Adicionar" style={{ width: '160px', height: '160px' }} />
-        </div>
-      </div>
-
-      <div className="pg-group">
-        <div className="pg-group__label">xds-action-card — ícone customizado</div>
-        <div className="pg-canvas" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-          <xds-action-card label="Nova Foto" style={{ width: '160px', height: '160px' }}>
-            <xds-icon slot="icon" name="photo_camera" size="lg" />
-          </xds-action-card>
-          <xds-action-card label="Importar" style={{ width: '160px', height: '160px' }}>
-            <xds-icon slot="icon" name="upload" size="lg" />
-          </xds-action-card>
-          <xds-action-card label="Conectar" style={{ width: '160px', height: '160px' }}>
-            <xds-icon slot="icon" name="link" size="lg" />
-          </xds-action-card>
-        </div>
-      </div>
-
-      <div className="pg-group">
-        <div className="pg-group__label">xds-action-card — em grid</div>
-        <div className="pg-canvas" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 160px)', gap: 16 }}>
-          <xds-action-card label="Adicionar" />
-          <xds-action-card label="Adicionar" />
-          <xds-action-card label="Adicionar" />
-        </div>
-      </div>
-
-      <div className="pg-group">
-        <div className="pg-group__label">xds-action-card — desabilitado</div>
-        <div className="pg-canvas pg-canvas--column">
-          <xds-action-card label="Adicionar" disabled style={{ width: '160px', height: '160px' }} />
-        </div>
-      </div>
     </>
   );
 }
