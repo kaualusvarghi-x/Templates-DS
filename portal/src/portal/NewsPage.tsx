@@ -135,6 +135,28 @@ function formatFeaturedDate(isoDate: string) {
   return `${Number(day)} de ${monthName}, ${year}`;
 }
 
+function normalizeDateFilter(raw: string) {
+  const value = raw.trim();
+  if (!value) return '';
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+
+  const mmddyyyy = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(value);
+  if (mmddyyyy) {
+    const part1 = Number(mmddyyyy[1]);
+    const part2 = Number(mmddyyyy[2]);
+    const year = mmddyyyy[3];
+    const month = part1 > 12 ? part2 : part1;
+    const day = part1 > 12 ? part1 : part2;
+
+    if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+      return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    }
+  }
+
+  return value;
+}
+
 export default function NewsPage({
   isLoggedIn,
   userName,
@@ -251,7 +273,7 @@ export default function NewsPage({
 
   const applyFilters = () => {
     setSelectedCategory(categoryDraft);
-    setSelectedDate(dateDraft);
+    setSelectedDate(normalizeDateFilter(dateDraft));
   };
 
   return (
@@ -280,19 +302,19 @@ export default function NewsPage({
                 <xds-breadcrumb-item is-current-page>Notícias</xds-breadcrumb-item>
               </xds-breadcrumb>
 
-              <xds-text variant="h1" as="h1">Central de Notícias</xds-text>
+              <xds-text variant="h1" as="h1" className="portal-news-head__title">Central de Notícias</xds-text>
             </div>
 
             <div className="portal-news-filters">
-              <xds-select ref={categorySelectRef} value={categoryDraft}>
+              <xds-select ref={categorySelectRef} value={categoryDraft} size="md">
                 {ALL_CATEGORIES.map((category) => (
                   <xds-select-item key={category} value={category}>{category}</xds-select-item>
                 ))}
               </xds-select>
 
-              <xds-input ref={dateInputRef} type="date" value={dateDraft}></xds-input>
+              <xds-input ref={dateInputRef} type="text" placeholder="mm/dd/yyyy" size="md" value={dateDraft}></xds-input>
 
-              <xds-button kind="primary" size="lg" onClick={applyFilters}>
+              <xds-button kind="primary" size="md" icon-position="left" className="portal-news-filters__submit" onClick={applyFilters}>
                 <xds-icon slot="icon" name="filter_list" size="sm"></xds-icon>
                 Filtrar
               </xds-button>
@@ -301,23 +323,26 @@ export default function NewsPage({
 
           {filteredNews.length > 0 ? (
             <>
-              <article
-                className="portal-news-featured"
-                style={{ backgroundImage: `url(${featured.image})` }}
-              >
+              <article className="portal-news-featured">
+                <div
+                  className="portal-news-featured__media"
+                  style={{ backgroundImage: `url(${featured.image})` }}
+                />
                 <div className="portal-news-featured__overlay" />
                 <div className="portal-news-featured__content">
-                  <xds-tag kind={CATEGORY_KIND[featured.category]}>
+                  <xds-tag className="portal-news-featured__tag" kind={CATEGORY_KIND[featured.category]}>
                     {featured.category.toUpperCase()}
                   </xds-tag>
-                  <xds-text variant="h1-hero" as="h2" className="portal-news-featured__title">
-                    {featured.title}
-                  </xds-text>
+                  <div className="portal-news-featured__title-wrap">
+                    <xds-text variant="h1-hero" as="h2" className="portal-news-featured__title">
+                      {featured.title}
+                    </xds-text>
+                  </div>
                   <xds-text variant="h2" as="p" weight="regular" className="portal-news-featured__summary">
                     {featured.summary}
                   </xds-text>
                   <div className="portal-news-featured__actions">
-                    <xds-button kind="secondary" size="lg">Ler notícia completa</xds-button>
+                    <xds-button className="portal-news-featured__cta" kind="primary" size="lg">Ler notícia completa</xds-button>
                     <span className="portal-news-featured__date">
                       <xds-icon name="schedule" size="sm"></xds-icon>
                       {formatFeaturedDate(featured.date)}
@@ -347,7 +372,7 @@ export default function NewsPage({
                       <xds-text variant="h2" as="h3" className="portal-news-page-card__title">{news.title}</xds-text>
                       <xds-text variant="body" as="p" className="portal-news-page-card__summary">{news.summary}</xds-text>
 
-                      <xds-button kind="tertiary" size="md">
+                      <xds-button kind="ghost" size="sm" animation="underline" className="portal-news-page-card__cta">
                         Saiba mais
                         <xds-icon slot="icon" name="arrow_forward" size="sm"></xds-icon>
                       </xds-button>
@@ -379,8 +404,12 @@ export default function NewsPage({
           <section className="portal-news-signup">
             <xds-card className="portal-news-signup__card" padding="lg">
               <div className="portal-news-signup__copy">
-                <xds-text variant="h2" as="h2">Fique por dentro do que acontece</xds-text>
-                <xds-text variant="body" as="p">Receba as principais notícias e editais diretamente no seu e-mail.</xds-text>
+                <xds-text variant="h2" as="h2" className="portal-news-signup__title">
+                  Fique por dentro do que acontece
+                </xds-text>
+                <xds-text variant="body" as="p" className="portal-news-signup__description">
+                  Receba as principais notícias e editais diretamente no seu e-mail.
+                </xds-text>
               </div>
 
               <form
@@ -390,14 +419,25 @@ export default function NewsPage({
                   setNewsletterEmail('');
                 }}
               >
-                <xds-input
-                  ref={emailInputRef}
-                  type="email"
-                  value={newsletterEmail}
-                  placeholder="Seu melhor e-mail"
-                ></xds-input>
-                <xds-button type="submit" kind="primary" size="xl">Inscrever</xds-button>
-                <xds-text variant="caption" as="span" italic>
+                <div className="portal-news-signup__row">
+                  <xds-input
+                    ref={emailInputRef}
+                    type="email"
+                    size="lg"
+                    className="portal-news-signup__input"
+                    value={newsletterEmail}
+                    placeholder="Seu melhor e-mail"
+                  ></xds-input>
+                  <xds-button
+                    type="submit"
+                    kind="secondary"
+                    size="lg"
+                    className="portal-news-signup__submit"
+                  >
+                    Inscrever
+                  </xds-button>
+                </div>
+                <xds-text variant="caption" as="span" italic className="portal-news-signup__privacy">
                   Respeitamos sua privacidade.
                 </xds-text>
               </form>

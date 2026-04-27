@@ -207,8 +207,8 @@ export default function DepartmentsPage({
           </xds-breadcrumb>
 
           <header className="portal-organs-header">
-            <xds-text variant="h1" as="h1">Estrutura do Governo</xds-text>
-            <xds-text variant="h2" as="p" weight="regular">
+            <xds-text variant="h1" as="h1" className="portal-organs-header__title">Estrutura do Governo</xds-text>
+            <xds-text variant="body" as="p" weight="regular" className="portal-organs-header__subtitle">
               Encontre informações, serviços e contatos de todos os órgãos,
               secretarias e entidades da administração pública.
             </xds-text>
@@ -218,6 +218,7 @@ export default function DepartmentsPage({
             <xds-search
               ref={searchRef}
               placeholder="Buscar por nome ou sigla..."
+              size="md"
               radius="rounded"
               shadow={false}
               value={query}
@@ -226,8 +227,13 @@ export default function DepartmentsPage({
 
             <div className="portal-organs-toolbar__filters">
               <div className="portal-organs-toolbar__filter">
-                <xds-text variant="h3" as="span">Filtrar:</xds-text>
-                <xds-select ref={typeSelectRef} value={typeFilter} className="portal-organs-toolbar__select">
+                <xds-text variant="body-sm" weight="semibold" as="span" className="portal-organs-toolbar__label">Filtrar:</xds-text>
+                <xds-select
+                  ref={typeSelectRef}
+                  size="sm"
+                  value={typeFilter}
+                  className="portal-organs-toolbar__select portal-organs-toolbar__select--type"
+                >
                   <xds-select-item value="Todos">Todos</xds-select-item>
                   <xds-select-item value="AGÊNCIA">AGÊNCIA</xds-select-item>
                   <xds-select-item value="ÓRGÃO">ÓRGÃO</xds-select-item>
@@ -241,8 +247,13 @@ export default function DepartmentsPage({
               </div>
 
               <div className="portal-organs-toolbar__filter">
-                <xds-text variant="h3" as="span">Ordenar:</xds-text>
-                <xds-select ref={sortSelectRef} value={sortOrder} className="portal-organs-toolbar__select">
+                <xds-text variant="body-sm" weight="semibold" as="span" className="portal-organs-toolbar__label">Ordenar:</xds-text>
+                <xds-select
+                  ref={sortSelectRef}
+                  size="sm"
+                  value={sortOrder}
+                  className="portal-organs-toolbar__select portal-organs-toolbar__select--sort"
+                >
                   <xds-select-item value="A-Z">A-Z</xds-select-item>
                   <xds-select-item value="Z-A">Z-A</xds-select-item>
                 </xds-select>
@@ -252,20 +263,26 @@ export default function DepartmentsPage({
 
           <section className="portal-organs-grid" aria-label="Lista de órgãos">
             {filtered.map((org) => (
-              <xds-card className="portal-organs-card" key={org.id}>
+              <xds-card className="portal-organs-card" interactive key={org.id}>
                 <div className="portal-organs-card__top">
                   <xds-tag kind="neutral">{org.acronym}</xds-tag>
                   <xds-tag kind={TYPE_KIND[org.type]}>{org.type}</xds-tag>
                 </div>
 
-                <xds-text variant="h2" as="h2" className="portal-organs-card__title">{org.name}</xds-text>
+                <xds-text variant="h3" as="h2" className="portal-organs-card__title">{org.name}</xds-text>
 
                 <div className="portal-organs-card__links">
-                  <xds-button kind="tertiary" size="sm">
+                  <xds-button kind="ghost" size="sm" icon-position="left" className="portal-organs-card__link-btn portal-organs-card__link-btn--details">
                     <xds-icon slot="icon" name="info" size="sm"></xds-icon>
                     Detalhes
                   </xds-button>
-                  <xds-button kind="tertiary" size="sm">
+                  <xds-button
+                    kind="ghost"
+                    size="sm"
+                    icon-position="left"
+                    animation="underline"
+                    className="portal-organs-card__link-btn portal-organs-card__link-btn--site"
+                  >
                     <xds-icon slot="icon" name="share" size="sm"></xds-icon>
                     Site
                   </xds-button>

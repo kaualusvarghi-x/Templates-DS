@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import PortalHeader from './PortalHeader';
 import PortalFooter from './PortalFooter';
 import { MOCK_SERVICES, NotificationItem } from '../data';
+import { EXTERNAL_LINKS } from './externalLinks';
 
 interface ServiceSearchProps {
   isLoggedIn: boolean;
@@ -36,6 +37,11 @@ function toServiceType(type: 'Digital' | 'Presencial' | 'Híbrido'): 'digital' |
   return 'hibrido';
 }
 
+type CheckboxChangedDetail = {
+  checked?: boolean;
+  value?: string;
+};
+
 export default function ServiceSearch({
   isLoggedIn,
   userName,
@@ -56,6 +62,8 @@ export default function ServiceSearch({
   const heroSearchRef = useRef<HTMLElement | null>(null);
   const paginationRef = useRef<HTMLElement | null>(null);
   const sortSelectRef = useRef<HTMLElement | null>(null);
+  const categoryChecksRef = useRef<HTMLDivElement | null>(null);
+  const typeChecksRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const search = heroSearchRef.current;
@@ -81,22 +89,6 @@ export default function ServiceSearch({
   }, [onNavigate, setGlobalSearchTerm]);
 
   useEffect(() => {
-    const pagination = paginationRef.current;
-    if (!pagination) return;
-
-    const handlePageChanged = (event: Event) => {
-      const detail = (event as CustomEvent<{ page?: number }>).detail;
-      if (detail?.page) setPage(detail.page);
-    };
-
-    pagination.addEventListener('xds-pagination-changed', handlePageChanged as EventListener);
-
-    return () => {
-      pagination.removeEventListener('xds-pagination-changed', handlePageChanged as EventListener);
-    };
-  }, []);
-
-  useEffect(() => {
     const select = sortSelectRef.current;
     if (!select) return;
 
@@ -120,6 +112,71 @@ export default function ServiceSearch({
 
     return () => {
       select.removeEventListener('change', handleSortChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const checks = categoryChecksRef.current;
+    if (!checks) return;
+
+    const handleCategoryChanged = (event: Event) => {
+      const checkbox = event.target as HTMLElement | null;
+      const cat = checkbox?.getAttribute('data-category');
+      if (!cat) return;
+
+      const detail = (event as CustomEvent<CheckboxChangedDetail>).detail;
+      const isChecked = Boolean(detail?.checked);
+      setPage(1);
+      setSelectedCategories((prev) => {
+        if (isChecked) return prev.includes(cat) ? prev : [...prev, cat];
+        return prev.filter((c) => c !== cat);
+      });
+    };
+
+    checks.addEventListener(
+      'xds-checkbox-changed',
+      handleCategoryChanged as EventListener
+    );
+
+    return () => {
+      checks.removeEventListener(
+        'xds-checkbox-changed',
+        handleCategoryChanged as EventListener
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    const checks = typeChecksRef.current;
+    if (!checks) return;
+
+    const handleTypeChanged = (event: Event) => {
+      const checkbox = event.target as HTMLElement | null;
+      const type = checkbox?.getAttribute('data-type') as
+        | 'Digital'
+        | 'Presencial'
+        | null;
+      if (!type) return;
+
+      const detail = (event as CustomEvent<CheckboxChangedDetail>).detail;
+      const isChecked = Boolean(detail?.checked);
+      setPage(1);
+      setSelectedTypes((prev) => {
+        if (isChecked) return prev.includes(type) ? prev : [...prev, type];
+        return prev.filter((t) => t !== type);
+      });
+    };
+
+    checks.addEventListener(
+      'xds-checkbox-changed',
+      handleTypeChanged as EventListener
+    );
+
+    return () => {
+      checks.removeEventListener(
+        'xds-checkbox-changed',
+        handleTypeChanged as EventListener
+      );
     };
   }, []);
 
@@ -153,19 +210,75 @@ export default function ServiceSearch({
     if (page > totalPages) setPage(totalPages);
   }, [page, totalPages]);
 
-  const toggleCategory = (cat: string) => {
-    setPage(1);
-    setSelectedCategories((prev) => (
-      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
-    ));
-  };
+  useEffect(() => {
+    const pagination = paginationRef.current as (HTMLElement & { page?: number }) | null;
+    if (!pagination) return;
 
-  const toggleType = (type: 'Digital' | 'Presencial') => {
-    setPage(1);
-    setSelectedTypes((prev) => (
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-    ));
-  };
+    const syncPageFromElement = () => {
+      const fromProp = pagination.page;
+      const fromAttr = pagination.getAttribute('page');
+      const parsed = Number(fromProp ?? fromAttr ?? '');
+      if (Number.isFinite(parsed) && parsed >= 1) {
+        setPage(parsed);
+      }
+    };
+
+    const handlePageChanged = (event: Event) => {
+      const detail = (event as CustomEvent<{ page?: number }>).detail;
+      if (typeof detail?.page === 'number' && detail.page >= 1) {
+        setPage(detail.page);
+        return;
+      }
+      syncPageFromElement();
+    };
+
+    const resolvePageFromClick = (event: Event): number | null => {
+      const path = event.composedPath?.() ?? [];
+      const clickedButton = path.find(
+        (node) => node instanceof HTMLButtonElement,
+      ) as HTMLButtonElement | undefined;
+
+      if (!clickedButton) return null;
+
+      const numericText = clickedButton.textContent?.trim() ?? '';
+      if (/^\d+$/.test(numericText)) return Number(numericText);
+
+      const aria = (clickedButton.getAttribute('aria-label') ?? '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      if (aria.includes('proxima')) return Math.min(totalPages, currentPage + 1);
+      if (aria.includes('anterior')) return Math.max(1, currentPage - 1);
+
+      return null;
+    };
+
+    const handleFallbackClick = (event: Event) => {
+      const resolved = resolvePageFromClick(event);
+      if (resolved && resolved !== currentPage) {
+        setPage(resolved);
+        return;
+      }
+      window.requestAnimationFrame(syncPageFromElement);
+    };
+
+    const observer = new MutationObserver(syncPageFromElement);
+    observer.observe(pagination, { attributes: true, attributeFilter: ['page'] });
+
+    pagination.addEventListener('xds-pagination-changed', handlePageChanged as EventListener);
+    pagination.addEventListener('xds-page-changed', handlePageChanged as EventListener);
+    pagination.addEventListener('change', handlePageChanged as EventListener);
+    pagination.addEventListener('click', handleFallbackClick);
+
+    return () => {
+      observer.disconnect();
+      pagination.removeEventListener('xds-pagination-changed', handlePageChanged as EventListener);
+      pagination.removeEventListener('xds-page-changed', handlePageChanged as EventListener);
+      pagination.removeEventListener('change', handlePageChanged as EventListener);
+      pagination.removeEventListener('click', handleFallbackClick);
+    };
+  }, [currentPage, totalPages, filteredServices.length]);
 
   return (
     <div className="portal-page portal-page--public">
@@ -189,9 +302,9 @@ export default function ServiceSearch({
             className="portal-services-hero__search"
             placeholder="O que você procura hoje?"
             value={globalSearchTerm}
-            radius="pill"
+            radius="rounded"
           >
-            <xds-button slot="action" kind="primary" size="xl">BUSCAR</xds-button>
+            <xds-button slot="action" kind="secondary" size="md">BUSCAR</xds-button>
           </xds-search>
         </div>
       </section>
@@ -202,21 +315,23 @@ export default function ServiceSearch({
             <xds-text variant="label" as="p" className="portal-services-filter__label">Filtrar por</xds-text>
 
             <section className="portal-services-filter__group">
-              <xds-text variant="h3" as="h2">Categorias</xds-text>
-              <div className="portal-services-filter__checks">
+              <xds-text variant="h3" as="h2" className="portal-services-filter__group-title">Categorias</xds-text>
+              <div className="portal-services-filter__checks" ref={categoryChecksRef}>
                 {displayedCategories.map((cat) => (
                   <xds-checkbox
                     key={cat}
                     checked={selectedCategories.includes(cat)}
                     label-text={cat}
-                    onClick={() => toggleCategory(cat)}
+                    value={cat}
+                    data-category={cat}
                   ></xds-checkbox>
                 ))}
               </div>
               {ALL_CATEGORIES.length > 5 && (
                 <xds-button
-                  kind="tertiary"
-                  size="md"
+                  kind="ghost"
+                  size="sm"
+                  animation="underline"
                   className="portal-services-filter__more"
                   onClick={() => setShowAllCategories((prev) => !prev)}
                 >
@@ -226,26 +341,36 @@ export default function ServiceSearch({
             </section>
 
             <section className="portal-services-filter__group">
-              <xds-text variant="h3" as="h2">Canal de Atendimento</xds-text>
-              <div className="portal-services-filter__checks">
+              <xds-text variant="h3" as="h2" className="portal-services-filter__group-title">Canal de Atendimento</xds-text>
+              <div className="portal-services-filter__checks" ref={typeChecksRef}>
                 <xds-checkbox
                   checked={selectedTypes.includes('Digital')}
                   label-text="Digital (Online)"
-                  onClick={() => toggleType('Digital')}
+                  value="Digital"
+                  data-type="Digital"
                 ></xds-checkbox>
                 <xds-checkbox
                   checked={selectedTypes.includes('Presencial')}
                   label-text="Presencial / Híbrido"
-                  onClick={() => toggleType('Presencial')}
+                  value="Presencial"
+                  data-type="Presencial"
                 ></xds-checkbox>
               </div>
             </section>
 
             <xds-card className="portal-services-help" padding="md">
-              <xds-text variant="body" as="p" italic>
-                "Não encontrou o que precisava?"
+              <xds-text variant="body" as="p" italic className="portal-services-help__title">
+                Não encontrou o que precisava?
               </xds-text>
-              <xds-button kind="secondary" size="lg">
+              <xds-button
+                kind="tertiary"
+                size="lg"
+                icon-position="left"
+                full-width
+                className="portal-services-help__action"
+                href={EXTERNAL_LINKS.ouvidoria}
+                target="_blank"
+              >
                 <xds-icon slot="icon" name="support_agent" size="sm"></xds-icon>
                 Falar com Ouvidoria
               </xds-button>

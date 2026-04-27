@@ -140,30 +140,55 @@ export default function LandingPage({
                 ref={searchRef}
                 className="portal-hero__search"
                 placeholder="Buscar serviços..."
+                radius="rounded"
+                shadow
+                size="md"
                 value={globalSearchTerm}
               >
                 <xds-icon-button
                   slot="action"
-                  kind="ghost"
+                  kind="primary"
+                  className="portal-hero__search-action"
+                  size="sm"
                   tooltip-text="Sugestões"
                   icon="sparkles"
                 ></xds-icon-button>
               </xds-search>
 
-              <xds-button kind="primary" size="xl" onClick={() => onNavigate('search')}>
+              <xds-button
+                kind="primary"
+                size="lg"
+                className="portal-hero__submit"
+                onClick={() => onNavigate('search')}
+              >
                 BUSCAR
               </xds-button>
             </div>
 
             <div className="portal-hero__suggestions">
               <xds-text variant="body" as="span" weight="medium">Sugestões:</xds-text>
-              <xds-button kind="tertiary" size="md" onClick={() => handleSuggestion('2ª via de conta')}>
+              <xds-button
+                kind="ghost"
+                size="sm"
+                className="portal-hero__suggestion-btn"
+                onClick={() => handleSuggestion('2ª via de conta')}
+              >
                 2ª via de conta
               </xds-button>
-              <xds-button kind="tertiary" size="md" onClick={() => handleSuggestion('Vacinação')}>
+              <xds-button
+                kind="ghost"
+                size="sm"
+                className="portal-hero__suggestion-btn"
+                onClick={() => handleSuggestion('Vacinação')}
+              >
                 Vacinação
               </xds-button>
-              <xds-button kind="tertiary" size="md" onClick={() => handleSuggestion('Concursos')}>
+              <xds-button
+                kind="ghost"
+                size="sm"
+                className="portal-hero__suggestion-btn"
+                onClick={() => handleSuggestion('Concursos')}
+              >
                 Concursos
               </xds-button>
             </div>
@@ -177,7 +202,7 @@ export default function LandingPage({
                 <xds-text variant="h2" as="h2" className="portal-section__title">Serviços em Destaque</xds-text>
                 <div className="portal-section__accent" />
               </div>
-              <xds-button kind="tertiary" size="md" onClick={() => onNavigate('search')}>
+              <xds-button kind="ghost" size="md" onClick={() => onNavigate('search')}>
                 Ver todos
                 <xds-icon slot="icon" name="arrow_forward" size="sm"></xds-icon>
               </xds-button>
@@ -187,6 +212,7 @@ export default function LandingPage({
               {FEATURED.map((item) => (
                 <xds-quick-service-card
                   key={item.title}
+                  className={`portal-featured-card portal-featured-card--${item.iconColor}`}
                   title={item.title}
                   description={item.desc}
                   onClick={() => onNavigate('search')}
@@ -195,7 +221,6 @@ export default function LandingPage({
                     slot="icon"
                     name={item.icon}
                     size="md"
-                    color={item.iconColor}
                   ></xds-icon>
                 </xds-quick-service-card>
               ))}
@@ -210,7 +235,12 @@ export default function LandingPage({
                 <xds-text variant="h2" as="h2" className="portal-section__title">Últimas Notícias</xds-text>
                 <div className="portal-section__accent portal-section__accent--green" />
               </div>
-              <xds-button kind="tertiary" size="md" onClick={() => onNavigate('news')}>
+              <xds-button
+                kind="ghost"
+                size="md"
+                className="portal-news-section__cta"
+                onClick={() => onNavigate('news')}
+              >
                 Acompanhar notícias
                 <xds-icon slot="icon" name="arrow_forward" size="sm"></xds-icon>
               </xds-button>
@@ -236,7 +266,7 @@ export default function LandingPage({
           <div className="portal-shell">
             <xds-card className="portal-cta-card" padding="lg">
               <div className="portal-cta-card__content">
-                <xds-text variant="h2" as="h2" className="portal-cta-card__title">
+                <xds-text variant="h1" as="h2" className="portal-cta-card__title">
                   Acesse tudo pelo celular
                 </xds-text>
                 <xds-text variant="body" as="p" className="portal-cta-card__text">

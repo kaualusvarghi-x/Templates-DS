@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { NotificationItem } from '../data';
+import { EXTERNAL_LINKS } from './externalLinks';
 
 interface PortalHeaderProps {
   isLoggedIn: boolean;
@@ -14,27 +15,38 @@ interface PortalHeaderProps {
   view?: 'landing' | 'search' | 'departments' | 'news' | 'dashboard' | 'notifications';
 }
 
+type MobileMenuItem = {
+  label: string;
+  icon: IconName;
+  action: () => void;
+};
+
 function PortalLogo({ onNavigate, privateArea }: { onNavigate: (view: string) => void; privateArea?: boolean }) {
   return (
-    <button className="portal-brand" onClick={() => onNavigate('landing')}>
-      <span className="portal-brand__icon">
+    <xds-button className="portal-brand" kind="ghost" size="sm" icon-position="left" onClick={() => onNavigate('landing')}>
+      <span slot="icon" className="portal-brand__icon">
         <xds-icon name="account_balance" size="sm"></xds-icon>
       </span>
+      <span className="portal-brand__content">
+        <span className="portal-brand__gov">
+          <xds-text variant="logo" as="strong" className="portal-brand__title">
+            PORTAL<span>GOV</span>
+          </xds-text>
+          <xds-text variant="caption" as="span" className="portal-brand__sub">OFICIAL</xds-text>
+        </span>
 
-      <span className="portal-brand__gov">
-        <xds-text variant="logo" as="strong" className="portal-brand__title">
-          PORTAL<span>GOV</span>
-        </xds-text>
-        <xds-text variant="caption" as="span" className="portal-brand__sub">OFICIAL</xds-text>
+        <span className="portal-brand__divider" />
+
+        <span className="portal-brand__service">
+          <xds-text variant="h3" as="strong" className="portal-brand__service-title">
+            {privateArea ? 'Área do Cidadão' : 'Serviços Digitais'}
+          </xds-text>
+          <xds-text variant="caption" as="span" className="portal-brand__service-sub">
+            {privateArea ? 'Acesso verificado' : 'Simplificando sua vida'}
+          </xds-text>
+        </span>
       </span>
-
-      <span className="portal-brand__divider" />
-
-      <span className="portal-brand__service">
-        <xds-text variant="h3" as="strong">{privateArea ? 'Área do Cidadão' : 'Serviços Digitais'}</xds-text>
-        <xds-text variant="caption" as="span">{privateArea ? 'Acesso verificado' : 'Simplificando sua vida'}</xds-text>
-      </span>
-    </button>
+    </xds-button>
   );
 }
 
@@ -61,6 +73,21 @@ export default function PortalHeader({
 
   const unread = notifications.filter((n) => !n.read).length;
   const hidePrivateNav = view === 'dashboard' || view === 'notifications';
+  const mobileMenuItems: MobileMenuItem[] = isLoggedIn
+    ? [
+        { label: 'Início', icon: 'home', action: () => onNavigate('dashboard') },
+        { label: 'Serviços', icon: 'search', action: () => onNavigate('search') },
+        { label: 'Órgãos e Secretarias', icon: 'account_balance', action: () => onNavigate('departments') },
+        { label: 'Notícias', icon: 'calendar_today', action: () => onNavigate('news') },
+        { label: `Notificações${unread > 0 ? ` (${unread})` : ''}`, icon: 'notifications', action: () => onNavigate('notifications') },
+      ]
+    : [
+        { label: 'Início', icon: 'home', action: () => onNavigate('landing') },
+        { label: 'Serviços', icon: 'search', action: () => onNavigate('search') },
+        { label: 'Órgãos e Secretarias', icon: 'account_balance', action: () => onNavigate('departments') },
+        { label: 'Notícias', icon: 'calendar_today', action: () => onNavigate('news') },
+        { label: 'Ouvidoria', icon: 'support_agent', action: () => onNavigate('landing') },
+      ];
 
   useEffect(() => {
     const theme = isHighContrast ? 'dark' : 'light';
@@ -68,6 +95,30 @@ export default function PortalHeader({
     document.documentElement.setAttribute('data-portal-theme', theme);
     window.localStorage.setItem('portal-theme', theme);
   }, [isHighContrast]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const media = window.matchMedia('(min-width: 1025px)');
+    const closeIfDesktop = (event: MediaQueryList | MediaQueryListEvent) => {
+      if (event.matches) setMobileOpen(false);
+    };
+
+    closeIfDesktop(media);
+    media.addEventListener('change', closeIfDesktop);
+    return () => media.removeEventListener('change', closeIfDesktop);
+  }, []);
 
   useEffect(() => {
     const refs = [desktopSearchRef.current, mobileSearchRef.current].filter(Boolean) as HTMLElement[];
@@ -141,17 +192,20 @@ export default function PortalHeader({
               <xds-button kind="ghost" size="md" onClick={() => onNavigate('search')}>Serviços</xds-button>
               <xds-button kind="ghost" size="md" onClick={() => onNavigate('departments')}>Órgãos</xds-button>
               <xds-button kind="ghost" size="md" onClick={() => onNavigate('news')}>Notícias</xds-button>
-              <xds-button kind="ghost" size="md">Ouvidoria</xds-button>
+              <xds-button kind="ghost" size="md" href={EXTERNAL_LINKS.ouvidoria} target="_blank">
+                Ouvidoria
+              </xds-button>
             </nav>
 
-            <xds-button kind="primary" size="lg" onClick={() => onNavigate('dashboard')}>
+            <xds-button className="portal-header__login-btn" kind="primary" size="lg" onClick={() => onNavigate('dashboard')}>
               Entrar
             </xds-button>
 
             <xds-icon-button
-              className="portal-header__mobile-toggle"
+              className={`portal-header__mobile-toggle${mobileOpen ? ' portal-header__mobile-toggle--open' : ''}`}
               icon={mobileOpen ? 'close' : 'menu'}
-              kind="ghost"
+              kind={mobileOpen ? 'tertiary' : 'ghost'}
+              size={mobileOpen ? 'lg' : 'md'}
               tooltip-text={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
               onClick={() => setMobileOpen((prev) => !prev)}
             ></xds-icon-button>
@@ -160,16 +214,72 @@ export default function PortalHeader({
 
         {mobileOpen && (
           <div className="portal-header__mobile-menu">
-            <nav className="portal-header__mobile-nav">
-              <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('landing'); }}>Início</xds-button>
-              <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('search'); }}>Serviços</xds-button>
-              <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('departments'); }}>Órgãos</xds-button>
-              <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('news'); }}>Notícias</xds-button>
-              <xds-button kind="ghost" size="md">Ouvidoria</xds-button>
-              <xds-button kind="primary" size="lg" onClick={() => { setMobileOpen(false); onNavigate('dashboard'); }}>
-                Entrar
-              </xds-button>
+            <xds-search
+              ref={mobileSearchRef}
+              className="portal-header__mobile-search"
+              placeholder="O que você procura?"
+              value={globalSearchTerm}
+              radius="rounded"
+              shadow={false}
+            ></xds-search>
+
+            <nav className="portal-header__mobile-nav portal-header__mobile-nav--list">
+              {mobileMenuItems.map((item, index) => (
+                <xds-button
+                  key={item.label}
+                  kind="ghost"
+                  size="md"
+                  icon-position="right"
+                  className={`portal-mobile-link${index === 0 ? ' portal-mobile-link--active' : ''}`}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    item.action();
+                  }}
+                >
+                  <span className="portal-mobile-link__main">
+                    <xds-icon name={item.icon} size="sm"></xds-icon>
+                    <xds-text variant="h3" as="span">{item.label}</xds-text>
+                  </span>
+                  <xds-icon slot="icon" className="portal-mobile-link__chevron" name="chevron_right" size="sm"></xds-icon>
+                </xds-button>
+              ))}
             </nav>
+
+            <div className="portal-header__mobile-footer">
+              <xds-button
+                className="portal-header__mobile-login"
+                kind="primary"
+                size="lg"
+                full-width
+                onClick={() => {
+                  setMobileOpen(false);
+                  onNavigate('dashboard');
+                }}
+              >
+                Entrar com gov.br
+              </xds-button>
+
+              <div className="portal-header__mobile-controls">
+                <div className="portal-header__mobile-font">
+                  <xds-button className="portal-header__mobile-font-btn" kind="ghost" size="sm" onClick={() => onFontSize('decrease')}>A-</xds-button>
+                  <xds-divider orientation="vertical"></xds-divider>
+                  <xds-button className="portal-header__mobile-font-btn" kind="ghost" size="sm" onClick={() => onFontSize('increase')}>A+</xds-button>
+                </div>
+
+                <xds-button
+                  className="portal-header__mobile-theme"
+                  kind="ghost"
+                  size="sm"
+                  onClick={toggleContrast}
+                  aria-pressed={isHighContrast}
+                >
+                  <span className="portal-header__mobile-theme-content">
+                    <xds-icon name="contrast" size="sm"></xds-icon>
+                    <xds-text variant="caption" as="span">Tema</xds-text>
+                  </span>
+                </xds-button>
+              </div>
+            </div>
           </div>
         )}
       </header>
@@ -189,7 +299,7 @@ export default function PortalHeader({
               ref={desktopSearchRef}
               className="portal-header__search"
               placeholder="Buscar serviço..."
-              size="md"
+              size="sm"
               radius="pill"
               shadow={false}
               value={globalSearchTerm}
@@ -203,28 +313,32 @@ export default function PortalHeader({
               </nav>
             )}
 
-            <button
-              className="portal-header__notif-btn"
-              onClick={() => onNavigate('notifications')}
-              title="Notificações"
-            >
-              <xds-icon name="notifications" size="sm"></xds-icon>
+            <span className="portal-header__notif-wrap">
+              <xds-icon-button
+                className="portal-header__notif-btn"
+                kind="ghost"
+                size="md"
+                icon="notifications"
+                tooltip-text="Notificações"
+                onClick={() => onNavigate('notifications')}
+              ></xds-icon-button>
               {unread > 0 && <span className="portal-header__notif-badge">{unread}</span>}
-            </button>
+            </span>
 
-            <button className="portal-header__user" onClick={() => onNavigate('dashboard')}>
+            <xds-button className="portal-header__user" kind="ghost" size="sm" icon-position="right" onClick={() => onNavigate('dashboard')}>
               <span className="portal-header__user-info">
                 <xds-text variant="h3" as="span" className="portal-header__user-name">{userName}</xds-text>
                 <xds-text variant="caption" as="span" className="portal-header__user-cpf">CPF: {cpf}</xds-text>
               </span>
-              <xds-avatar src={avatarUrl} alt="Avatar" size="sm"></xds-avatar>
-            </button>
+              <xds-avatar slot="icon" src={avatarUrl} alt="Avatar" size="lg"></xds-avatar>
+            </xds-button>
           </div>
 
           <xds-icon-button
-            className="portal-header__mobile-toggle"
+            className={`portal-header__mobile-toggle${mobileOpen ? ' portal-header__mobile-toggle--open' : ''}`}
             icon={mobileOpen ? 'close' : 'menu'}
-            kind="ghost"
+            kind={mobileOpen ? 'tertiary' : 'ghost'}
+            size={mobileOpen ? 'lg' : 'md'}
             tooltip-text={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
             onClick={() => setMobileOpen((prev) => !prev)}
           ></xds-icon-button>
@@ -235,22 +349,70 @@ export default function PortalHeader({
         <div className="portal-header__mobile-menu">
           <xds-search
             ref={mobileSearchRef}
+            className="portal-header__mobile-search"
             placeholder="O que você procura?"
             value={globalSearchTerm}
-            radius="pill"
+            radius="rounded"
             shadow={false}
           ></xds-search>
 
-          <nav className="portal-header__mobile-nav">
-            <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('landing'); }}>Início</xds-button>
-            <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('search'); }}>Serviços</xds-button>
-            <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('departments'); }}>Órgãos</xds-button>
-            <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('news'); }}>Notícias</xds-button>
-            <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('dashboard'); }}>Meu Painel</xds-button>
-            <xds-button kind="ghost" size="md" onClick={() => { setMobileOpen(false); onNavigate('notifications'); }}>
-              Notificações {unread > 0 ? `(${unread})` : ''}
-            </xds-button>
+          <nav className="portal-header__mobile-nav portal-header__mobile-nav--list">
+            {mobileMenuItems.map((item, index) => (
+              <xds-button
+                key={item.label}
+                kind="ghost"
+                size="md"
+                icon-position="right"
+                className={`portal-mobile-link${index === 0 ? ' portal-mobile-link--active' : ''}`}
+                onClick={() => {
+                  setMobileOpen(false);
+                  item.action();
+                }}
+              >
+                <span className="portal-mobile-link__main">
+                  <xds-icon name={item.icon} size="sm"></xds-icon>
+                  <xds-text variant="h3" as="span">{item.label}</xds-text>
+                </span>
+                <xds-icon slot="icon" className="portal-mobile-link__chevron" name="chevron_right" size="sm"></xds-icon>
+              </xds-button>
+            ))}
           </nav>
+
+          <div className="portal-header__mobile-footer">
+            <xds-button
+              className="portal-header__mobile-login"
+              kind="primary"
+              size="lg"
+              full-width
+              onClick={() => {
+                setMobileOpen(false);
+                onNavigate('dashboard');
+              }}
+            >
+              Entrar com gov.br
+            </xds-button>
+
+            <div className="portal-header__mobile-controls">
+              <div className="portal-header__mobile-font">
+                <xds-button className="portal-header__mobile-font-btn" kind="ghost" size="sm" onClick={() => onFontSize('decrease')}>A-</xds-button>
+                <xds-divider orientation="vertical"></xds-divider>
+                <xds-button className="portal-header__mobile-font-btn" kind="ghost" size="sm" onClick={() => onFontSize('increase')}>A+</xds-button>
+              </div>
+
+              <xds-button
+                className="portal-header__mobile-theme"
+                kind="ghost"
+                size="sm"
+                onClick={toggleContrast}
+                aria-pressed={isHighContrast}
+              >
+                <span className="portal-header__mobile-theme-content">
+                  <xds-icon name="contrast" size="sm"></xds-icon>
+                  <xds-text variant="caption" as="span">Tema</xds-text>
+                </span>
+              </xds-button>
+            </div>
+          </div>
         </div>
       )}
     </header>

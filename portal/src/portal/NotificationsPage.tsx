@@ -28,10 +28,13 @@ const TYPE_ICON: Record<
   alert: 'warning',
 };
 
-const TYPE_KIND: Record<NotificationItem['type'], 'info' | 'success' | 'warning' | 'danger'> = {
+const TYPE_ICON_COLOR: Record<
+  NotificationItem['type'],
+  'info' | 'success' | 'neutral' | 'danger'
+> = {
   system: 'info',
   update: 'success',
-  info: 'warning',
+  info: 'neutral',
   alert: 'danger',
 };
 
@@ -91,27 +94,35 @@ export default function NotificationsPage({
           </xds-breadcrumb>
 
           <header className="portal-notifications-head">
-            <xds-text variant="h1" as="h1">Central de Notificações</xds-text>
-            <xds-button kind="tertiary" size="md" onClick={markAllAsRead}>
+            <xds-text variant="h1" as="h1" className="portal-notifications-head__title">Central de Notificações</xds-text>
+            <xds-button
+              kind="ghost"
+              size="sm"
+              animation="underline"
+              className="portal-notifications-head__mark-all"
+              onClick={markAllAsRead}
+            >
               Marcar todas como lidas
             </xds-button>
           </header>
 
           <div className="portal-notifications-tabs" role="tablist" aria-label="Filtros de notificações">
             <xds-button
+              kind="ghost"
+              size="sm"
               role="tab"
               aria-selected={tab === 'all'}
-              kind={tab === 'all' ? 'primary' : 'tertiary'}
-              size="md"
+              className={`portal-notifications-tab${tab === 'all' ? ' is-active' : ''}`}
               onClick={() => setTab('all')}
             >
               Todas
             </xds-button>
             <xds-button
+              kind="ghost"
+              size="sm"
               role="tab"
               aria-selected={tab === 'unread'}
-              kind={tab === 'unread' ? 'primary' : 'tertiary'}
-              size="md"
+              className={`portal-notifications-tab${tab === 'unread' ? ' is-active' : ''}`}
               onClick={() => setTab('unread')}
             >
               Não lidas
@@ -121,36 +132,55 @@ export default function NotificationsPage({
           <section className="portal-notifications-list" aria-label="Lista de notificações">
             {list.length > 0 ? (
               list.map((n) => (
-                <xds-card key={n.id} className={`portal-notification-card${!n.read ? ' is-unread' : ''}`}>
-                  <div className="portal-notification-card__icon">
-                    <xds-icon name={TYPE_ICON[n.type]} size="md" color={TYPE_KIND[n.type]}></xds-icon>
-                  </div>
+                <xds-icon-card
+                  key={n.id}
+                  className={`portal-notification-card portal-notification-card--${n.type}${!n.read ? ' is-unread' : ''}`}
+                  icon-color={TYPE_ICON_COLOR[n.type]}
+                >
+                  <xds-icon slot="icon" name={TYPE_ICON[n.type]} size="md"></xds-icon>
 
                   <div className="portal-notification-card__content">
-                    <xds-text variant="h3" as="h2">
-                      {n.title}
-                      {!n.read && <span aria-hidden="true"> •</span>}
-                    </xds-text>
-                    <xds-text variant="body" as="p">{n.message}</xds-text>
+                    <div className="portal-notification-card__title-row">
+                      <xds-text variant="h3" as="h2" className="portal-notification-card__title">
+                        {n.title}
+                        {!n.read && <span aria-hidden="true"> •</span>}
+                      </xds-text>
+                      <xds-text variant="caption" as="p" className="portal-notification-card__date">{n.date}</xds-text>
+                    </div>
+
+                    <xds-text variant="body" as="p" className="portal-notification-card__message">{n.message}</xds-text>
+
                     <div className="portal-notification-card__actions">
                       {!n.read && (
-                        <xds-button kind="tertiary" size="sm" onClick={() => markAsRead(n.id)}>
+                        <xds-button
+                          kind="ghost"
+                          size="sm"
+                          className="portal-notification-card__action portal-notification-card__action--primary"
+                          onClick={() => markAsRead(n.id)}
+                        >
                           Marcar como lida
                         </xds-button>
                       )}
-                      <xds-button kind="ghost" size="sm" onClick={() => removeNotification(n.id)}>
+                      <xds-button
+                        kind="ghost"
+                        size="sm"
+                        className="portal-notification-card__action"
+                        onClick={() => removeNotification(n.id)}
+                      >
                         Excluir
                       </xds-button>
                     </div>
                   </div>
-
-                  <xds-text variant="caption" as="p" className="portal-notification-card__date">{n.date}</xds-text>
-                </xds-card>
+                </xds-icon-card>
               ))
             ) : (
-              <xds-card className="portal-notifications-empty" padding="lg">
-                <xds-text variant="h3" as="h2">Nenhuma notificação encontrada</xds-text>
-                <xds-text variant="body" as="p">Não há itens para este filtro.</xds-text>
+              <xds-card className="portal-notifications-empty" padding="none">
+                <div className="portal-notifications-empty__content">
+                  <xds-icon className="portal-notifications-empty__icon" name="notifications_off" size="md"></xds-icon>
+                  <xds-text variant="body" as="p" className="portal-notifications-empty__text">
+                    Nenhuma notificação encontrada.
+                  </xds-text>
+                </div>
               </xds-card>
             )}
           </section>

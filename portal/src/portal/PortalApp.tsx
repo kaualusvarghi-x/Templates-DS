@@ -96,47 +96,59 @@ export default function PortalApp(_props?: { onNavigate?: (page: string) => void
       {/* Dev nav — quick view switcher */}
       <div className="portal-dev-nav">
         <span className="portal-dev-nav__label">DevNav:</span>
-        <button
+        <xds-button
+          kind="ghost"
+          size="sm"
           className={view === 'landing' ? 'active' : ''}
           onClick={() => navigate('landing')}
         >
           Home
-        </button>
+        </xds-button>
         <span>|</span>
-        <button
+        <xds-button
+          kind="ghost"
+          size="sm"
           className={view === 'search' ? 'active' : ''}
           onClick={() => navigate('search')}
         >
           Busca
-        </button>
+        </xds-button>
         <span>|</span>
-        <button
+        <xds-button
+          kind="ghost"
+          size="sm"
           className={view === 'departments' ? 'active' : ''}
           onClick={() => navigate('departments')}
         >
           Órgãos
-        </button>
+        </xds-button>
         <span>|</span>
-        <button
+        <xds-button
+          kind="ghost"
+          size="sm"
           className={view === 'news' ? 'active' : ''}
           onClick={() => navigate('news')}
         >
           Notícias
-        </button>
+        </xds-button>
         <span>|</span>
-        <button
+        <xds-button
+          kind="ghost"
+          size="sm"
           className={view === 'notifications' ? 'active' : ''}
           onClick={() => navigate('notifications')}
         >
           Notificações
-        </button>
+        </xds-button>
         <span>|</span>
-        <button
+        <xds-button
+          kind="ghost"
+          size="sm"
           className={view === 'dashboard' ? 'active' : ''}
           onClick={() => navigate('dashboard')}
         >
           Entrar
-        </button>
+        </xds-button>
       </div>
     </>
   );
