@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './portal/portal.css';
+import './portal/styles/index.css';
 import LandingPage from './portal/LandingPage';
 import ServiceSearch from './portal/ServiceSearch';
 import DepartmentsPage from './portal/DepartmentsPage';

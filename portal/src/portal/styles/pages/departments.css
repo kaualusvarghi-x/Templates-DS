@@ -1,0 +1,165 @@
+/* Departments */
+.portal-organs-main {
+  padding: 1.45rem 0 3rem;
+}
+
+.portal-organs-main .portal-shell {
+  width: min(1120px, calc(100% - 2.5rem));
+}
+
+.portal-organs-main xds-breadcrumb {
+  margin-bottom: 0.55rem;
+}
+
+.portal-organs-header {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.portal-organs-header__title {
+  --color-text-primary: var(--color-surface-inverse);
+  --font-size-3xl: clamp(2rem, 2.4vw, 2.45rem);
+  --line-height-tight: 1.16;
+}
+
+.portal-organs-header__subtitle {
+  --color-text-secondary: var(--color-text-emphasis);
+  --font-size-md: clamp(1rem, 1.15vw, 1.25rem);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.portal-organs-toolbar {
+  margin-bottom: 1.3rem;
+}
+
+.portal-organs-toolbar::part(card) {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.95rem 1rem;
+}
+
+.portal-organs-toolbar__search {
+  width: min(420px, 100%);
+  --font-size-md: 15px;
+}
+
+.portal-organs-toolbar__filters {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: nowrap;
+}
+
+.portal-organs-toolbar__filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.portal-organs-toolbar__label {
+  --font-size-sm: 13px;
+  --color-text-secondary: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.portal-organs-toolbar__select {
+  min-width: 0;
+  width: 138px;
+}
+
+.portal-organs-toolbar__select--type {
+  width: 136px;
+}
+
+.portal-organs-toolbar__select--sort {
+  width: 96px;
+}
+
+.portal-organs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.portal-organs-card {
+  display: grid;
+  gap: 0.65rem;
+  min-height: 172px;
+}
+
+.portal-organs-card::part(card) {
+  padding: 0.95rem 1rem;
+  transition:
+    border-color var(--transition-fast, 150ms) var(--transition-easing, ease-in-out),
+    box-shadow var(--transition-fast, 150ms) var(--transition-easing, ease-in-out),
+    transform var(--transition-fast, 150ms) var(--transition-easing, ease-in-out);
+}
+
+.portal-organs-card[interactive]:hover::part(card) {
+  border-color: color-mix(in srgb, var(--portal-primary) 42%, var(--portal-border));
+}
+
+.portal-organs-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.portal-organs-card__top xds-tag {
+  --font-size-xs: 10px;
+  --xds-tag-bg: color-mix(in srgb, var(--xds-tag-border) 14%, var(--color-surface));
+  --xds-tag-color: color-mix(in srgb, var(--xds-tag-border) 88%, var(--color-text-primary));
+}
+
+.portal-organs-card__top xds-tag[kind='neutral'] {
+  --xds-tag-border: color-mix(in srgb, var(--color-text-muted) 88%, var(--color-surface));
+  --xds-tag-color: var(--color-text-secondary);
+}
+
+.portal-organs-card__title {
+  margin: 0;
+  --color-text-primary: var(--color-surface-inverse);
+  --font-size-xl: clamp(1.05rem, 1.12vw, 1.45rem);
+  --line-height-tight: 1.2;
+  line-height: 1.24;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.portal-organs-card__links {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+  flex-wrap: wrap;
+}
+
+.portal-organs-card__link-btn {
+  --font-size-md: 13px;
+  --xds-btn-radius: 8px;
+  --cds-button-ghost: transparent;
+  --cds-button-ghost-hover: transparent;
+  --cds-button-ghost-active: transparent;
+}
+
+.portal-organs-card__link-btn--details {
+  --cds-text-primary: var(--color-text-primary);
+  --cds-icon-primary: var(--color-text-primary);
+  --cds-icon-secondary: var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.portal-organs-card__link-btn--site {
+  --cds-text-primary: var(--portal-primary);
+  --cds-icon-primary: var(--portal-primary);
+  --cds-icon-secondary: var(--portal-primary);
+  color: var(--portal-primary);
+}
+
