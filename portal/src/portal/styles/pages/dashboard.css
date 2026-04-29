@@ -159,18 +159,18 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  --color-text-primary: #0b1f4a;
+  --color-text-primary: var(--color-primary-dark);
 }
 
 .portal-dashboard-v2__favorites-title .xds-text,
 .portal-dashboard-v2__favorites-title h2 {
   font-size: clamp(1.25rem, 1.35vw, 1.45rem);
   line-height: 1.2;
-  color: #0b1f4a;
+  color: var(--color-primary-dark);
 }
 
 .portal-dashboard-v2__favorites-star {
-  color: #f4b315;
+  color: var(--color-warning);
 }
 
 .portal-dashboard-v2__favorites-grid {
@@ -244,7 +244,7 @@
 
 .portal-d-fav-card__title {
   margin: 0;
-  --color-text-primary: #0b1f4a;
+  --color-text-primary: var(--color-primary-dark);
   --font-size-xl: clamp(0.95rem, 0.95vw, 1.08rem);
   --line-height-tight: 1.2;
 }
@@ -253,7 +253,7 @@
 .portal-d-fav-card__title h3 {
   font-size: clamp(0.95rem, 0.95vw, 1.08rem);
   line-height: 1.22;
-  color: #0b1f4a;
+  color: var(--color-primary-dark);
 }
 
 .portal-d-fav-card__meta {
@@ -320,11 +320,11 @@
 }
 
 .portal-d-promo--docs::part(card) {
-  background: linear-gradient(120deg, #2a63a3 0%, #2f6bab 100%);
+  background: linear-gradient(120deg, var(--portal-promo-docs-from) 0%, var(--portal-promo-docs-to) 100%);
 }
 
 .portal-d-promo--vehicle::part(card) {
-  background: linear-gradient(120deg, #1f2d49 0%, #243758 100%);
+  background: linear-gradient(120deg, var(--portal-promo-vehicle-from) 0%, var(--portal-promo-vehicle-to) 100%);
 }
 
 .portal-d-promo__content {
@@ -337,7 +337,7 @@
 }
 
 .portal-d-promo__title {
-  --color-text-primary: #ffffff;
+  --color-text-primary: var(--portal-promo-on);
   --font-size-2xl: 17px;
   --line-height-tight: 1.22;
   white-space: nowrap;
@@ -346,7 +346,7 @@
 }
 
 .portal-d-promo__text {
-  --color-text-secondary: color-mix(in srgb, #ffffff 90%, #dbe7ff);
+  --color-text-secondary: color-mix(in srgb, var(--portal-promo-on) 90%, var(--portal-accent));
   --font-size-md: 11px;
   max-width: 36ch;
 }
@@ -355,7 +355,7 @@
 .portal-d-promo__title h3,
 .portal-d-promo__text .xds-text,
 .portal-d-promo__text p {
-  color: #ffffff;
+  color: var(--portal-promo-on);
   margin: 0;
 }
 
@@ -365,19 +365,19 @@
 }
 
 .portal-d-promo__btn--docs {
-  --cds-button-primary: #ffffff;
-  --cds-button-primary-hover: color-mix(in srgb, #ffffff 84%, #dbeafe);
-  --cds-button-primary-active: color-mix(in srgb, #ffffff 72%, #bfdbfe);
-  --cds-text-on-color: #1f5a9a;
+  --cds-button-primary: var(--portal-promo-on);
+  --cds-button-primary-hover: color-mix(in srgb, var(--portal-promo-on) 84%, var(--portal-accent));
+  --cds-button-primary-active: color-mix(in srgb, var(--portal-promo-on) 72%, var(--portal-accent));
+  --cds-text-on-color: var(--portal-primary);
   --xds-btn-radius: 9px;
 }
 
 .portal-d-promo__btn--vehicle {
-  --cds-button-tertiary: #ffffff;
-  --cds-button-tertiary-hover: color-mix(in srgb, #ffffff 20%, transparent);
-  --cds-button-tertiary-active: color-mix(in srgb, #ffffff 30%, transparent);
-  --cds-text-inverse: #ffffff;
-  --cds-button-focus-color: #ffffff;
+  --cds-button-tertiary: var(--portal-promo-on);
+  --cds-button-tertiary-hover: color-mix(in srgb, var(--portal-promo-on) 20%, transparent);
+  --cds-button-tertiary-active: color-mix(in srgb, var(--portal-promo-on) 30%, transparent);
+  --cds-text-inverse: var(--portal-promo-on);
+  --cds-button-focus-color: var(--portal-promo-on);
   --xds-btn-radius: 9px;
 }
 
@@ -532,12 +532,12 @@
   display: inline-flex;
   gap: 0.45rem;
   align-items: center;
-  --color-text-primary: #0b1f4a;
+  --color-text-primary: var(--color-primary-dark);
 }
 
 .portal-d-side-title .xds-text,
 .portal-d-side-title h3 {
-  color: #0b1f4a;
+  color: var(--color-primary-dark);
   font-size: clamp(1.48rem, 1.42vw, 1.62rem);
   line-height: 1.24;
 }
@@ -562,15 +562,15 @@
   --spacing-md: 0px;
   --cds-layout-density-padding-inline-local: 0px;
   --cds-layout-size-height-local: auto;
-  color: #27416c;
+  color: var(--color-text-secondary);
   padding: 0.78rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--portal-border) 88%, #96a6bc);
+  border-bottom: 1px solid color-mix(in srgb, var(--portal-border) 88%, var(--portal-primary-strong));
   display: block;
 }
 
 .portal-d-side-nav xds-button .xds-text,
 .portal-d-side-nav xds-button span {
-  color: #27416c;
+  color: var(--color-text-secondary);
   font-size: 1.15rem;
   line-height: 1.35;
 }

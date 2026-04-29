@@ -13,8 +13,8 @@
 
 .portal-hero__title {
   max-inline-size: 11.8ch;
-  --color-text-primary: #0b1f4a;
-  color: #0b1f4a;
+  --color-text-primary: var(--color-primary-dark);
+  color: var(--color-primary-dark);
 }
 
 .portal-hero__title .xds-text,
@@ -92,8 +92,8 @@
 
 [data-theme='dark'] .portal-hero__title,
 [data-portal-theme='dark'] .portal-hero__title {
-  --color-text-primary: #ffffff;
-  color: #ffffff;
+  --color-text-primary: var(--color-primary-light);
+  color: var(--color-primary-light);
 }
 
 .portal-featured-grid,
@@ -198,6 +198,7 @@
   --cds-button-primary: var(--portal-store-btn-bg);
   --cds-button-primary-hover: var(--portal-store-btn-hover);
   --cds-button-primary-active: var(--portal-store-btn-active);
+  --cds-text-on-color: var(--portal-store-btn-on);
   --color-primary: var(--portal-store-btn-bg);
   --color-on-primary: var(--portal-store-btn-on);
   --cds-icon-primary: var(--portal-store-btn-on);
@@ -282,4 +283,3 @@
   border-radius: 8px;
   background: var(--portal-phone-block-bg);
 }
-

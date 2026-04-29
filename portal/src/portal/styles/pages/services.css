@@ -37,7 +37,7 @@
 }
 
 .portal-services-filter__group-title {
-  --color-text-primary: #0b1f4a;
+  --color-text-primary: var(--color-primary-dark);
 }
 
 .portal-services-filter__checks {
@@ -149,4 +149,3 @@
   display: flex;
   justify-content: center;
 }
-

@@ -1,12 +1,15 @@
 :root {
   --portal-bg: var(--color-background);
-  --portal-bgg: var(--color-backgroundd);
+  /* Backward-compatible alias; avoid unresolved token reference. */
+  --portal-bgg: var(--color-background);
   --portal-surface: var(--color-surface);
+  --portal-surface-inverse: var(--color-surface-inverse);
   --portal-surface-soft: color-mix(in srgb, var(--color-surface) 88%, var(--color-background));
   --portal-header: var(--color-surface);
   --portal-border: var(--color-border);
   --portal-text: var(--color-text-primary);
   --portal-text-muted: var(--color-text-secondary);
+  --portal-text-secondary: var(--portal-text-muted);
   --portal-primary: var(--color-primary);
   --portal-primary-strong: var(--color-primary-dark);
   --portal-accent: var(--color-primary-light);
@@ -31,10 +34,10 @@
   --portal-cta-subtle: color-mix(in srgb, #ffffff 84%, var(--portal-accent));
   --portal-cta-bubble: color-mix(in srgb, #ffffff 12%, transparent);
 
-  --portal-store-btn-bg: var(--color-surface-inverse);
-  --portal-store-btn-hover: color-mix(in srgb, var(--color-surface-inverse) 84%, var(--portal-primary));
-  --portal-store-btn-active: color-mix(in srgb, var(--color-surface-inverse) 72%, var(--portal-primary));
-  --portal-store-btn-on: var(--color-on-primary);
+  --portal-store-btn-bg: var(--color-on-secondary);
+  --portal-store-btn-hover: color-mix(in srgb, var(--color-on-secondary) 84%, var(--portal-primary));
+  --portal-store-btn-active: color-mix(in srgb, var(--color-on-secondary) 72%, var(--portal-primary));
+  --portal-store-btn-on: var(--portal-cta-on);
 
   --portal-phone-shell-border: color-mix(in srgb, var(--color-surface, #ffffff) 24%, transparent);
   --portal-phone-shell-bg: color-mix(in srgb, var(--portal-accent) 26%, var(--portal-primary));
@@ -251,25 +254,6 @@ body {
 .portal-home-section--cta {
   padding-top: 2.75rem;
   padding-bottom: 3.75rem;
-  /* Keep component C visual palette fixed in light and dark/high-contrast modes. */
-  --portal-cta-gradient-from: #2b63a6;
-  --portal-cta-gradient-to: #2f6eae;
-  --portal-cta-on: #f5f9ff;
-  --portal-cta-subtle: #d5e5f7;
-  --portal-cta-bubble: color-mix(in srgb, #9cc8f8 18%, transparent);
-
-  --portal-store-btn-bg: #050b14;
-  --portal-store-btn-hover: #101a29;
-  --portal-store-btn-active: #152336;
-  --portal-store-btn-on: #f7fbff;
-
-  --portal-phone-shell-border: color-mix(in srgb, #d6ecff 28%, transparent);
-  --portal-phone-shell-bg: #3b79b6;
-  --portal-phone-screen-bg: #081735;
-  --portal-phone-screen-border: #2d4f7a;
-  --portal-phone-notch-bg: #12284b;
-  --portal-phone-line-bg: #2f4768;
-  --portal-phone-block-bg: #182c4a;
 }
 
 .portal-section__header {
@@ -295,4 +279,3 @@ body {
 .portal-section__accent--green {
   background: var(--portal-accent-line-green);
 }
-

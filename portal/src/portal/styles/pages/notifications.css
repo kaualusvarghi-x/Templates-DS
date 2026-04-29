@@ -107,7 +107,7 @@
   --spacing-lg: 20px;
   --radius-lg: 12px;
   --color-border: color-mix(in srgb, var(--portal-border) 88%, var(--portal-bg));
-  --elevation-low: 0 3px 10px rgba(13, 45, 95, 0.08);
+  --elevation-low: 0 3px 10px color-mix(in srgb, var(--portal-primary-strong) 10%, transparent);
   transition:
     transform var(--transition-fast, 150ms) var(--transition-easing, ease-in-out),
     box-shadow var(--transition-fast, 150ms) var(--transition-easing, ease-in-out);
@@ -133,7 +133,7 @@
 
 .portal-notification-card:hover {
   --color-border: color-mix(in srgb, var(--portal-primary) 34%, var(--portal-border));
-  --elevation-low: 0 6px 16px rgba(13, 45, 95, 0.12);
+  --elevation-low: 0 6px 16px color-mix(in srgb, var(--portal-primary-strong) 14%, transparent);
 }
 
 .portal-notification-card__content {
